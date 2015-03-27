@@ -16,24 +16,27 @@
 <body>
 
 	<div id="content">
-		<fieldset>
-			<label>Naam<input ng-model="timeline.name" type="text" /></label>
-			<label>Duur<input ng-model="timeline.duration" type="number" /></label>
-		</fieldset>
+
+        <div>Naam<input ng-model="timeline.name" type="text" /></div>
+        <div>Duur<input ng-model="timeline.duration" type="number" /></div>
+
 		<div class="timeline">
 
-			<div ng-repeat="actor in actors">
+			<div class="actor" ng-repeat="actor in actors">
+
+                <div class="actordetails">
+                    <div class="actor-name">{{actor.name}}</div>
+                    <div>start <input ng-model="actor.start" type="number" /></div>
+                    <div>duur <input ng-model="actor.duration" type="number" /></div>
+                </div>
+
 				<div se-draggable-container class="actorline">
-					<span se-draggable ondrag="mainCtrl.onDrag(actor, x, y)" ondrop="mainCtrl.onDrop()" class="indicator" ng-style="{
+					<span se-draggable ondrag="mainCtrl.onDrag(actor, x, y)" class="indicator" ng-style="{
 						left:(actor.start/timeline.duration)*100+'%',
 						width:(actor.duration/timeline.duration)*100+'%'
 					}"></span>
-				</div>
-				<div class="actordetails">
-					<span>{{actor.name}}</span>
-					<label>Start<input ng-model="actor.start" type="number" /></label>
-					<label>Duur<input ng-model="actor.duration" type="number" /></label>
-				</div>
+                </div>
+
 			</div>
 		</div>
 	</div>

@@ -4,15 +4,58 @@ body {
     margin:0;
     padding:0;
 }
+
+#content {
+    padding: 10px;
+}
+
+.timeline {
+
+}
+
+.actor {
+    padding: 10px 0;
+    width: 100%;
+    overflow: auto;
+    zoom: 1;
+}
+
+.actordetails {
+    width: 10%;
+    float: left;
+
+    label {
+        color: darkgray;
+        font-size: .85em;
+
+    }
+
+    input[type="number"] {
+        width: 80px;
+        border: 1px solid #fff;
+        color: #000;
+        &:hover {
+            border: 1px solid #666;
+        }
+    }
+}
+
+.actor-name {
+    font-weight: bold;
+}
+
 .actorline {
     position: relative;
-    width:100%;
+    width: 90%;
     height:40px;
     background: lightgray;
+    float: left;
+
     .indicator {
         position: absolute;
         height:100%;
         cursor:pointer;
         background-color: #0b97c4;
     }
+
 }
