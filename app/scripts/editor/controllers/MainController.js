@@ -15,6 +15,12 @@ angular.module('SE').controller('MainController', [
 			init: function () {
 
 				SessionService.loadScript().then(function (data) {
+
+					$scope.timeline = {
+						name: data.name,
+						duration:data.duration
+					};
+
 					$scope.actors = data.actors;
 				})
 			}
