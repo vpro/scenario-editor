@@ -20,8 +20,21 @@
 			<label>Naam<input ng-model="timeline.name" type="text" /></label>
 			<label>Duur<input ng-model="timeline.duration" type="number" /></label>
 		</fieldset>
-		<div ng-repeat="actor in actors">
-			<span>{{actor.name}}</span>
+		<div class="timeline">
+
+			<div ng-repeat="actor in actors">
+				<div class="actorline">
+					<span class="indicator" ng-style="{
+						left:(actor.start/timeline.duration)*100+'%',
+						width:(actor.duration/timeline.duration)*100+'%'
+					}"></span>
+				</div>
+				<div class="actordetails">
+					<span>{{actor.name}}</span>
+					<label>Start<input ng-model="actor.start" type="number" /></label>
+					<label>Duur<input ng-model="actor.duration" type="number" /></label>
+				</div>
+			</div>
 		</div>
 	</div>
 
