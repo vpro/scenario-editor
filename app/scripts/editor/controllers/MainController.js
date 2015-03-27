@@ -18,18 +18,23 @@ angular.module('SE').controller('MainController', [
 
 					$scope.timeline = {
 						name: data.name,
-						duration:data.duration
+						duration: data.duration
 					};
 
 					$scope.actors = data.actors;
 
 					this.sortActors();
-				}.bind(this))
+				}.bind(this));
 			},
 
 			onDrag: function (actor, x, y) {
 
 				actor.start = Math.round(x * $scope.timeline.duration);
+
+                if( actor.start + actor.duration > $scope.timeline.duration ){
+                    actor.start = $scope.timeline.duration - actor.duration;
+                }
+
 				$scope.$apply();
 			},
 
