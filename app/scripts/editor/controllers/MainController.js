@@ -22,11 +22,37 @@ angular.module('SE').controller('MainController', [
 					};
 
 					$scope.actors = data.actors;
-				})
+
+					this.sortActors();
+				}.bind(this))
 			},
+
 			onDrag: function (actor, x, y) {
+
 				actor.start = Math.round(x * $scope.timeline.duration);
 				$scope.$apply();
+			},
+
+			onDrop: function () {
+
+				this.sortActors();
+				$scope.$apply();
+			},
+
+			sortActors: function () {
+
+				$scope.actors.sort(function (a,b) {
+
+					if (a.start < b.start) {
+						return -1;
+					}
+					if (a.start === b.start) {
+						return 0;
+					}
+					if (a.start > b.start) {
+						return 1;
+					}
+				});
 			}
 		};
 

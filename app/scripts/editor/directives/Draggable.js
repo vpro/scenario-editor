@@ -30,7 +30,7 @@ angular.module('SE').directive('seDraggable',
 				}
 				Draggable.prototype = {
 
-					init: function (element, container, ondrag) {
+					init: function (element, container, ondrag, ondrop) {
 
 						var anchorBox, elementBox;
 
@@ -38,6 +38,7 @@ angular.module('SE').directive('seDraggable',
 						this.container = container || angular.element($document[0].body);
 						this.anchor = this.anchor || this.element;
 						this.ondrag = ondrag;
+						this.ondrop = ondrop;
 
 						anchorBox = this.anchor[0].getBoundingClientRect();
 						elementBox = this.element[0].getBoundingClientRect();
@@ -125,6 +126,9 @@ angular.module('SE').directive('seDraggable',
 						$document.unbind('mousemove', this.move);
 						$document.unbind('mouseup', this.stop);
 
+						if (this.ondrop) {
+							$scope.$eval(this.ondrop);
+						}
 					},
 
 					setAnchor: function (element) {
@@ -199,7 +203,7 @@ angular.module('SE').directive('seDraggable',
 
 			link: function (scope, element, attrs, controllers) {
 
-				controllers[0].init(element, controllers[1], attrs.ondrag);
+				controllers[0].init(element, controllers[1], attrs.ondrag, attrs.ondrop);
 
 			}
 		}
