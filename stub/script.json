@@ -1,0 +1,232 @@
+{
+    "name":"Srebrenica pilot",
+    "duration":480000,
+    "actors":[
+
+        {
+            "name": "Main audio track",
+            "type": "audio",
+            "start": 0,
+            "duration": 480000,
+            "offset":2427000,
+            "src": "http://files.vpro.nl/test/srebrenica/scenario/1400_1500_argos_20150124.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+        {
+            "name": "Thom Karremans",
+            "type": "generic",
+            "start": 100000,
+            "duration": 8000,
+            "template": {
+                "caption": {
+                    "title": "Thom Karremans",
+                    "subtitle": "Luitenant-kolonel, commandant van Dutchbat",
+                    "image": "assets/img/srebrenica/karremans.jpg"
+                }
+            },
+            "trigger": {
+                "event": "click",
+                "type": "video",
+                "src": "assets/av/dutch_se_van_512kb.mp4"
+            },
+            "preload": {
+                "type": "image",
+                "url": "assets/img/srebrenica/karremans.jpg"
+            },
+            "animationName": "captionFromRight",
+            "css": {
+                "bottom": "7em",
+                "right": "0"
+            }
+        },
+        {
+            "name": "Joris Voorhoeve",
+            "type": "generic",
+            "start": 4000,
+            "duration": 8000,
+            "template": {
+                "caption": {
+                    "title": "Joris Voorhoeve",
+                    "subtitle": "Minister van Defensie",
+                    "image": "assets/img/srebrenica/PORTRAIT-joris-voorhoeve.jpg"
+                }
+            },
+            "preload": {
+                "type": "image",
+                "url": "assets/img/srebrenica/PORTRAIT-joris-voorhoeve.jpg"
+            },
+            "animationName": "captionFromLeft",
+            "css": {
+                "bottom": "7em",
+                "left": "0"
+            }
+
+        },
+
+
+        {
+            "name": "Sfeer-1",
+            "type": "ambi",
+            "start": 0,
+            "duration": 30000,
+            "src": "assets/img/srebrenica/BG-earth-1.jpg",
+            "preload": {
+                "type": "image",
+                "url":"assets/img/srebrenica/BG-earth-1.jpg"
+            },
+            "animationName":"ambi2s"
+        },
+        {
+            "name": "Sfeer-2",
+            "type": "ambi",
+            "start": 31000,
+            "duration": 60000,
+            "src": "assets/img/srebrenica/BG-val-1.jpg",
+            "preload": {
+                "type": "image",
+                "url":"assets/img/srebrenica/BG-val-1.jpg"
+            },
+            "animationName":"ambi2s"
+        },
+        {
+            "name": "Sfeer-3",
+            "type": "ambi",
+            "start": 61000,
+            "duration": 90000,
+            "src": "assets/img/srebrenica/BG-luchtsteun-1.jpg",
+            "preload": {
+                "type": "image",
+                "url":"assets/img/srebrenica/BG-luchtsteun-1.jpg"
+            },
+            "animationName":"ambi2s"
+        },
+
+        {
+            "name":"Verkeersbord",
+            "type": "generic",
+            "start": 0,
+            "duration": 15000,
+            "template":{
+                "background":{
+                    "image":"assets/img/srebrenica/BG-verkeersbord.jpg",
+                    "sizing":"cover"
+                }
+            },
+            "preload":{
+                "type":"image",
+                "url":"assets/img/srebrenica/BG-verkeersbord.jpg"
+            },
+            "animationName":"fade1s"
+        },
+
+        {
+            "name": "Joris Voorhoeve",
+            "type": "generic",
+            "start": 13000,
+            "duration": 9000,
+            "template": {
+                "background": {
+                    "image": "assets/img/srebrenica/BG-joris-voorhoeve-1.jpg",
+                    "sizing": "cover"
+                }
+            },
+            "preload":{
+                "type":"image",
+                "url":"assets/img/srebrenica/BG-joris-voorhoeve-1.jpg"
+            },
+            "animationName":"fade1s"
+        },
+
+        {
+            "name": "Lijkkisten-1",
+            "type": "generic",
+            "start": 20000,
+            "duration": 47000,
+            "template": {
+                "background": {
+                    "image": "assets/img/srebrenica/BG-lijkkisten-vrouwen-1.jpg",
+                    "sizing": "cover"
+                }
+            },
+            "preload":{
+                "type":"image",
+                "url":"assets/img/srebrenica/BG-lijkkisten-vrouwen-1.jpg"
+            },
+            "animationName":"fade1s"
+        },
+
+        {
+            "name": "Wim Kok",
+            "type": "generic",
+            "start": 66000,
+            "duration": 9000,
+            "template": {
+                "background": {
+                    "image": "assets/img/srebrenica/BG-wim-kok-1.jpg",
+                    "sizing": "cover"
+                }
+            },
+            "preload":{
+                "type":"image",
+                "url":"assets/img/srebrenica/BG-wim-kok-1.jpg"
+            },
+            "animationName":"fade1s"
+        },
+
+        {
+            "name": "Lijkkisten-2",
+            "type": "generic",
+            "start": 74000,
+            "duration": 9000,
+            "template": {
+                "background": {
+                    "image": "assets/img/srebrenica/BG-lijkkisten-vrouwen-2.jpg",
+                    "sizing": "cover"
+                }
+            },
+            "preload":{
+                "type":"image",
+                "url":"assets/img/srebrenica/BG-lijkkisten-vrouwen-2.jpg"
+            },
+            "animationName":"fade1s"
+        },
+
+        {
+            "name": "Earth-2",
+            "type": "generic",
+            "start": 82000,
+            "duration": 13000,
+            "template": {
+                "background": {
+                    "image": "assets/img/srebrenica/BG-earth-2.jpg",
+                    "sizing": "cover"
+                }
+            },
+            "preload":{
+                "type":"image",
+                "url":"assets/img/srebrenica/BG-earth-2.jpg"
+            },
+            "animationName":"fade1s"
+        },
+
+        {
+            "name": "Dutchbat-1",
+            "type": "generic",
+            "start": 94000,
+            "duration": 34000,
+            "template": {
+                "background": {
+                    "image": "assets/img/srebrenica/BG-dutchbat-1.jpg",
+                    "sizing": "cover"
+                }
+            },
+            "preload":{
+                "type":"image",
+                "url":"assets/img/srebrenica/BG-dutchbat-1.jpg"
+            },
+            "animationName":"fade1s"
+        }
+    ]
+}

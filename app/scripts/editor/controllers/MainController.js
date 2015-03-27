@@ -14,9 +14,9 @@ angular.module('SE').controller('MainController', [
 
 			init: function () {
 
-				console.log('Main controller init', $scope, SessionService);
-
-				$scope.message = 'Hallo Wereld!'
+				SessionService.loadScript().then(function (data) {
+					$scope.actors = data.actors;
+				})
 			}
 		};
 

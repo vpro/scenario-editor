@@ -17,6 +17,9 @@
 
 	<div id="content">
 		{{message}}
+		<div ng-repeat="actor in actors">
+			<span>{{actor.name}}</span>
+		</div>
 	</div>
 
 	<!-- build:js js/vendor.js -->
