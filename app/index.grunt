@@ -1,0 +1,36 @@
+<!doctype html>
+<html ng-app="SE" ng-controller="MainController as mainCtrl" ng-init="mainCtrl.init()">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Scenario Editor</title>
+
+	<!-- build:css styles/app.css -->
+	<link rel="stylesheet" href="styles/normalize.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="styles/main.css" type="text/css" media="all" />
+	<!-- endbuild -->
+
+	<link rel="shortcut icon" href="favicon.ico" />
+</head>
+
+<body>
+
+	<div id="content">
+		{{message}}
+	</div>
+
+	<!-- build:js js/vendor.js -->
+
+	<script src="scripts/vendor/angularjs/angular.min.js"></script>
+	<!-- endbuild -->
+
+	<!-- build:js js/editor.js -->
+	<script src="scripts/editor/app.js"></script>
+	<script src="scripts/editor/controllers/MainController.js"></script>
+
+	<script src="scripts/editor/services/SessionService.js"></script>
+
+	<!-- endbuild -->
+
+</body>
+</html>
