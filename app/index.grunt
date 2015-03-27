@@ -23,8 +23,8 @@
 		<div class="timeline">
 
 			<div ng-repeat="actor in actors">
-				<div class="actorline">
-					<span class="indicator" ng-style="{
+				<div se-draggable-container class="actorline">
+					<span se-draggable ondrag="mainCtrl.onDrag(actor, x, y)" class="indicator" ng-style="{
 						left:(actor.start/timeline.duration)*100+'%',
 						width:(actor.duration/timeline.duration)*100+'%'
 					}"></span>
@@ -48,6 +48,8 @@
 	<script src="scripts/editor/controllers/MainController.js"></script>
 
 	<script src="scripts/editor/services/SessionService.js"></script>
+
+	<script src="scripts/editor/directives/Draggable.js"></script>
 
 	<!-- endbuild -->
 

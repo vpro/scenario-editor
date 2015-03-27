@@ -23,6 +23,10 @@ angular.module('SE').controller('MainController', [
 
 					$scope.actors = data.actors;
 				})
+			},
+			onDrag: function (actor, x, y) {
+				actor.start = Math.round(x * $scope.timeline.duration);
+				$scope.$apply();
 			}
 		};
 
