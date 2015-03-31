@@ -17,24 +17,83 @@
 
 	<div id="content">
 
-        <div>Naam<input ng-model="timeline.name" type="text" /></div>
-        <div>Duur<input ng-model="timeline.duration" type="number" /></div>
+        <div id="header">
+
+            <div id="meta-container">
+
+                <div class="meta">
+                    <span class="label">Naam</span>
+                    <input ng-model="timeline.name" type="text" />
+                </div>
+
+                <div class="meta">
+                    <span class="label">Duur</span>
+                    <input ng-model="timeline.duration" type="number" />
+                </div>
+
+            </div>
+
+            <textarea>
+                {{script | json}}
+            </textarea>
+
+        </div>
 
 		<div class="timeline">
 
 			<div class="actor" ng-repeat="actor in actors">
 
-                <div class="actordetails">
-                    <div class="actor-name">{{actor.name}}</div>
-                    <div>start <input ng-model="actor.start" type="number" /></div>
-                    <div>duur <input ng-model="actor.duration" type="number" /></div>
+                <div class="actormeta">
+
+                    <div ng-click="actorDetailsOpen = !actorDetailsOpen" class="actor-name">
+                        {{actor.name}}
+                    </div>
+
+                    <div>
+                        <span class="label">start </span>
+                        <input ng-model="actor.start" type="number" step="1000" />
+                    </div>
+
+                    <div>
+                        <span class="label">duur </span>
+                        <input ng-model="actor.duration" type="number" step="1000"/>
+                    </div>
+
+                    <div ng-init="actorDetailsOpen = false"  ng-show="actorDetailsOpen" class="actormetadetails">
+
+                        <div ng-if="actor.type.length > 0">
+                            <span class="label">type</span>
+                            <span class="value">{{actor.type}}</span>
+                        </div>
+
+                        <div ng-if="actor.animationName.length > 0">
+                            <span class="label">animationName</span>
+                            <span class="value">{{actor.animationName}}</span>
+                        </div>
+
+                    </div>
+
                 </div>
 
-				<div se-draggable-container class="actorline">
-					<span se-draggable ondrag="mainCtrl.onDrag(actor, x, y)" ondrop="mainCtrl.onDrop()" class="indicator" ng-style="{
-						left:(actor.start/timeline.duration)*100+'%',
-						width:(actor.duration/timeline.duration)*100+'%'
-					}"></span>
+                <div class="actortime">
+
+                    <div class="src">
+                        <div class="value" ng-if="actor.preload.url.length > 0">
+                            {{actor.preload.url}}
+                        </div>
+                        <div class="value" ng-if="!actor.preload.url.length && actor.preload.url.length === undefined">
+                            {{actor.src}}
+                        </div>
+                    </div>
+
+                    <div se-draggable-container class="actorline">
+                        <div class="actorname">{{actor.name}}</div>
+                        <span se-draggable ondrag="mainCtrl.onDrag(actor, x, y)" ondrop="mainCtrl.onDrop()" class="indicator" ng-style="{
+                            left:(actor.start/timeline.duration)*100+'%',
+                            width:(actor.duration/timeline.duration)*100+'%'
+                        }"></span>
+                    </div>
+
                 </div>
 
 			</div>
