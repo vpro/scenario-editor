@@ -14,7 +14,9 @@ angular.module('SE').controller('MainController', [
 
 			init: function () {
 
-				SessionService.loadScript().then(function (data) {
+				SessionService.loadScript().then(function ( data ) {
+
+                    $scope.script = data;
 
 					$scope.timeline = {
 						name: data.name,
@@ -30,17 +32,12 @@ angular.module('SE').controller('MainController', [
 			onDrag: function (actor, x, y) {
 
 				actor.start = Math.round(x * $scope.timeline.duration);
-
-                if( actor.start + actor.duration > $scope.timeline.duration ){
-                    actor.start = $scope.timeline.duration - actor.duration;
-                }
-
 				$scope.$apply();
 			},
 
 			onDrop: function () {
 
-				this.sortActors();
+				//this.sortActors();
 				$scope.$apply();
 			},
 
@@ -58,7 +55,7 @@ angular.module('SE').controller('MainController', [
 						return 1;
 					}
 				});
-			}
+            }
 		};
 
 		return new MainController();

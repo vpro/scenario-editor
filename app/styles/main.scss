@@ -9,6 +9,36 @@ body {
     padding: 10px;
 }
 
+#header {
+
+    padding: 0 0 20px;
+    height: 200px;
+
+    #meta-container {
+        width: 15%;
+        float: left;
+    }
+
+    textarea {
+        width: 79%;
+        height: 190px;
+        float: right;
+    }
+
+}
+
+
+.meta {
+    padding: 6px 0;
+    .label {
+        width: 60px;
+        display: inline-block;
+    }
+    input {
+        font-size: .9em;
+    }
+}
+
 .timeline {
 
 }
@@ -20,20 +50,27 @@ body {
     zoom: 1;
 }
 
-.actordetails {
-    width: 10%;
+.actormeta {
+    width: 20%;
     float: left;
 
-    label {
+    .label {
         color: darkgray;
         font-size: .85em;
+    }
 
+    .value {
+        width: 68px;
+        text-align: right;
+        display: inline-block;
     }
 
     input[type="number"] {
         width: 80px;
         border: 1px solid #fff;
         color: #000;
+        text-align: right;
+        font-size: .8em;
         &:hover {
             border: 1px solid #666;
         }
@@ -41,12 +78,30 @@ body {
 }
 
 .actor-name {
+    cursor: pointer;
     font-weight: bold;
 }
 
+.actormeta {
+    .label {
+        width: 90px;
+        display: inline-block;
+    }
+    .value {
+        font-size: .8em;
+    }
+}
+
+.actortime {
+    .value {
+            font-size: .8em;
+        }
+}
+
 .actorline {
+
     position: relative;
-    width: 90%;
+    width: 80%;
     height:40px;
     background: lightgray;
     float: left;
@@ -56,6 +111,16 @@ body {
         height:100%;
         cursor:pointer;
         background-color: #0b97c4;
+    }
+
+    .actorname {
+        position: absolute;
+        font-size: .7em;
+        left: 2px;
+        bottom: 2px;
+        z-index: 99;
+        text-shadow: 1px 1px #666;
+        color: #fff;
     }
 
 }
