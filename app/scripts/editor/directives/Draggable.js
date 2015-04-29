@@ -119,7 +119,7 @@ angular.module('SE').directive('seDraggable',
 					stop: function () {
 
 						if ($scope.isDragging) {
-							$scope.$evalAsync(function (scope) {scope.isDragging = false})
+							$scope.$evalAsync(function (scope) {scope.isDragging = false});
 						}
 						$document.unbind('touchmove', this.forward);
 						$document.unbind('touchend', this.stop);
@@ -150,7 +150,7 @@ angular.module('SE').directive('seDraggable',
 							return {
 								x: e.clientX,
 								y: e.clientY
-							}
+							};
 						}
 					},
 
@@ -206,7 +206,7 @@ angular.module('SE').directive('seDraggable',
 				controllers[0].init(element, controllers[1], attrs.ondrag, attrs.ondrop);
 
 			}
-		}
+		};
 	}
 );
 
@@ -218,7 +218,7 @@ angular.module('SE').directive('seDraggableAnchor',
 			link: function (scope, element, attr, controller) {
 				controller.setAnchor(element);
 			}
-		}
+		};
 	}
 );
 
@@ -226,8 +226,8 @@ angular.module('SE').directive('seDraggableContainer',
 	function () {
 		return {
 			controller: ['$element', function ($element) {
-				return $element
+				return $element;
 			}]
-		}
+		};
 	}
 );

@@ -1,4 +1,4 @@
-angular.module('SE').factory('SessionService', [
+angular.module( 'SE' ).factory( 'SessionService', [
     '$q',
     '$http',
     function ($q, $http) {
@@ -14,12 +14,15 @@ angular.module('SE').factory('SessionService', [
                 var deferred = $q.defer();
 
                 $http.get('/script.json').then(
+
                     function (response) {
                         deferred.resolve(response.data);
                     },
+
                     function () {
                         deferred.reject(new Error('Error loading scipt'));
                     }
+
                 );
 
                 return deferred.promise;

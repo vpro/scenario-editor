@@ -1,23 +1,7 @@
-@import "bourbon/bourbon";
-
-body {
-    margin:0;
-    padding:0;
-}
-
-#content {
-    padding: 10px;
-}
-
 #header {
 
     padding: 0 0 20px;
     height: 200px;
-
-    #meta-container {
-        width: 15%;
-        float: left;
-    }
 
     textarea {
         width: 79%;
@@ -46,34 +30,22 @@ body {
 .actor {
     padding: 10px 0;
     width: 100%;
-    overflow: auto;
     zoom: 1;
 }
 
-.actormeta {
-    width: 20%;
-    float: left;
+.value {
+    text-align: right;
+    display: inline-block;
+}
 
-    .label {
-        color: darkgray;
-        font-size: .85em;
-    }
-
-    .value {
-        width: 68px;
-        text-align: right;
-        display: inline-block;
-    }
-
-    input[type="number"] {
-        width: 80px;
-        border: 1px solid #fff;
-        color: #000;
-        text-align: right;
-        font-size: .8em;
-        &:hover {
-            border: 1px solid #666;
-        }
+input[type="number"] {
+    width: 80px;
+    border: 1px solid #fff;
+    color: #000;
+    text-align: right;
+    font-size: .8em;
+    &:hover {
+        border: 1px solid #666;
     }
 }
 
@@ -92,25 +64,45 @@ body {
     }
 }
 
-.actortime {
-    .value {
-            font-size: .8em;
+.value {
+    font-size: .8em;
+    cursor: pointer;
+
+    &:hover {
+        .actor-image {
+            width: 320px;
+            height: 180px;
+            z-index: 9999;
+            box-shadow: 5px 5px 5px #888;
         }
+    }
+}
+
+.actor-image {
+    width: 4px;
+    height: 4px;
+    background-size: contain;
+    position: absolute;
+    margin: 4px;
+
+    background-color: #888;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 .actorline {
 
     position: relative;
-    width: 80%;
-    height:40px;
+    width: 100%;
+    height: 40px;
     background: lightgray;
     float: left;
 
     .indicator {
         position: absolute;
         height:100%;
-        cursor:pointer;
         background-color: #0b97c4;
+        cursor:pointer;
     }
 
     .actorname {

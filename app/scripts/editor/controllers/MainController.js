@@ -16,6 +16,8 @@ angular.module('SE').controller('MainController', [
 
 				SessionService.loadScript().then(function ( data ) {
 
+					$scope.assetRoot = 'http://files.vpro.nl/frontend/srebrenica/assets/';
+
                     $scope.script = data;
 
 					$scope.timeline = {
@@ -29,9 +31,14 @@ angular.module('SE').controller('MainController', [
 				}.bind(this));
 			},
 
-			onDrag: function (actor, x, y) {
+			onDrag: function ( actor, x, y ) {
 
-				actor.start = Math.round(x * $scope.timeline.duration);
+                if( ( actor.start + actor.duration ) >= $scope.timeline.duration ) {
+                    actor.start = Math.round( x * $scope.timeline.duration ) - actor.duration;
+                } else {
+                    actor.start = Math.round( x * $scope.timeline.duration );
+                }
+
 				$scope.$apply();
 			},
 
@@ -43,7 +50,7 @@ angular.module('SE').controller('MainController', [
 
 			sortActors: function () {
 
-				$scope.actors.sort(function (a,b) {
+				$scope.actors.sort( function ( a, b ) {
 
 					if (a.start < b.start) {
 						return -1;

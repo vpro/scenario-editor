@@ -6,8 +6,9 @@
 	<title>Scenario Editor</title>
 
 	<!-- build:css styles/app.css -->
-	<link rel="stylesheet" href="styles/normalize.css" type="text/css" media="all" />
+	<!--<link rel="stylesheet" href="styles/normalize.css" type="text/css" media="all" />-->
 	<link rel="stylesheet" href="styles/main.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="styles/twitter-bootstrap/bootstrap.min.css" type="text/css" media="all" />
 	<!-- endbuild -->
 
 	<link rel="shortcut icon" href="favicon.ico" />
@@ -15,59 +16,68 @@
 
 <body>
 
-	<div id="content">
+	<div class="container-fluid">
 
-        <div id="header">
+        <div class="row">
 
-            <div id="meta-container">
+            <div class="col-md-2">
 
                 <div class="meta">
-                    <span class="label">Naam</span>
+                    <span class="label label-info">Naam</span>
                     <input ng-model="timeline.name" type="text" />
                 </div>
 
                 <div class="meta">
-                    <span class="label">Duur</span>
+                    <span class="label label-info">Duur</span>
                     <input ng-model="timeline.duration" type="number" />
                 </div>
 
             </div>
 
-            <textarea>
-                {{script | json}}
-            </textarea>
+            <div class="col-md-10">
+                <textarea class="form-control" rows="6">
+                    {{script | json}}
+                </textarea>
+            </div>
 
+        </div>
+
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-10">
+                <button ng-click="mainCtrl.sortActors()">Sorteer op tijd</button>
+            </div>
         </div>
 
 		<div class="timeline">
 
-			<div class="actor" ng-repeat="actor in actors">
+			<div class="row actor" ng-repeat="actor in actors">
 
-                <div class="actormeta">
+                <div class="col-md-2">
 
                     <div ng-click="actorDetailsOpen = !actorDetailsOpen" class="actor-name">
                         {{actor.name}}
                     </div>
 
                     <div>
-                        <span class="label">start </span>
+                        <span class="label label-info">start </span>
                         <input ng-model="actor.start" type="number" step="1000" />
                     </div>
 
                     <div>
-                        <span class="label">duur </span>
+                        <span class="label label-info">duur </span>
                         <input ng-model="actor.duration" type="number" step="1000"/>
                     </div>
 
                     <div ng-init="actorDetailsOpen = false"  ng-show="actorDetailsOpen" class="actormetadetails">
 
                         <div ng-if="actor.type.length > 0">
-                            <span class="label">type</span>
+                            <span class="label label-info">type</span>
                             <span class="value">{{actor.type}}</span>
                         </div>
 
                         <div ng-if="actor.animationName.length > 0">
-                            <span class="label">animationName</span>
+                            <span class="label label-info">animationName</span>
                             <span class="value">{{actor.animationName}}</span>
                         </div>
 
@@ -75,11 +85,12 @@
 
                 </div>
 
-                <div class="actortime">
+                <div class="col-md-10">
 
                     <div class="src">
                         <div class="value" ng-if="actor.preload.url.length > 0">
                             {{actor.preload.url}}
+                            <div class="actor-image" style="background-image: url('{{assetRoot}}{{actor.preload.url}}')"></div>
                         </div>
                         <div class="value" ng-if="!actor.preload.url.length && actor.preload.url.length === undefined">
                             {{actor.src}}
@@ -97,7 +108,9 @@
                 </div>
 
 			</div>
+
 		</div>
+
 	</div>
 
 	<!-- build:js js/vendor.js -->
