@@ -57,6 +57,28 @@ class ScenarioService {
 
       return $result;
     }
+
+    function saveScenarioForProject ( $scenarioId, $scenarioData ) {
+
+        $file = $dirName .'..'. BASEPATH_SCENARIOS . $scenarioId .'.json';
+
+        if ( is_writable( $file ) ) {
+
+            if ( ! $handle = fopen( $file, 'w' )) {
+                 return false;
+            }
+
+            if ( fwrite( $handle, $scenarioData) === FALSE) {
+                return false;
+            }
+
+            fclose($handle);
+
+            return true;
+        }
+
+        return false;
+    }
 }
 
 ?>

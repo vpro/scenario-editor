@@ -9,6 +9,8 @@ angular.module( 'SE' ).factory( 'SessionService', [
 
         SessionService.prototype = {
 
+
+
             loadScript: function () {
 
                 var deferred = $q.defer();

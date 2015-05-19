@@ -32,42 +32,28 @@ switch ( $resource ) {
 
         if ( isset( $resourceId ) ) {
 
-            // Get contents of the scenario file
+            // Save the contents of the scenario file
 
-            $scenario = $scenarioService->getScenarioForProject( $resourceId );
+            $scenarioData = Util::getPostVar("scenario", "raw");
 
-            if ( isset( $scenario ) ) {
+            if ( isset( $scenarioData ) ) {
 
-                Util::wrapOutput( $scenario, $callback );
+                $scenarioData = json_decode( urldecode( $scenarioData ) );
 
+                if ( $scenarioService->saveScenarioForProject( $resourceId, json_encode( $scenarioData ) ) ) {
+
+                    Util::wrapOutput(array("saved"=>"success"), $callback);
+
+                } else {
+                    Util::outputServerError();
+                }
             } else {
-                Util::outputNotFound();
+                Util::outputBadRequest();
             }
 
         } else {
-
-            // List all available scenario's
-
-            $scenarios = $scenarioService->getScenariosForProject( );
-            if ( count( $scenarios ) ) {
-                Util::wrapOutput( $scenarios, $callback );
-            } else {
-                Util::wrapOutput( array(), $callback );
-            }
-
+            Util::outputNotFound( $callback );
         }
-        break;
-
-    case "assets":
-
-        // list assets
-        $assets = $scenarioService->getAssetsForProject( );
-        if ( count( $assets ) ) {
-            Util::wrapOutput( $assets, $callback );
-        } else {
-            Util::wrapOutput( array(), $callback );
-        }
-
         break;
 
     default:
