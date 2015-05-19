@@ -1,232 +1,302 @@
 {
-    "name":"Srebrenica pilot",
-    "duration":480000,
+    "name":"Srebrenica chapter 01",
+    "duration":231000,
     "actors":[
 
         {
-            "name": "Main audio track",
+            "name": "Video All",
+            "type": "video",
+            "start": 20000,
+            "duration": 50000,
+            "offset": 0,
+            "src": "video/chapter_01/Srebr_helefilmpje_480.mp4",
+            "preload": {
+                "type": "video"
+            }
+        },
+
+        {
+            "name": "Ambiant audio",
             "type": "audio",
             "start": 0,
-            "duration": 480000,
-            "offset":2427000,
-            "src": "av/1400_1500_argos_20150124.mp3",
+            "duration": 231000,
+            "offset": 0,
+            "src": "audio/Srebr_muziek.mp3",
             "preload": {
                 "type": "audio"
             }
         },
-        {
-            "name": "Thom Karremans",
-            "type": "generic",
-            "start": 100000,
-            "duration": 8000,
-            "template": {
-                "caption": {
-                    "title": "Thom Karremans",
-                    "subtitle": "Luitenant-kolonel, commandant van Dutchbat",
-                    "image": "img/karremans.jpg"
-                }
-            },
-            "trigger": {
-                "event": "click",
-                "type": "video",
-                "src": "av/dutch_se_van_512kb.mp4"
-            },
-            "preload": {
-                "type": "image",
-                "url": "img/karremans.jpg"
-            },
-            "animationName": "captionFromRight",
-            "css": {
-                "bottom": "7em",
-                "right": "0"
-            }
-        },
-        {
-            "name": "Joris Voorhoeve",
-            "type": "generic",
-            "start": 4000,
-            "duration": 8000,
-            "template": {
-                "caption": {
-                    "title": "Joris Voorhoeve",
-                    "subtitle": "Minister van Defensie",
-                    "image": "img/PORTRAIT-joris-voorhoeve.jpg"
-                }
-            },
-            "preload": {
-                "type": "image",
-                "url": "img/PORTRAIT-joris-voorhoeve.jpg"
-            },
-            "animationName": "captionFromLeft",
-            "css": {
-                "bottom": "7em",
-                "left": "0"
-            }
-
-        },
-
 
         {
             "name": "Sfeer-1",
             "type": "ambi",
             "start": 0,
-            "duration": 30000,
-            "src": "img/BG-earth-1.jpg",
+            "duration": 231000,
+            "src": "img/chapter_01/still-istina-document-stamp.png",
             "preload": {
                 "type": "image",
-                "url":"img/BG-earth-1.jpg"
+                "url":"img/chapter_01/still-istina-document-stamp.png"
             },
-            "animationName":"ambi2s"
-        },
-        {
-            "name": "Sfeer-2",
-            "type": "ambi",
-            "start": 31000,
-            "duration": 60000,
-            "src": "img/BG-val-1.jpg",
-            "preload": {
-                "type": "image",
-                "url":"img/BG-val-1.jpg"
-            },
-            "animationName":"ambi2s"
-        },
-        {
-            "name": "Sfeer-3",
-            "type": "ambi",
-            "start": 61000,
-            "duration": 90000,
-            "src": "img/BG-luchtsteun-1.jpg",
-            "preload": {
-                "type": "image",
-                "url":"img/BG-luchtsteun-1.jpg"
-            },
-            "animationName":"ambi2s"
+            "animationName":"zoom-1.2-1.6"
         },
 
         {
-            "name":"Verkeersbord",
+            "name": "Voiceover 01",
+            "type": "audio",
+            "start": 0,
+            "duration": 10500,
+            "offset": 0,
+            "src": "audio/chapter_01/voice_01.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+
+        {            
+            "name": "Voiceover 02",
+            "type": "audio",
+            "start": 11000,
+            "duration": 12000,
+            "offset": 0,
+            "src": "audio/chapter_01/voice_02.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+
+        {
+            "name": "Voiceover 03",
+            "type": "audio",
+            "start": 24000,
+            "duration": 7500,
+            "offset": 0,
+            "src": "audio/chapter_01/voice_03.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+
+        {
+            "name": "Voiceover 04",
+            "type": "audio",
+            "start": 32000,
+            "duration": 13000,
+            "offset": 0,
+            "src": "audio/chapter_01/voice_04.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+
+        {
+            "name": "Voiceover 05",
+            "type": "audio",
+            "start": 46000,
+            "duration": 9500,
+            "offset": 0,
+            "src": "audio/chapter_01/voice_05.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+
+        {
+            "name": "Voiceover 06",
+            "type": "audio",
+            "start": 56000,
+            "duration": 11500,
+            "offset": 0,
+            "src": "audio/chapter_01/voice_06.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+
+        {
+            "name": "Voiceover 07",
+            "type": "audio",
+            "start": 68000,
+            "duration": 22000,
+            "offset": 0,
+            "src": "audio/chapter_01/voice_07.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+
+        {
+            "name": "Voiceover 08",
+            "type": "audio",
+            "start": 90000,
+            "duration": 21000,
+            "offset": 0,
+            "src": "audio/chapter_01/voice_08.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+
+        {
+            "name": "Voiceover 09",
+            "type": "audio",
+            "start": 111000,
+            "duration": 12000,
+            "offset": 0,
+            "src": "audio/chapter_01/voice_09.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+
+        {
+            "name": "Voiceover 10",
+            "type": "audio",
+            "start": 124000,
+            "duration": 8000,
+            "offset": 0,
+            "src": "audio/chapter_01/voice_10.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+
+        {
+            "name": "Voiceover 11",
+            "type": "audio",
+            "start": 132000,
+            "duration": 21000,
+            "offset": 0,
+            "src": "audio/chapter_01/voice_11.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+
+        {
+            "name": "Voiceover 12",
+            "type": "audio",
+            "start": 153000,
+            "duration": 8500,
+            "offset": 0,
+            "src": "audio/chapter_01/voice_12.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+
+        {
+            "name": "Voiceover 13",
+            "type": "audio",
+            "start": 162000,
+            "duration": 17500,
+            "offset": 0,
+            "src": "audio/chapter_01/voice_13.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+
+        {
+            "name": "Voiceover 14",
+            "type": "audio",
+            "start": 180000,
+            "duration": 8500,
+            "offset": 0,
+            "src": "audio/chapter_01/voice_14.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+
+        {
+            "name": "Danish Leopard",
             "type": "generic",
             "start": 0,
-            "duration": 15000,
-            "template":{
-                "background":{
-                    "image":"img/BG-verkeersbord.jpg",
-                    "sizing":"cover"
-                }
-            },
-            "preload":{
-                "type":"image",
-                "url":"img/BG-verkeersbord.jpg"
-            },
-            "animationName":"fade1s"
-        },
-
-        {
-            "name": "Joris Voorhoeve",
-            "type": "generic",
-            "start": 13000,
-            "duration": 9000,
+            "duration": 5000,
             "template": {
                 "background": {
-                    "image": "img/BG-joris-voorhoeve-1.jpg",
+                    "image": "img/chapter_01/still-danish-leopard-3.png",
                     "sizing": "cover"
                 }
             },
             "preload":{
                 "type":"image",
-                "url":"img/BG-joris-voorhoeve-1.jpg"
+                "url":"img/chapter_01/still-danish-leopard-3.png"
             },
-            "animationName":"fade1s"
+            "animationName":"zoom-1.2-1.6"
         },
 
         {
-            "name": "Lijkkisten-1",
+            "name": "UN soldier",
             "type": "generic",
-            "start": 20000,
-            "duration": 47000,
+            "start": 5000,
+            "duration": 5000,
             "template": {
                 "background": {
-                    "image": "img/BG-lijkkisten-vrouwen-1.jpg",
+                    "image": "img/chapter_01/still-soldier-binoculars.png",
                     "sizing": "cover"
                 }
             },
             "preload":{
                 "type":"image",
-                "url":"img/BG-lijkkisten-vrouwen-1.jpg"
+                "url":"img/chapter_01/still-soldier-binoculars.png"
             },
-            "animationName":"fade1s"
+            "animationName":"zoom-1.2-1.6"
         },
 
         {
-            "name": "Wim Kok",
+            "name": "Tank",
             "type": "generic",
-            "start": 66000,
-            "duration": 9000,
+            "start": 10000,
+            "duration": 2500,
             "template": {
                 "background": {
-                    "image": "img/BG-wim-kok-1.jpg",
+                    "image": "img/chapter_01/still-aben-hede-tank.png",
                     "sizing": "cover"
                 }
             },
             "preload":{
                 "type":"image",
-                "url":"img/BG-wim-kok-1.jpg"
+                "url":"img/chapter_01/still-aben-hede-tank.png"
             },
-            "animationName":"fade1s"
+            "animationName":"zoom-1.2-1.6"
         },
 
         {
-            "name": "Lijkkisten-2",
+            "name": "Tank fire",
             "type": "generic",
-            "start": 74000,
-            "duration": 9000,
+            "start": 12500,
+            "duration": 2500,
             "template": {
                 "background": {
-                    "image": "img/BG-lijkkisten-vrouwen-2.jpg",
+                    "image": "img/chapter_01/still-aben-hede-tank-fire.png",
                     "sizing": "cover"
                 }
             },
             "preload":{
                 "type":"image",
-                "url":"img/BG-lijkkisten-vrouwen-2.jpg"
+                "url":"img/chapter_01/still-aben-hede-tank-fire.png"
             },
-            "animationName":"fade1s"
+            "animationName":"zoom-1.2-1.6"
         },
 
         {
-            "name": "Earth-2",
+            "name": "Report",
             "type": "generic",
-            "start": 82000,
-            "duration": 13000,
+            "start": 15000,
+            "duration": 5000,
             "template": {
                 "background": {
-                    "image": "img/BG-earth-2.jpg",
+                    "image": "img/chapter_01/document-chetnik-pavle-djurisic-report.png",
                     "sizing": "cover"
                 }
             },
             "preload":{
                 "type":"image",
-                "url":"img/BG-earth-2.jpg"
+                "url":"img/chapter_01/document-chetnik-pavle-djurisic-report.png"
             },
-            "animationName":"fade1s"
-        },
-
-        {
-            "name": "Dutchbat-1",
-            "type": "generic",
-            "start": 94000,
-            "duration": 34000,
-            "template": {
-                "background": {
-                    "image": "img/BG-dutchbat-1.jpg",
-                    "sizing": "cover"
-                }
-            },
-            "preload":{
-                "type":"image",
-                "url":"img/BG-dutchbat-1.jpg"
-            },
-            "animationName":"fade1s"
+            "animationName":"zoom-1.2-1.6"
         }
+        
     ]
 }
