@@ -15,6 +15,8 @@ if ( isset( $callback ) ) {
     header("Content-Type: application/json");
 }
 
+// Get the project specific configuration ( of paths for instance ) or quit
+
 if ( ! ( isset( $projectId ) && Util::includeProjectConfig( $projectId ) ) ) {
     Util::outputNotFound();
 }
@@ -25,30 +27,12 @@ $scenarioService = new ScenarioService();
 
 switch ( $resource ) {
 
-    /*
-
-
-        POST /api/projects/project-id/scenarios/scenario-id/
-
-
-        GET /api/projects/project-id/assets/
-        lijst van assets
-
-            ?? Platgeslagen met pad?
-
-            ?? Geordend op type?
-
-            ?? Geordend op directory structuur
-
-            ?? Filtering
-
-    */
-
     case "scenarios":
 
         if ( isset( $resourceId ) ) {
 
             // Get contents of the scenario file
+
             $scenario = $scenarioService->getScenarioForProject( $resourceId );
 
             if ( isset( $scenario ) ) {
@@ -74,6 +58,22 @@ switch ( $resource ) {
         break;
 
     case "assets":
+
+    /*
+
+
+        GET /api/projects/project-id/assets/
+        lijst van assets
+
+            ?? Platgeslagen met pad?
+
+            ?? Geordend op type?
+
+            ?? Geordend op directory structuur
+
+            ?? Filtering
+
+    */
 
         // list assets
         $assets = $scenarioService->getAssetsForProject( );

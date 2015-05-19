@@ -7,10 +7,6 @@ include_once( $dirName ."Util.php");
 class ScenarioService {
 
     /*
-        /api/projects/project-id/scenarios
-        lijst van chapters (namen)
-
-
         GET /api/projects/project-id/scenarios/scenario-id/
         chapter inhoud (is het json inleesscript)
 
@@ -58,7 +54,12 @@ class ScenarioService {
 
     function getScenarioForProject ( $scenarioId ) {
 
+        $scenarioContents = file_get_contents( $dirName .'..'. BASEPATH_SCENARIOS . $scenarioId .'.json' );
 
+        if ( $scenarioContents ) {
+
+            return json_decode( $scenarioContents );
+        }
     }
 
 }
