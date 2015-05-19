@@ -19,6 +19,14 @@
 	<div class="container-fluid">
 
         <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-10">
+                <se-player></se-player>
+            </div>
+
+        </div>
+
+        <div class="row">
 
             <div class="col-md-2">
 
@@ -113,6 +121,10 @@
 
 	</div>
 
+
+    <script src="http://localhost:8080/embed/configuration.js?var=vpro"></script>
+    <script src="http://localhost:8080/ext/require/2.1.17/require.min.js"></script>
+
 	<!-- build:js js/vendor.js -->
 
 	<script src="scripts/vendor/angularjs/angular.min.js"></script>
@@ -125,6 +137,7 @@
 	<script src="scripts/editor/services/SessionService.js"></script>
 
 	<script src="scripts/editor/directives/Draggable.js"></script>
+	<script src="scripts/editor/directives/ScenarioPlayer.js"></script>
 
 	<!-- endbuild -->
 

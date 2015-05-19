@@ -1,6 +1,7 @@
 'use strict';
 
 var modRewrite = require('connect-modrewrite');
+var packageConfig = require('./package.json' ).config || {};
 
 module.exports = function (grunt) {
 
