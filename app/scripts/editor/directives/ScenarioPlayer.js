@@ -1,67 +1,62 @@
-angular.module('SE').directive('sePlayer',
+angular.module( 'SE' ).directive( 'sePlayer',
 
-	function ($document) {
+    function ( $document ) {
 
-		'use strict';
+        'use strict';
 
-		return {
+        return {
             restrict: 'E',
-			controller: ['$scope', '$window', function ($scope, $window) {
+            controller: ['$scope', '$window', function ( $scope, $window ) {
 
-				function ScenarioPlayer () {
+                function ScenarioPlayer () {
 
-				}
+                    this.playerReady = false;
+                    this.bindScopeEvents();
+                }
 
                 ScenarioPlayer.prototype = {
 
                     bindPlayerEvents : function () {
                         this.player.on( 'ready', function(){
-                            this.player.setScript(
-                                {
-                                    "name":"Srebrenica pilot",
-                                    "duration":480000,
-                                    "actors":[
+                            console.log('player ready!');
+                        });
+                    },
 
-                                        {
-                                            "name": "Main audio track",
-                                            "type": "audio",
-                                            "start": 0,
-                                            "duration": 480000,
-                                            "offset":2427000,
-                                            "src": "audio/chapter_01/voice_01.mp3",
-                                            "preload": {
-                                                "type": "audio"
-                                            }
-                                        }
-                                    ]
-                                }
-                            );
-                        }.bind( this ));
+                    bindPlayerEvents: function () {
+                        this.player.on( 'ready', function () {
+
+                            this.playerReady = true;
+
+                            if ( this.scriptData ) {
+                                this.player.setScript( this.scriptData );
+                            }
+
+                        }.bind(this) );
                     },
 
                     createPlayer: function ( ScenarioPlayerApp ) {
 
-                        this.player = new ScenarioPlayerApp({
+                        this.player = new ScenarioPlayerApp( {
                             rootNode: 'se-player',
                             assetRoot: 'http://files.vpro.nl/frontend/srebrenica/assets/'
-                        });
+                        } );
 
                         this.bindPlayerEvents();
                     },
 
-					init: function ( element ) {
+                    init: function ( element ) {
 
-                        $window.require( ['vpro/gui/scenarioPlayer/js/App'], this.createPlayer.bind(this) );
-					}
-				};
+                        $window.require( ['vpro/gui/scenarioPlayer/js/App'], this.createPlayer.bind( this ) );
+                    }
+                };
 
-				return new ScenarioPlayer();
-			}],
+                return new ScenarioPlayer();
+            }],
 
-			link: function (scope, element, attrs, controllers) {
+            link: function ( scope, element, attrs, controllers ) {
 
                 controllers.init( element );
-			}
-		};
-	}
+            }
+        };
+    }
 );
