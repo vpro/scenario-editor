@@ -1,13 +1,40 @@
 'use strict';
 
 var modRewrite = require('connect-modrewrite');
-var packageConfig = require('./package.json' ).config || {};
 
 module.exports = function (grunt) {
 
+	var packageConfig = grunt.file.readJSON('package.json') || {};
+
 	grunt.initConfig({
 
-		pkg: grunt.file.readJSON('package.json'),
+		pkg: packageConfig,
+
+		ngconstant : {
+
+			options : {
+				name: 'SE',
+				dest: 'app/scripts/editor/constants.js'
+			},
+
+			build: {
+				options: {
+					constants: {
+						'JS_SERVER' : packageConfig.config.production.jsServer,
+						'DATA_SERVER' : packageConfig.config.production.dataServer
+					}
+				}
+			},
+
+			dev: {
+				options: {
+					constants: {
+						'JS_SERVER' : packageConfig.config.dev.jsServer,
+						'DATA_SERVER' : packageConfig.config.dev.dataServer
+					}
+				}
+			}
+		},
 
 		clean: {
 			dev: ['grunt/work/**/*'],
@@ -88,6 +115,8 @@ module.exports = function (grunt) {
 			dev: {
 				options: {
 					data: {
+						jsserver : '<%= pkg.config.dev.jsServer %>',
+						apiServer :  '<%= pkg.config.dev.apiServer %>'
 					}
 				},
 				files: {
@@ -97,6 +126,8 @@ module.exports = function (grunt) {
 			build: {
 				options: {
 					data: {
+						jsserver : '<%= pkg.config.production.jsServer %>',
+						apiServer :  '<%= pkg.config.production.apiServer %>'
 					}
 				},
 				files: {
@@ -225,6 +256,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	grunt.loadNpmTasks('grunt-ng-constant');
 	grunt.loadNpmTasks('grunt-ngmin');
 	grunt.loadNpmTasks('grunt-angular-templates');
 	grunt.loadNpmTasks('grunt-php');
@@ -233,6 +265,7 @@ module.exports = function (grunt) {
 		'clean:build',
 		'sass:build',
 		'copy:build',
+		'ngconstant:build',
 		'template:build',
 		'useminPrepare',
 		'concat:generated',
@@ -247,10 +280,10 @@ module.exports = function (grunt) {
 		'copy:deploy'
 	]);
 
-	grunt.registerTask('dev', ['clean:dev', 'sass:dev', 'copy:dev', 'template:dev']);
+	grunt.registerTask('dev', ['clean:dev', 'sass:dev', 'copy:dev', 'ngconstant:dev', 'template:dev']);
 	grunt.registerTask('default', ['dev', 'connect', 'watch']);
 
-	grunt.registerTask('api', ['php']);
+	grunt.registerTask('dataserver', ['php']);
 
 
 };

@@ -3,7 +3,14 @@
   "name": "scenarioeditor",
   "version": "0.1.0",
   "config": {
-    "jsServer": "http://localhost:8080"
+    "dev": {
+      "jsServer": "http://localhost:8080",
+      "dataServer": "http://localhost:8010"
+    },
+    "production": {
+      "jsServer": "http://js.vpro.nl",
+      "dataServer": "http://files.vpro.nl/scenario-editor"
+    }
   },
   "devDependencies": {
     "connect-modrewrite": "~0.5.11",
@@ -17,6 +24,7 @@
     "grunt-contrib-sass": "~0.8.1",
     "grunt-contrib-uglify": "~0.3.2",
     "grunt-contrib-watch": "~0.5.3",
+    "grunt-ng-constant": "^1.1.0",
     "grunt-ngmin": "~0.0.3",
     "grunt-php": "^1.5.0",
     "grunt-template": "~0.2.3",

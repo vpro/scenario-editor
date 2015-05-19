@@ -148,16 +148,16 @@
 	</div>
 
 
-    <script src="http://localhost:8081/embed/configuration.js?var=vpro"></script>
-    <script src="http://localhost:8081/ext/require/2.1.17/require.min.js"></script>
+    <script src="<%- jsserver %>/embed/configuration.js?var=vpro"></script>
+    <script src="<%- jsserver %>/ext/require/2.1.17/require.min.js"></script>
 
 	<!-- build:js js/vendor.js -->
-
 	<script src="scripts/vendor/angularjs/angular.min.js"></script>
 	<!-- endbuild -->
 
 	<!-- build:js js/editor.js -->
 	<script src="scripts/editor/app.js"></script>
+	<script src="scripts/editor/constants.js"></script>
 	<script src="scripts/editor/controllers/MainController.js"></script>
 
 	<script src="scripts/editor/services/SessionService.js"></script>

@@ -1,7 +1,9 @@
 angular.module( 'SE' ).factory( 'SessionService', [
     '$q',
     '$http',
-    function ($q, $http) {
+    'DATA_SERVER',
+
+    function ($q, $http, DATA_SERVER ) {
 
         function SessionService() {
 
@@ -10,12 +12,25 @@ angular.module( 'SE' ).factory( 'SessionService', [
         SessionService.prototype = {
 
 
+            getScenariosForProject : function ( projectName ) {
+
+            },
+
 
             loadScript: function () {
 
                 var deferred = $q.defer();
 
-                $http.get('/script.json').then(
+                $http.jsonp( DATA_SERVER +'/api/get.php', {
+
+                    params : {
+                        project : 'srebrenica',
+                        resource: 'scenarios',
+                        id: 'chapter-01',
+                        callback : 'JSON_CALLBACK'
+                    }
+
+                }).then(
 
                     function (response) {
                         deferred.resolve(response.data);
