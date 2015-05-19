@@ -2,25 +2,24 @@
 angular.module('SE').controller('MainController', [
 	'$scope',
 	'SessionService',
-	function ($scope, SessionService) {
+    'ActorService',
+	function ($scope, SessionService, ActorService) {
 
 		'use strict';
 
 		function MainController () {
 
+            $scope.actorTypes = [];
+
             $scope.playerVisible = true;
 
-            $scope.togglePlayerVisible = function(){
-
-                $scope.playerVisible = $scope.playerVisible === false;
-
-            };
 
 		}
 
 		MainController.prototype = {
 
-			init: function () {
+
+            init: function () {
 
 				SessionService.loadScript().then(function ( data ) {
 
@@ -37,7 +36,20 @@ angular.module('SE').controller('MainController', [
 
 					this.sortActors();
 				}.bind(this));
+
+                $scope.actorTypes = ActorService.getActors();
+
 			},
+
+            togglePlayerVisible: function(){
+
+                $scope.playerVisible = $scope.playerVisible === false;
+
+            },
+
+            addActor: function( actor ){
+                $scope.script.actors.push( angular.copy( actor ) );
+            },
 
 			onDrag: function ( actor, x, y ) {
 
@@ -52,7 +64,6 @@ angular.module('SE').controller('MainController', [
 
 			onDrop: function () {
 
-				//this.sortActors();
 				$scope.$apply();
 			},
 

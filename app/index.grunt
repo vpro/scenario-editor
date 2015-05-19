@@ -35,8 +35,13 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-10">
-                <button ng-show="!playerVisible" class="btn btn-info" ng-click="togglePlayerVisible()">show player</button>
-                <button ng-show="playerVisible" class="btn btn-info" ng-click="togglePlayerVisible()">hide player</button>
+                <button ng-show="!playerVisible" class="btn btn-info" ng-click="mainCtrl.togglePlayerVisible()">show player</button>
+                <button ng-show="playerVisible" class="btn btn-info" ng-click="mainCtrl.togglePlayerVisible()">hide player</button>
+
+                <select ng-model="selectedActor" ng-options="actor as actor.name for actor in actorTypes"></select>
+
+                <button class="btn-primary btn" ng-if="selectedActor" ng-click="mainCtrl.addActor( selectedActor )">Add {{selectedActor.name}}</button>
+
             </div>
         </div>
 
@@ -73,12 +78,12 @@
 
 		<div class="timeline">
 
-			<div class="row se-actor" ng-repeat="actor in actors">
+			<div class="row se-actor" ng-repeat="actor in actors track by $index">
 
                 <div class="col-md-2">
 
                     <div ng-click="actorDetailsOpen = !actorDetailsOpen" class="actor-name">
-                        {{actor.name}}
+                        {{actor.name}} {{$index}}
                     </div>
 
                     <div>
@@ -149,6 +154,7 @@
 	<script src="scripts/editor/controllers/MainController.js"></script>
 
 	<script src="scripts/editor/services/SessionService.js"></script>
+	<script src="scripts/editor/services/ActorService.js"></script>
 
 	<script src="scripts/editor/directives/Draggable.js"></script>
 	<script src="scripts/editor/directives/ScenarioPlayer.js"></script>

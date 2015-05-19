@@ -16,8 +16,27 @@ angular.module('SE').directive('sePlayer',
 
                     bindPlayerEvents : function () {
                         this.player.on( 'ready', function(){
-                            console.log('player ready!');
-                        });
+                            this.player.setScript(
+                                {
+                                    "name":"Srebrenica pilot",
+                                    "duration":480000,
+                                    "actors":[
+
+                                        {
+                                            "name": "Main audio track",
+                                            "type": "audio",
+                                            "start": 0,
+                                            "duration": 480000,
+                                            "offset":2427000,
+                                            "src": "audio/chapter_01/voice_01.mp3",
+                                            "preload": {
+                                                "type": "audio"
+                                            }
+                                        }
+                                    ]
+                                }
+                            );
+                        }.bind( this ));
                     },
 
                     createPlayer: function ( ScenarioPlayerApp ) {
