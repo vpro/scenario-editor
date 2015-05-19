@@ -18,9 +18,13 @@
 
 	<div class="container-fluid">
 
-        <div class="row" ng-show="playerVisible">
+        <div class="row" id="display" ng-class="{'closed': !playerVisible}">
 
-            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <textarea class="form-control" rows="16">
+                    {{script | json}}
+                </textarea>
+            </div>
 
             <div class="col-md-10" id="player">
 
@@ -32,15 +36,22 @@
 
         </div>
 
-        <div class="row">
-            <div class="col-md-2"></div>
+        <div class="row" id="controls">
+
+            <div class="col-md-2">
+                <button ng-show="!playerVisible" class="btn btn-primary" ng-click="mainCtrl.togglePlayerVisible()">show player</button>
+                <button ng-show="playerVisible" class="btn btn-primary" ng-click="mainCtrl.togglePlayerVisible()">hide player</button>
+            </div>
+
             <div class="col-md-10">
-                <button ng-show="!playerVisible" class="btn btn-info" ng-click="mainCtrl.togglePlayerVisible()">show player</button>
-                <button ng-show="playerVisible" class="btn btn-info" ng-click="mainCtrl.togglePlayerVisible()">hide player</button>
 
-                <select ng-model="selectedActor" ng-options="actor as actor.name for actor in actorTypes"></select>
+                <div class="form-inline">
 
-                <button class="btn-primary btn" ng-if="selectedActor" ng-click="mainCtrl.addActor( selectedActor )">Add {{selectedActor.name}}</button>
+                    <select class="form-control" ng-model="selectedActor" ng-options="actor as actor.name for actor in actorTypes"></select>
+
+                    <button class="btn-primary btn" ng-class="{'disabled': !selectedActor}" ng-click="mainCtrl.addActor( selectedActor )">Add {{selectedActor.name}}</button>
+
+                </div>
 
             </div>
         </div>
@@ -61,18 +72,14 @@
 
             </div>
 
-            <div class="col-md-10">
-                <textarea class="form-control" rows="6">
-                    {{script | json}}
-                </textarea>
-            </div>
+            <div class="col-md-10"></div>
 
         </div>
 
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-10">
-                <button ng-click="mainCtrl.sortActors()">Sorteer op tijd</button>
+                <button class="btn btn-primary" ng-click="mainCtrl.sortActors()">sort</button>
             </div>
         </div>
 

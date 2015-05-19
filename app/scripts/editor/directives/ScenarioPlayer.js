@@ -16,10 +16,21 @@ angular.module( 'SE' ).directive( 'sePlayer',
 
                 ScenarioPlayer.prototype = {
 
-                    bindPlayerEvents : function () {
-                        this.player.on( 'ready', function(){
-                            console.log('player ready!');
-                        });
+                    bindScopeEvents: function () {
+
+                        $scope.$watch('script', function ( newScript, oldScript ) {
+
+                            if ( newScript &&
+                                JSON.stringify( this.scriptData || {} ) !== JSON.stringify( newScript ) ) {
+
+                                this.scriptData = newScript;
+
+                                if ( this.playerReady ) {
+                                    this.player.setScript( this.scriptData );
+                                }
+                            }
+                        }.bind( this ));
+
                     },
 
                     bindPlayerEvents: function () {

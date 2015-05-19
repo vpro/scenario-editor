@@ -1,3 +1,5 @@
+@import "bourbon/bourbon";
+
 #header {
 
     padding: 0 0 20px;
@@ -119,13 +121,31 @@ input[type="number"] {
 
 /* @start scenario-player */
 
+#controls {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#display {
+    height: 75vh;
+    padding: 10px;
+
+    @include transition( all 0.3s ease-in-out );
+
+    overflow: hidden;
+
+    &.closed {
+        height: 0vh;
+        padding: 0;
+    }
+}
+
 #player {
 
-    padding-bottom: 20px;
-    padding-top: 20px;
+    height: 100%;
 
     #scenario-player-container {
-        height: 75vh;
+
         width: 100%;
         position: relative;
 
