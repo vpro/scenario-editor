@@ -9,21 +9,35 @@
 	<!--<link rel="stylesheet" href="styles/normalize.css" type="text/css" media="all" />-->
 	<link rel="stylesheet" href="styles/main.css" type="text/css" media="all" />
     <link rel="stylesheet" href="styles/twitter-bootstrap/bootstrap.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="http://www.vpro.nl/resources/vpro/themes/vpronl/css/style.css" />
 	<!-- endbuild -->
 
-	<link rel="shortcut icon" href="favicon.ico" />
 </head>
 
 <body>
 
 	<div class="container-fluid">
 
+        <div class="row" ng-show="playerVisible">
+
+            <div class="col-md-2"></div>
+
+            <div class="col-md-10" id="player">
+
+                <div id="scenario-player-container">
+                    <se-player id="scenario-player"></se-player>
+                </div>
+
+            </div>
+
+        </div>
+
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-10">
-                <se-player></se-player>
+                <button ng-show="!playerVisible" class="btn btn-info" ng-click="togglePlayerVisible()">show player</button>
+                <button ng-show="playerVisible" class="btn btn-info" ng-click="togglePlayerVisible()">hide player</button>
             </div>
-
         </div>
 
         <div class="row">
@@ -59,7 +73,7 @@
 
 		<div class="timeline">
 
-			<div class="row actor" ng-repeat="actor in actors">
+			<div class="row se-actor" ng-repeat="actor in actors">
 
                 <div class="col-md-2">
 
@@ -122,8 +136,8 @@
 	</div>
 
 
-    <script src="http://localhost:8080/embed/configuration.js?var=vpro"></script>
-    <script src="http://localhost:8080/ext/require/2.1.17/require.min.js"></script>
+    <script src="http://localhost:8081/embed/configuration.js?var=vpro"></script>
+    <script src="http://localhost:8081/ext/require/2.1.17/require.min.js"></script>
 
 	<!-- build:js js/vendor.js -->
 

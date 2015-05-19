@@ -116,3 +116,26 @@ input[type="number"] {
     }
 
 }
+
+/* @start scenario-player */
+
+#player {
+
+    padding-bottom: 20px;
+    padding-top: 20px;
+
+    #scenario-player-container {
+        height: 75vh;
+        width: 100%;
+        position: relative;
+
+        #scenario-player {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+    }
+
+}
+
+/* @end scenario-player */
