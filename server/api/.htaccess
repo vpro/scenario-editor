@@ -1,0 +1,9 @@
+# This will only work on the deployment server, not on the local Grunt-PHP one.
+# There you will have to use the query parameters as mentioned in the get.ph/post.php
+
+RewriteEngine on
+Options +FollowSymlinks
+
+RewriteRule ^([\-a-z0-9]+)/([a-z]+)/([\-a-z0-9]+)/([a-z]+)/?$ get.php?project=$1&resource=$2&id=$3&subresource=$4&%{QUERY_STRING} [L]
+RewriteRule ^([\-a-z0-9]+)/([a-z]+)/([\-a-z0-9]+)/?$ get.php?project=$1&resource=$2&id=$3&%{QUERY_STRING} [L]
+RewriteRule ^([\-a-z0-9]+)/([a-z]+)/?$ get.php?project=$1&resource=$2&%{QUERY_STRING} [L]
