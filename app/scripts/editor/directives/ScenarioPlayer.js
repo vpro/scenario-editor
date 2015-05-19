@@ -6,7 +6,7 @@ angular.module( 'SE' ).directive( 'sePlayer',
 
         return {
             restrict: 'E',
-            controller: ['$scope', '$window', function ( $scope, $window ) {
+            controller: ['$scope', '$window', 'DATA_SERVER', function ( $scope, $window, DATA_SERVER ) {
 
                 function ScenarioPlayer () {
 
@@ -49,8 +49,11 @@ angular.module( 'SE' ).directive( 'sePlayer',
 
                         this.player = new ScenarioPlayerApp( {
                             rootNode: 'se-player',
+
+                            // Asset root should be replace by DATA_SERVER / projects/ projectname/ asset folder
                             assetRoot: 'http://files.vpro.nl/frontend/srebrenica/assets/'
                         } );
+
 
                         this.bindPlayerEvents();
                     },

@@ -38,6 +38,7 @@ angular.module('SE').controller('MainController', [
 
 						$scope.activeScenario = scenario;
 
+							// Shpuld be replace by DATA_SERVER / projects/ projectname/ asset folder
 						$scope.assetRoot = 'http://files.vpro.nl/frontend/srebrenica/assets/';
 
 					    $scope.script = data;
@@ -77,6 +78,9 @@ angular.module('SE').controller('MainController', [
 			},
 
 			saveScenario : function () {
+
+				// Wat hier nog niet goed gaat is dat de timeline name en duration niet worden opgeslagen
+				// in $scope.script dus die wijzigingen saven nog niet, de rest wel! :)
 
 				SessionService.saveScenarioForProject( $scope.activeScenario, $scope.script ).then(function () {
 					alert('jeejj it worked.');

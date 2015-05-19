@@ -1,7 +1,7 @@
 angular.module('SE', [])
 
-.constant('JS_SERVER', 'http://localhost:8080')
+.constant('JS_SERVER', 'http://js.vpro.nl')
 
-.constant('DATA_SERVER', 'http://localhost:8010')
+.constant('DATA_SERVER', 'http://files.vpro.nl/scenario-editor')
 
 ;
