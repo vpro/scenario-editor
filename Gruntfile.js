@@ -185,6 +185,17 @@ module.exports = function (grunt) {
             }
 		},
 
+		php : {
+			test: {
+			   options: {
+				   base: 'server',
+				   port: 8010,
+				   keepalive: true,
+				   open: true
+			   }
+		   }
+		},
+
 		connect: {
 			server: {
 				options: {
@@ -216,6 +227,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-ngmin');
 	grunt.loadNpmTasks('grunt-angular-templates');
+	grunt.loadNpmTasks('grunt-php');
 
 	grunt.registerTask('build', [
 		'clean:build',
@@ -234,7 +246,11 @@ module.exports = function (grunt) {
 		'clean:scripts',
 		'copy:deploy'
 	]);
+
 	grunt.registerTask('dev', ['clean:dev', 'sass:dev', 'copy:dev', 'template:dev']);
 	grunt.registerTask('default', ['dev', 'connect', 'watch']);
+
+	grunt.registerTask('api', ['php']);
+
 
 };
