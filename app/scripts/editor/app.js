@@ -7,6 +7,7 @@
 
 	define( 'domain-config', domainConfig );
 
+
 	require.config(
 		{
 			baseUrl : '/',
