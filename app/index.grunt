@@ -18,119 +18,173 @@
 
 	<div class="container-fluid">
 
-        <div class="row" id="display" ng-class="{'closed': !playerVisible}">
+        <div class="row">
 
-            <div class="col-md-2">
-                <textarea class="form-control" rows="16">
-                    {{script | json}}
-                </textarea>
+            <div class="col-md-6 col-md-push-3">
 
-                <div class="meta">
-                    <label for="script-name">Naam</label>
-                    <input id="script-name" ng-model="timeline.name" type="text" />
-                </div>
-
-                <div class="meta">
-                    <label for="script-duration">Duur</label>
-                    <input id="script-duration" ng-model="timeline.duration" type="number" />
-                </div>
-
-            </div>
-
-            <div class="col-md-10" id="player">
-
-                <div id="scenario-player-container">
-                    <se-player id="scenario-player"></se-player>
+                <div ng-if="scenarios">
+                    <h2 class="h5">Choose an available scenario</h2>
+                    <!-- Op de een of andere manier komt ng-model niet op de scope, dus ik geef hem hier
+                        maar door aan de activateScenario method welke vervolgens het scenario inlaadt
+                        en de naam van het scenario als scope.activeScenario set.
+                     -->
+                    <select class="form-control" ng-model="selectedScenario" ng-change="mainCtrl.activateScenario( selectedScenario )">
+                        <option value="">Choose...</option>
+                        <option ng-repeat="scenario in scenarios" value="{{scenario}}" ng-selected="scenario == selectedScenario">{{scenario}}</option>
+                    </select>
                 </div>
 
             </div>
 
         </div>
-
-        <div class="row bg-info" id="controls">
-
-            <div class="col-md-2">
-                <button ng-show="!playerVisible" class="btn btn-primary" ng-click="mainCtrl.togglePlayerVisible()">show player</button>
-                <button ng-show="playerVisible" class="btn btn-primary" ng-click="mainCtrl.togglePlayerVisible()">hide player</button>
-            </div>
-
-            <div class="col-md-10">
-
-                <div class="form-inline">
-
-                    <button class="btn btn-primary" ng-click="mainCtrl.sortActors()">sort</button>
-
-                    <select class="form-control" ng-model="selectedActor" ng-options="actor as actor.name for actor in actorTypes"></select>
-
-                    <button class="btn-primary btn" ng-class="{'disabled': !selectedActor}" ng-click="mainCtrl.addActor( selectedActor )">add {{selectedActor.name}}</button>
-
-                </div>
-
-            </div>
-        </div>
-
-		<div class="timeline">
-
-			<div class="row se-actor" ng-repeat="actor in actors track by $index">
-
+        
+        <!-- Maar even ter test de scenario selector hierboven ingezet voordat onderstaande zichtbaar is, kies eerst een scenario :) -->
+        <div class="scenario-editor" ng-class="{'closed': ! activeScenario }">
+        
+            <div class="row" id="display" ng-class="{'closed': !playerVisible}">
+    
                 <div class="col-md-2">
-
-                    <div ng-click="actorDetailsOpen = !actorDetailsOpen" class="actor-name">
-                        {{actor.name}} {{$index}}
+                    <textarea class="form-control" rows="16">
+                        {{script | json}}
+                    </textarea>
+    
+                    <div class="meta">
+                        <label for="script-name">Naam</label>
+                        <input id="script-name" ng-model="timeline.name" type="text" />
                     </div>
-
-                    <div>
-                        <span class="label label-info">start </span>
-                        <input ng-model="actor.start" type="number" step="1000" />
+    
+                    <div class="meta">
+                        <label for="script-duration">Duur</label>
+                        <input id="script-duration" ng-model="timeline.duration" type="number" />
                     </div>
-
-                    <div>
-                        <span class="label label-info">duur </span>
-                        <input ng-model="actor.duration" type="number" step="1000"/>
+    
+                </div>
+    
+                <div class="col-md-10" id="player">
+    
+                    <div id="scenario-player-container">
+                        <se-player id="scenario-player"></se-player>
                     </div>
-
-                    <div ng-init="actorDetailsOpen = false"  ng-show="actorDetailsOpen" class="actormetadetails">
-
-                        <div ng-if="actor.type.length > 0">
-                            <span class="label label-info">type</span>
-                            <span class="value">{{actor.type}}</span>
-                        </div>
-
-                        <div ng-if="actor.animationName.length > 0">
-                            <span class="label label-info">animationName</span>
-                            <span class="value">{{actor.animationName}}</span>
-                        </div>
-
+    
+                </div>
+    
+            </div>
+    
+            <div class="row bg-info" id="controls">
+    
+                <div class="col-md-2">
+                    <button ng-show="!playerVisible" class="btn btn-primary" ng-click="mainCtrl.togglePlayerVisible()">show player</button>
+                    <button ng-show="playerVisible" class="btn btn-primary" ng-click="mainCtrl.togglePlayerVisible()">hide player</button>
+                </div>
+    
+                <div class="col-md-6">
+    
+                    <div class="form-inline">
+    
+                        <button class="btn btn-primary" ng-click="mainCtrl.sortActors()">sort</button>
+    
+                        <select class="form-control" ng-model="selectedActor" ng-options="actor as actor.name for actor in actorTypes"></select>
+    
+                        <button class="btn-primary btn" ng-class="{'disabled': !selectedActor}" ng-click="mainCtrl.addActor( selectedActor )">add {{selectedActor.name}}</button>
+    
                     </div>
-
+    
                 </div>
 
+                <div class="col-md-2 col-md-push-1">
+                    <button class="btn btn-primary" ng-click="mainCtrl.saveScenario()">save scenario</button>
+                </div>
+            </div>
+    
+            <div class="row">
+    
+                <div class="col-md-2">
+    
+                    <div class="meta">
+                        <span class="label label-info">Naam</span>
+                        <input ng-model="timeline.name" type="text" />
+                    </div>
+    
+                    <div class="meta">
+                        <span class="label label-info">Duur</span>
+                        <input ng-model="timeline.duration" type="number" />
+                    </div>
+    
+                </div>
+    
+                <div class="col-md-10"></div>
+    
+            </div>
+    
+            <div class="row">
+                <div class="col-md-2"></div>
                 <div class="col-md-10">
-
-                    <div class="src">
-                        <div class="value" ng-if="actor.preload.url.length > 0">
-                            {{actor.preload.url}}
-                            <div class="actor-image" style="background-image: url('{{assetRoot}}{{actor.preload.url}}')"></div>
-                        </div>
-                        <div class="value" ng-if="!actor.preload.url.length && actor.preload.url.length === undefined">
-                            {{actor.src}}
-                        </div>
-                    </div>
-
-                    <div se-draggable-container class="actorline">
-                        <div class="actorname">{{actor.name}}</div>
-                        <span se-draggable ondrag="mainCtrl.onDrag(actor, x, y)" ondrop="mainCtrl.onDrop()" class="indicator" ng-style="{
-                            left:(actor.start/timeline.duration)*100+'%',
-                            width:(actor.duration/timeline.duration)*100+'%'
-                        }"></span>
-                    </div>
-
+                    <button class="btn btn-primary" ng-click="mainCtrl.sortActors()">sort</button>
                 </div>
-
-			</div>
-
-		</div>
-
+            </div>
+    
+            <div class="timeline">
+    
+                <div class="row se-actor" ng-repeat="actor in actors track by $index">
+    
+                    <div class="col-md-2">
+    
+                        <div ng-click="actorDetailsOpen = !actorDetailsOpen" class="actor-name">
+                            {{actor.name}} {{$index}}
+                        </div>
+    
+                        <div>
+                            <span class="label label-info">start </span>
+                            <input ng-model="actor.start" type="number" step="1000" />
+                        </div>
+    
+                        <div>
+                            <span class="label label-info">duur </span>
+                            <input ng-model="actor.duration" type="number" step="1000"/>
+                        </div>
+    
+                        <div ng-init="actorDetailsOpen = false"  ng-show="actorDetailsOpen" class="actormetadetails">
+    
+                            <div ng-if="actor.type.length > 0">
+                                <span class="label label-info">type</span>
+                                <span class="value">{{actor.type}}</span>
+                            </div>
+    
+                            <div ng-if="actor.animationName.length > 0">
+                                <span class="label label-info">animationName</span>
+                                <span class="value">{{actor.animationName}}</span>
+                            </div>
+    
+                        </div>
+    
+                    </div>
+    
+                    <div class="col-md-10">
+    
+                        <div class="src">
+                            <div class="value" ng-if="actor.preload.url.length > 0">
+                                {{actor.preload.url}}
+                                <div class="actor-image" style="background-image: url('{{assetRoot}}{{actor.preload.url}}')"></div>
+                            </div>
+                            <div class="value" ng-if="!actor.preload.url.length && actor.preload.url.length === undefined">
+                                {{actor.src}}
+                            </div>
+                        </div>
+    
+                        <div se-draggable-container class="actorline">
+                            <div class="actorname">{{actor.name}}</div>
+                            <span se-draggable ondrag="mainCtrl.onDrag(actor, x, y)" ondrop="mainCtrl.onDrop()" class="indicator" ng-style="{
+                                left:(actor.start/timeline.duration)*100+'%',
+                                width:(actor.duration/timeline.duration)*100+'%'
+                            }"></span>
+                        </div>
+    
+                    </div>
+    
+                </div>
+    
+            </div>
+        </div>
 	</div>
 
 

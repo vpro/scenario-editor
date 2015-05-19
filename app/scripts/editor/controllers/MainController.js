@@ -3,7 +3,9 @@ angular.module('SE').controller('MainController', [
 	'$scope',
 	'SessionService',
     'ActorService',
-	function ($scope, SessionService, ActorService) {
+	'DATA_SERVER',
+
+	function ($scope, SessionService, ActorService, DATA_SERVER ) {
 
 		'use strict';
 
@@ -12,8 +14,6 @@ angular.module('SE').controller('MainController', [
             $scope.actorTypes = [];
 
             $scope.playerVisible = true;
-
-
 		}
 
 		MainController.prototype = {
@@ -21,31 +21,40 @@ angular.module('SE').controller('MainController', [
 
             init: function () {
 
-				SessionService.loadScript().then(function ( data ) {
+				SessionService.getScenariosForProject().then(function ( data ) {
 
-					$scope.assetRoot = 'http://files.vpro.nl/frontend/srebrenica/assets/';
+					$scope.scenarios = data;
 
-                    $scope.script = data;
-
-					$scope.timeline = {
-						name: data.name,
-						duration: data.duration
-					};
-
-					$scope.actors = data.actors;
-
-					this.sortActors();
-				}.bind(this));
+				});
 
                 $scope.actorTypes = ActorService.getActors();
-
 			},
 
-            togglePlayerVisible: function(){
+			activateScenario : function ( scenario ) {
 
-                $scope.playerVisible = $scope.playerVisible === false;
+				if ( scenario !== '' ) {
 
-            },
+					SessionService.getScenarioForProject( scenario ).then(function ( data ) {
+
+						$scope.activeScenario = scenario;
+
+						$scope.assetRoot = 'http://files.vpro.nl/frontend/srebrenica/assets/';
+
+					    $scope.script = data;
+
+						$scope.timeline = {
+							name: data.name,
+							duration: data.duration
+						};
+
+						$scope.actors = data.actors;
+
+						this.sortActors();
+
+					}.bind(this));
+				}
+			},
+
 
             addActor: function( actor ){
                 $scope.script.actors.push( angular.copy( actor ) );
@@ -67,6 +76,15 @@ angular.module('SE').controller('MainController', [
 				$scope.$apply();
 			},
 
+			saveScenario : function () {
+
+				SessionService.saveScenarioForProject( $scope.activeScenario, $scope.script ).then(function () {
+					alert('jeejj it worked.');
+				}, function () {
+					alert('sorry, save didn\'t happen');
+				});
+			},
+
 			sortActors: function () {
 
 				$scope.actors.sort( function ( a, b ) {
@@ -81,8 +99,14 @@ angular.module('SE').controller('MainController', [
 						return 1;
 					}
 				});
-            }
+            },
 
+
+			togglePlayerVisible: function(){
+
+			   $scope.playerVisible = $scope.playerVisible === false;
+
+		   }
 		};
 
 		return new MainController();

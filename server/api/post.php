@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * For now this is called with JSONP so no real POST method
+ */
+
+
 include_once( dirname(__FILE__) ."/../lib/Util.php" );
 
 $projectId = Util::getRequestVar("project");
@@ -34,7 +39,7 @@ switch ( $resource ) {
 
             // Save the contents of the scenario file
 
-            $scenarioData = Util::getPostVar("scenario", "raw");
+            $scenarioData = Util::getRequestVar("scenario", "raw");
 
             if ( isset( $scenarioData ) ) {
 

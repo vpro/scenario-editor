@@ -121,6 +121,12 @@ input[type="number"] {
 
 /* @start scenario-player */
 
+.scenario-editor {
+    &.closed {
+        display: none;
+    }
+}
+
 #controls {
     padding-top: 10px;
     padding-bottom: 10px;
