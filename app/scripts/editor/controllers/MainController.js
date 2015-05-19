@@ -8,6 +8,14 @@ angular.module('SE').controller('MainController', [
 
 		function MainController () {
 
+            $scope.playerVisible = true;
+
+            $scope.togglePlayerVisible = function(){
+
+                $scope.playerVisible = $scope.playerVisible === false;
+
+            };
+
 		}
 
 		MainController.prototype = {
@@ -63,6 +71,7 @@ angular.module('SE').controller('MainController', [
 					}
 				});
             }
+
 		};
 
 		return new MainController();

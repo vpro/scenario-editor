@@ -18,8 +18,10 @@
 
 	<div class="container-fluid">
 
-        <div class="row">
+        <div class="row" ng-show="playerVisible">
+
             <div class="col-md-2"></div>
+
             <div class="col-md-10" id="player">
 
                 <div id="scenario-player-container">
@@ -28,6 +30,14 @@
 
             </div>
 
+        </div>
+
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-10">
+                <button ng-show="!playerVisible" class="btn btn-info" ng-click="togglePlayerVisible()">show player</button>
+                <button ng-show="playerVisible" class="btn btn-info" ng-click="togglePlayerVisible()">hide player</button>
+            </div>
         </div>
 
         <div class="row">

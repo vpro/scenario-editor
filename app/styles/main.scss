@@ -121,8 +121,13 @@ input[type="number"] {
 
 #player {
 
+    padding-bottom: 20px;
+    padding-top: 20px;
+
     #scenario-player-container {
-        height: 50vh;
+        height: 75vh;
+        width: 100%;
+        position: relative;
 
         #scenario-player {
             width: 100%;
