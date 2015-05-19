@@ -6,35 +6,14 @@ include_once( $dirName ."Util.php");
 
 class ScenarioService {
 
-    /*
-        GET /api/projects/project-id/scenarios/scenario-id/
-        chapter inhoud (is het json inleesscript)
-
-        POST /api/projects/project-id/scenarios/scenario-id/
-
-
-        GET /api/projects/project-id/assets/
-        lijst van assets
-
-            ?? Platgeslagen met pad?
-
-            ?? Geordend op type?
-
-            ?? Geordend op directory structuur
-
-            ?? Filtering
-
-    */
-
     function getAssetsForProject ( ) {
 
-        return array();
+        return $this->listDirectory( $dirName .'..'. BASEPATH_ASSETS );
     }
 
     function getScenariosForProject ( ) {
 
         $scenarios = array();
-
 
         foreach( scandir( $dirName .'..'. BASEPATH_SCENARIOS ) as $idx => $scenario ) {
 
@@ -62,6 +41,22 @@ class ScenarioService {
         }
     }
 
+    private function listDirectory($dir, $prefix = '') {
+      $dir = rtrim($dir, '\\/');
+      $result = array();
+
+        foreach (scandir($dir) as $f) {
+          if ($f !== '.' and $f !== '..') {
+            if (is_dir("$dir/$f")) {
+              $result = array_merge($result, $this->listDirectory("$dir/$f", "$prefix$f/"));
+            } else {
+              $result[] = $prefix.$f;
+            }
+          }
+        }
+
+      return $result;
+    }
 }
 
 ?>
