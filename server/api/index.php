@@ -1,3 +1,3 @@
 <?php
-    echo 'API';
+    echo 'API says hi!';
 ?>

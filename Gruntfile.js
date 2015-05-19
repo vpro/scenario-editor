@@ -222,7 +222,7 @@ module.exports = function (grunt) {
 				   base: 'server',
 				   port: 8010,
 				   keepalive: true,
-				   open: true
+				   open: false
 			   }
 		   }
 		},
@@ -283,6 +283,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('dev', ['clean:dev', 'sass:dev', 'copy:dev', 'ngconstant:dev', 'template:dev']);
 	grunt.registerTask('default', ['dev', 'connect', 'watch']);
 
+	/* run the dataserver as a seperate task in dev mode to be able to run the watch task in parallel */
 	grunt.registerTask('dataserver', ['php']);
 
 
