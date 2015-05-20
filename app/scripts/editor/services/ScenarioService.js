@@ -1,15 +1,15 @@
-angular.module( 'SE' ).factory( 'SessionService', [
+angular.module( 'SE' ).factory( 'ScenarioService', [
     '$q',
     '$http',
     'DATA_SERVER',
 
     function ($q, $http, DATA_SERVER ) {
 
-        function SessionService() {
+        function ScenarioService() {
 
         }
 
-        SessionService.prototype = {
+        ScenarioService.prototype = {
 
             getAssetsForProject : function ( projectName ) {
 
@@ -136,6 +136,6 @@ angular.module( 'SE' ).factory( 'SessionService', [
 
         };
 
-        return new SessionService();
+        return new ScenarioService();
     }
 ]);

@@ -1,11 +1,11 @@
 
 angular.module('SE').controller('MainController', [
 	'$scope',
-	'SessionService',
+	'ScenarioService',
     'ActorService',
 	'DATA_SERVER',
 
-	function ($scope, SessionService, ActorService, DATA_SERVER ) {
+	function ($scope, ScenarioService, ActorService, DATA_SERVER ) {
 
 		'use strict';
 
@@ -21,7 +21,7 @@ angular.module('SE').controller('MainController', [
 
             init: function () {
 
-				SessionService.getScenariosForProject().then(function ( data ) {
+				ScenarioService.getScenariosForProject().then(function ( data ) {
 
 					$scope.scenarios = data;
 
@@ -34,7 +34,7 @@ angular.module('SE').controller('MainController', [
 
 				if ( scenario !== '' ) {
 
-					SessionService.getScenarioForProject( scenario ).then(function ( data ) {
+					ScenarioService.getScenarioForProject( scenario ).then(function ( data ) {
 
 						$scope.activeScenario = scenario;
 
@@ -82,7 +82,7 @@ angular.module('SE').controller('MainController', [
 				// Wat hier nog niet goed gaat is dat de timeline name en duration niet worden opgeslagen
 				// in $scope.script dus die wijzigingen saven nog niet, de rest wel! :)
 
-				SessionService.saveScenarioForProject( $scope.activeScenario, $scope.script ).then(function () {
+				ScenarioService.saveScenarioForProject( $scope.activeScenario, $scope.script ).then(function () {
 					alert('jeejj it worked.');
 				}, function () {
 					alert('sorry, save didn\'t happen');

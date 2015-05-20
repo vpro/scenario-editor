@@ -187,7 +187,7 @@
 	<script src="scripts/editor/constants.js"></script>
 	<script src="scripts/editor/controllers/MainController.js"></script>
 
-	<script src="scripts/editor/services/SessionService.js"></script>
+	<script src="scripts/editor/services/ScenarioService.js"></script>
 	<script src="scripts/editor/services/ActorService.js"></script>
 
 	<script src="scripts/editor/directives/Draggable.js"></script>
