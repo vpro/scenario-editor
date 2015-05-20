@@ -9,7 +9,8 @@
 	<!--<link rel="stylesheet" href="styles/normalize.css" type="text/css" media="all" />-->
 	<link rel="stylesheet" href="styles/main.css" type="text/css" media="all" />
     <link rel="stylesheet" href="styles/twitter-bootstrap/bootstrap.min.css" type="text/css" media="all" />
-    <link rel="stylesheet" href="http://www.vpro.nl/resources/vpro/themes/vpronl/css/style.css" />
+    <!--<link rel="stylesheet" href="http://www.vpro.nl/resources/vpro/themes/vpronl/css/style.css" />-->
+    <link rel="stylesheet" href="http://david.vpro.nl:8085/cluster/specials-sample/resources/vpro/themes/specials/css/style.css"/>
 	<!-- endbuild -->
 
 </head>
@@ -20,16 +21,18 @@
 
         <div class="row">
 
-            <div class="col-md-6 col-md-push-3">
+            <div class="col-md-6 col-md-push-2">
 
-                <div ng-if="scenarios">
-                    <h2 class="h5">Choose an available scenario</h2>
+                <div ng-if="scenarios" id="scenario-selector">
+                    <h2 class="h5">Select an available scenario</h2>
                     <!-- Op de een of andere manier komt ng-model niet op de scope, dus ik geef hem hier
                         maar door aan de activateScenario method welke vervolgens het scenario inlaadt
                         en de naam van het scenario als scope.activeScenario set.
+
+                        TODO: fix this as described in http://stackoverflow.com/a/22768720
                      -->
                     <select class="form-control" ng-model="selectedScenario" ng-change="mainCtrl.activateScenario( selectedScenario )">
-                        <option value="">Choose...</option>
+                        <option value="">Select...</option>
                         <option ng-repeat="scenario in scenarios" value="{{scenario}}" ng-selected="scenario == selectedScenario">{{scenario}}</option>
                     </select>
                 </div>
@@ -39,9 +42,9 @@
         </div>
         
         <!-- Maar even ter test de scenario selector hierboven ingezet voordat onderstaande zichtbaar is, kies eerst een scenario :) -->
-        <div class="scenario-editor" ng-class="{'closed': ! activeScenario }">
+        <div class="scenario-editor" ng-class="{'hidden': ! activeScenario }">
         
-            <div class="row" id="display" ng-class="{'closed': !playerVisible}">
+            <div class="row" id="display" ng-class="{'closed': ! playerVisible}">
     
                 <div class="col-md-2">
                     <textarea class="form-control" rows="16">
@@ -50,7 +53,7 @@
     
                     <div class="meta">
                         <label for="script-name">Naam</label>
-                        <input id="script-name" ng-model="timeline.name" type="text" />
+                        <input id="script-name" type="text" ng-model="timeline.name" />
                     </div>
     
                     <div class="meta">
@@ -95,64 +98,42 @@
                     <button class="btn btn-primary" ng-click="mainCtrl.saveScenario()">save scenario</button>
                 </div>
             </div>
-    
-            <div class="row">
-    
-                <div class="col-md-2">
-    
-                    <div class="meta">
-                        <span class="label label-info">Naam</span>
-                        <input ng-model="timeline.name" type="text" />
-                    </div>
-    
-                    <div class="meta">
-                        <span class="label label-info">Duur</span>
-                        <input ng-model="timeline.duration" type="number" />
-                    </div>
-    
-                </div>
-    
-                <div class="col-md-10"></div>
-    
-            </div>
-    
-            <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-10">
-                    <button class="btn btn-primary" ng-click="mainCtrl.sortActors()">sort</button>
-                </div>
-            </div>
-    
+
             <div class="timeline">
     
                 <div class="row se-actor" ng-repeat="actor in actors track by $index">
     
                     <div class="col-md-2">
-    
+
                         <div ng-click="actorDetailsOpen = !actorDetailsOpen" class="actor-name">
-                            {{actor.name}} {{$index}}
+                            details ({{actor.name}})
+                            <!--{{$index}}-->
+                        </div>
+
+                        <div>
+                            <input class="actor-title" ng-model="actor.title" ng-trim="false" type="text">
+                        </div>
+
+                        <div>
+                            <label for="actor-start-{{$index}}">start </label>
+                            <input id="actor-start-{{$index}}" ng-model="actor.start" type="number" step="1000" />
                         </div>
     
                         <div>
-                            <span class="label label-info">start </span>
-                            <input ng-model="actor.start" type="number" step="1000" />
-                        </div>
-    
-                        <div>
-                            <span class="label label-info">duur </span>
-                            <input ng-model="actor.duration" type="number" step="1000"/>
+                            <label for="actor-duration-{{$index}}">duur  </label>
+                            <input id="actor-duration-{{$index}}" ng-model="actor.duration" type="number" step="1000"/>
                         </div>
     
                         <div ng-init="actorDetailsOpen = false"  ng-show="actorDetailsOpen" class="actormetadetails">
-    
-                            <div ng-if="actor.type.length > 0">
-                                <span class="label label-info">type</span>
-                                <span class="value">{{actor.type}}</span>
+
+                            <div ng-if="actor.trigger">
+                                <label for="actor-trigger-{{$index}}">trigger</label>
+                                <span id="actor-trigger-{{$index}}" class="value">{{actor.trigger}}</span>
                             </div>
-    
+
                             <div ng-if="actor.animationName.length > 0">
-                                <span class="label label-info">animationName</span>
-                                <span class="value">{{actor.animationName}}</span>
+                                <label for="actor-animation-{{$index}}">animation </label>
+                                <span id="actor-animation-{{$index}}" class="value">{{actor.animationName}}</span>
                             </div>
     
                         </div>
@@ -171,8 +152,8 @@
                             </div>
                         </div>
     
-                        <div se-draggable-container class="actorline">
-                            <div class="actorname">{{actor.name}}</div>
+                        <div se-draggable-container class="actor-timeline">
+                            <div class="actor-timeline-title">{{actor.title}}</div>
                             <span se-draggable ondrag="mainCtrl.onDrag(actor, x, y)" ondrop="mainCtrl.onDrop()" class="indicator" ng-style="{
                                 left:(actor.start/timeline.duration)*100+'%',
                                 width:(actor.duration/timeline.duration)*100+'%'

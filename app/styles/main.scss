@@ -29,7 +29,7 @@
 
 }
 
-.actor {
+.se-actor {
     padding: 10px 0;
     width: 100%;
     zoom: 1;
@@ -45,7 +45,8 @@ input[type="number"] {
     border: 1px solid #fff;
     color: #000;
     text-align: right;
-    font-size: .8em;
+    font-size: 12px;
+    line-height: 12px;
     &:hover {
         border: 1px solid #666;
     }
@@ -53,22 +54,28 @@ input[type="number"] {
 
 .actor-name {
     cursor: pointer;
-    font-weight: bold;
+    color: #888;
+    font-size: 12px;
 }
 
-.actormeta {
-    .label {
-        width: 90px;
-        display: inline-block;
-    }
-    .value {
-        font-size: .8em;
-    }
+.actor-title {
+    font-size: 13px;
+    line-height: 13px;
+}
+
+
+label {
+    width: 90px;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: normal;
 }
 
 .value {
-    font-size: .8em;
+    font-size: 12px;
     cursor: pointer;
+    color: #888;
 
     &:hover {
         .actor-image {
@@ -92,7 +99,7 @@ input[type="number"] {
     background-position: center center;
 }
 
-.actorline {
+.actor-timeline {
 
     position: relative;
     width: 100%;
@@ -107,16 +114,21 @@ input[type="number"] {
         cursor:pointer;
     }
 
-    .actorname {
+    .actor-timeline-title {
         position: absolute;
         font-size: .7em;
+        line-height: .7em;
         left: 2px;
-        bottom: 2px;
+        bottom: 3px;
         z-index: 99;
         text-shadow: 1px 1px #666;
         color: #fff;
     }
 
+}
+
+#scenario-selector {
+    padding-bottom: 10px;
 }
 
 /* @start scenario-player */

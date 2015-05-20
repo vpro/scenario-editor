@@ -24,10 +24,10 @@ angular.module( 'SE' ).factory( 'ActorService', [
                     name: 'Image Cover',
                     start: 0,
                     duration: 5000,
-                    'template': {
-                        "background": {
-                            'image': '',
-                            'sizing': 'cover'
+                    template: {
+                        background: {
+                            image: '',
+                            sizing: 'cover'
                         }
                     }
                 },
@@ -36,25 +36,29 @@ angular.module( 'SE' ).factory( 'ActorService', [
                     name: 'Image Contain',
                     start: 0,
                     duration: 5000,
-                    'template': {
-                        "background": {
-                            'image': '',
-                            'sizing': 'contain'
+                    template: {
+                        background: {
+                            image: '',
+                            sizing: 'contain'
                         }
+                    }
+                },
+                {
+                    type: 'caption',
+                    name: 'Caption',
+                    start: 0,
+                    duration: 5000,
+                    image: '',
+                    title: '',
+                    subtitle: '',
+                    trigger: {
+                        event: 'click',
+                        active: true,
+                        type: 'video',
+                        src: ''
                     }
                 }
             ];
-
-            //this.actors = [];
-            //this.actorTypes = [];
-
-            //actors.forEach( function( actor ){
-            //    var type = actor['type'];
-            //
-            //    this.actors[type] = actor;
-            //    this.actorTypes.push( type );
-            //
-            //}.bind( this ));
 
         }
 
@@ -66,10 +70,6 @@ angular.module( 'SE' ).factory( 'ActorService', [
 
             getActors: function(){
                 return this.actors;
-            },
-
-            getActorTypes: function(){
-                return this.actorTypes();
             }
 
         };
