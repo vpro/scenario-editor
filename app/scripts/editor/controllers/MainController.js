@@ -38,13 +38,13 @@ angular.module('SE').controller('MainController', [
 
 						$scope.activeScenario = scenario;
 
-							// Shpuld be replace by DATA_SERVER / projects/ projectname/ asset folder
+						// Should be replaced by DATA_SERVER / projects/ projectname/ asset folder
 						$scope.assetRoot = 'http://files.vpro.nl/frontend/srebrenica/assets/';
 
 					    $scope.script = data;
 
 						$scope.timeline = {
-							name: data.name,
+							title: data.title,
 							duration: data.duration
 						};
 

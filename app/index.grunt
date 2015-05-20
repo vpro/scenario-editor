@@ -24,7 +24,7 @@
             <div class="col-md-6 col-md-push-2">
 
                 <div ng-if="scenarios" id="scenario-selector">
-                    <h2 class="h5">Select an available scenario</h2>
+                    <h2 class="h6">Select a scenario</h2>
                     <!-- Op de een of andere manier komt ng-model niet op de scope, dus ik geef hem hier
                         maar door aan de activateScenario method welke vervolgens het scenario inlaadt
                         en de naam van het scenario als scope.activeScenario set.
@@ -35,6 +35,7 @@
                         <option value="">Select...</option>
                         <option ng-repeat="scenario in scenarios" value="{{scenario}}" ng-selected="scenario == selectedScenario">{{scenario}}</option>
                     </select>
+
                 </div>
 
             </div>
@@ -52,8 +53,8 @@
                     </textarea>
     
                     <div class="meta">
-                        <label for="script-name">Naam</label>
-                        <input id="script-name" type="text" ng-model="timeline.name" />
+                        <label for="script-name">Titel</label>
+                        <input id="script-name" type="text" ng-model="timeline.title" />
                     </div>
     
                     <div class="meta">
@@ -111,7 +112,7 @@
                         </div>
 
                         <div>
-                            <input class="actor-title" ng-model="actor.title" ng-trim="false" type="text">
+                            <input class="actor-edit-title" ng-model="actor.title" ng-trim="false" type="text">
                         </div>
 
                         <div>
@@ -123,7 +124,12 @@
                             <label for="actor-duration-{{$index}}">duur  </label>
                             <input id="actor-duration-{{$index}}" ng-model="actor.duration" type="number" step="1000"/>
                         </div>
-    
+
+                        <div ng-if="actor.src">
+                            <label for="actor-src-{{$index}}">src</label>
+                            <input class="actor-edit-src" ng-model="actor.src" id="actor-src-{{$index}}">
+                        </div>
+
                         <div ng-init="actorDetailsOpen = false"  ng-show="actorDetailsOpen" class="actormetadetails">
 
                             <div ng-if="actor.trigger">
@@ -131,7 +137,7 @@
                                 <span id="actor-trigger-{{$index}}" class="value">{{actor.trigger}}</span>
                             </div>
 
-                            <div ng-if="actor.animationName.length > 0">
+                            <div ng-if="actor.animationName">
                                 <label for="actor-animation-{{$index}}">animation </label>
                                 <span id="actor-animation-{{$index}}" class="value">{{actor.animationName}}</span>
                             </div>
@@ -142,7 +148,7 @@
     
                     <div class="col-md-10">
     
-                        <div class="src">
+                        <div class="actor-src">
                             <div class="value" ng-if="actor.preload.url.length > 0">
                                 {{actor.preload.url}}
                                 <div class="actor-image" style="background-image: url('{{assetRoot}}{{actor.preload.url}}')"></div>

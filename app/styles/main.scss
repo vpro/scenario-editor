@@ -33,6 +33,8 @@
     padding: 10px 0;
     width: 100%;
     zoom: 1;
+    margin-bottom: 2px;
+    background: #e1e1e1;
 }
 
 .value {
@@ -58,7 +60,8 @@ input[type="number"] {
     font-size: 12px;
 }
 
-.actor-title {
+.actor-edit-src,
+.actor-edit-title {
     font-size: 13px;
     line-height: 13px;
 }
@@ -99,18 +102,22 @@ label {
     background-position: center center;
 }
 
+.actor-src {
+    padding-top: 24px;
+}
+
 .actor-timeline {
 
     position: relative;
     width: 100%;
-    height: 40px;
-    background: lightgray;
+    height: 25px;
+    background: #eee;
     float: left;
 
     .indicator {
         position: absolute;
         height:100%;
-        background-color: #0b97c4;
+        background-color: #337ab7;
         cursor:pointer;
     }
 
@@ -142,6 +149,9 @@ label {
 #controls {
     padding-top: 10px;
     padding-bottom: 10px;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 #display {
