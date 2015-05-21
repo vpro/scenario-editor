@@ -61,6 +61,7 @@ angular.module('SE').directive('seDraggable',
 						$document.on('mouseup', this.stop);
 
 						this.bounds = this.container[0].getBoundingClientRect();
+						this.boxBounds = box;
 
 						this.mouseOffset = {
 							x:coords.x - (box.left + box.width/2) - this.originOffset.x,
@@ -84,20 +85,20 @@ angular.module('SE').directive('seDraggable',
 							$scope.$apply();
 						}
 
-						left = (coords.x - this.bounds.left - this.mouseOffset.x);
+						left = (this.boxBounds.left - this.bounds.left) + ( coords.x - this.origin.x );
 						top = (coords.y - this.bounds.top - this.mouseOffset.y);
 
 						if (left < 0) {
 							left = 0;
 						}
 
-						if (left > this.bounds.width) {
-							left = this.bounds.width;
+						if (left + this.boxBounds.width  > this.bounds.width) {
+							left = this.bounds.width - this.boxBounds.width - 1;
 						}
 
 						if (this.ondrag) {
 							$scope.$eval(this.ondrag, {
-								x:left/this.bounds.width,
+								x: left/this.bounds.width,
 								y:top/this.bounds.height
 							});
 						} else {

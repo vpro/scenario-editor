@@ -120,6 +120,10 @@ angular.module('SE').controller('MainController', [
                     actor.start = Math.round( x * $scope.script.duration );
                 }
 
+				if ( actor.start < 0 ) {
+					actor.start = 0;
+				}
+
 				$scope.$apply();
 			},
 
