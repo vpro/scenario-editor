@@ -135,14 +135,14 @@
                         <div ng-if="actor.src">
                             <label for="actor-src-{{$index}}">src</label>
                             <input class="actor-edit-src" id="actor-src-{{$index}}"
-                                   ng-focus="mainCtrl.getAssetsForProject()"
+                                   ng-focus="mainCtrl.openAssetSelector()"
                                    ng-model="actor.src" />
                         </div>
 
                         <div ng-if="actor.template.background.src">
                             <label for="actor-src-{{$index}}">src</label>
                             <input class="actor-edit-src" id="actor-src-{{$index}}"
-                                   ng-focus="mainCtrl.getAssetsForProject()"
+                                   ng-focus="mainCtrl.openAssetSelector()"
                                    ng-model="actor.template.background.src" />
                         </div>
 
@@ -201,11 +201,33 @@
 	</div>
 
 
-    <script type="text/ng-template" id="assetSelector.html">
-        <div class="asset-selector">
-            Hier komt een asset selector.
+
+    <div class="asset-selector">
+
+        <div ng-repeat="asset in availableAssets track by $index">
+
+            <!--{{asset}}<br/>-->
+
+            <div ng-switch on="asset">
+
+                <div class="asset-preview asset-img" ng-switch="asset.indexOf('img') !== -1" ng-click="mainCtrl.selectAsset( asset )">
+                    <div class="asset-img-thumb" style="background-image: url({{assetRoot}}/{{asset}})"></div>
+                </div>
+
+                <div class="asset-preview asset-audio" ng-switch="asset.indexOf('audio') > !== -1" ng-click="mainCtrl.selectAsset( asset )">
+                    {{asset}}
+                </div>
+
+                <div class="asset-preview asset-video" ng-switch="asset.indexOf('video') !== -1" ng-click="mainCtrl.selectAsset( asset )">
+                    {{asset}}
+                </div>
+
+            </div>
+
         </div>
-    </script>
+
+    </div>
+
 
 
 

@@ -4,8 +4,9 @@ angular.module('SE').controller('MainController', [
 	'ScenarioService',
     'ActorService',
 	'DATA_SERVER',
+    'ASSET_ROOT',
 
-	function ($scope, ScenarioService, ActorService, DATA_SERVER ) {
+	function ($scope, ScenarioService, ActorService, DATA_SERVER, ASSET_ROOT ) {
 
 		'use strict';
 
@@ -38,8 +39,7 @@ angular.module('SE').controller('MainController', [
 
 						$scope.activeScenario = scenario;
 
-						//TODO: Should be replaced by DATA_SERVER / projects/ projectname/ asset folder
-						$scope.assetRoot = 'http://files.vpro.nl/frontend/srebrenica/assets/';
+						$scope.assetRoot = ASSET_ROOT;
 
 					    $scope.script = data;
 
@@ -58,10 +58,25 @@ angular.module('SE').controller('MainController', [
 				}
 			},
 
-            getAssetsForProject: function(){
+            openAssetSelector: function(){
 
+                ScenarioService.getAssetsForProject().then(
+                    function( data ){
+                        $scope.availableAssets = data;
+                    },
+                    function( error ){
+                        throw new Error( error );
+                    }
+                );
 
+            },
 
+            selectAsset: function( asset ){
+                console.log( 'asset: ', asset );
+            },
+
+            addActor: function( actor ){
+                $scope.script.actors.push( angular.copy( actor ) );
             },
 
             deleteActor: function( index ){
@@ -70,15 +85,11 @@ angular.module('SE').controller('MainController', [
 
                 if( actor ){
 
-                    if( window.confirm( 'delete ' + actor.title + '?' ) ){
-                        $scope.actors.splice( index, 1);
+                    if( window.confirm( 'Delete ' + actor.title + '?' ) ){
+                        $scope.actors.splice( index, 1 );
                     }
 
                 }
-            },
-
-            addActor: function( actor ){
-                $scope.script.actors.push( angular.copy( actor ) );
             },
 
 			onDrag: function ( actor, x, y ) {

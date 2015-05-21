@@ -21,7 +21,8 @@ module.exports = function (grunt) {
 				options: {
 					constants: {
 						'JS_SERVER' : packageConfig.config.production.jsServer,
-						'DATA_SERVER' : packageConfig.config.production.dataServer
+						'DATA_SERVER' : packageConfig.config.production.dataServer,
+						'ASSET_ROOT' : packageConfig.config.production.assetRoot
 					}
 				}
 			},
@@ -30,7 +31,8 @@ module.exports = function (grunt) {
 				options: {
 					constants: {
 						'JS_SERVER' : packageConfig.config.dev.jsServer,
-						'DATA_SERVER' : packageConfig.config.dev.dataServer
+						'DATA_SERVER' : packageConfig.config.dev.dataServer,
+						'ASSET_ROOT' : packageConfig.config.dev.assetRoot
 					}
 				}
 			}
