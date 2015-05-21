@@ -1,9 +1,9 @@
 angular.module('SE')
 
-.constant('JS_SERVER', 'http://localhost:8080')
+.constant('JS_SERVER', 'http://js.vpro.nl')
 
-.constant('DATA_SERVER', 'http://localhost:8010')
+.constant('DATA_SERVER', 'http://files.vpro.nl/scenario-editor')
 
-.constant('ASSET_ROOT', 'http://localhost:8010/projects/srebrenica/project-assets/')
+.constant('ASSET_ROOT', 'http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/')
 
 ;
