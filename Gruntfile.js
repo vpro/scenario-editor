@@ -10,40 +10,35 @@ module.exports = function (grunt) {
 
 		pkg: packageConfig,
 
-		ngconstant : {
-
-			options : {
-				name: 'SE',
-                deps: false,
-				dest: 'app/scripts/editor/constants.js'
-			},
-
-			build: {
-				options: {
-					constants: {
-						'JS_SERVER' : packageConfig.config.production.jsServer,
-						'DATA_SERVER' : packageConfig.config.production.dataServer,
-						'ASSET_ROOT' : packageConfig.config.production.assetRoot
-					}
-				}
-			},
-
-			dev: {
-				options: {
-					constants: {
-						'JS_SERVER' : packageConfig.config.dev.jsServer,
-						'DATA_SERVER' : packageConfig.config.dev.dataServer,
-						'ASSET_ROOT' : packageConfig.config.dev.assetRoot
-					}
-				}
-			}
-		},
-
 		clean: {
 			dev: ['grunt/work/**/*'],
 			build: ['grunt/build/**/*'],
 			css:['grunt/build/styles/*.css'],
 			scripts:['grunt/build/scripts','grunt/build/js/templates.js']
+		},
+
+		concat: {
+			IDMalert: {
+				src:  [ 'grunt/build/js/editor.js', '<%= ngtemplates.editor.dest %>' ],
+				dest: 'grunt/build/js/editor.js'
+			}
+		},
+
+		connect: {
+			server: {
+				options: {
+					hostname: '*',
+					tmpdir: 'grunt/work',
+					middleware: function(connect) {
+						return [
+							connect.static(require('path').resolve('stub')),
+							connect.static(require('path').resolve('grunt/work')),
+							connect.static(require('path').resolve('app')),
+							connect.static(require('path').resolve('resources'))
+						]
+					}
+				}
+			}
 		},
 
 		copy: {
@@ -91,6 +86,74 @@ module.exports = function (grunt) {
 			}
 		},
 
+		ngconstant : {
+
+			options : {
+				name: 'SE',
+                deps: false,
+				dest: 'app/scripts/editor/constants.js'
+			},
+
+			build: {
+				options: {
+					constants: {
+						'JS_SERVER' : packageConfig.config.production.jsServer,
+						'DATA_SERVER' : packageConfig.config.production.dataServer,
+						'ASSET_ROOT' : packageConfig.config.production.assetRoot
+					}
+				}
+			},
+
+			dev: {
+				options: {
+					constants: {
+						'JS_SERVER' : packageConfig.config.dev.jsServer,
+						'DATA_SERVER' : packageConfig.config.dev.dataServer,
+						'ASSET_ROOT' : packageConfig.config.dev.assetRoot
+					}
+				}
+			}
+		},
+
+		ngmin: {
+			files: {
+				src:['grunt/build/js/editor.js'],
+				dest:'grunt/build/js/editor.js'
+			}
+		},
+
+		ngtemplates: {
+			editor: {
+				options: {
+					module: 'editor',
+					htmlmin: {
+						collapseBooleanAttributes:      true,
+						collapseWhitespace:             true,
+						removeAttributeQuotes:          true,
+						removeComments:                 true,
+						removeEmptyAttributes:          true,
+						removeRedundantAttributes:      true,
+						removeScriptTypeAttributes:     true,
+						removeStyleLinkTypeAttributes:  true
+					}
+				},
+				cwd:'app',
+				src: 'views/**/*.html',
+				dest: 'grunt/build/js/templates.js'
+			}
+		},
+
+		php : {
+			test: {
+			   options: {
+				   base: 'server',
+				   port: 8010,
+				   keepalive: true,
+				   open: false
+			   }
+		   }
+		},
+
 		sass: {
 			dev: {
 				options: {
@@ -126,6 +189,19 @@ module.exports = function (grunt) {
 					'grunt/work/index.html': ['app/index.grunt']
 				}
 			},
+
+			devServer: {
+				options: {
+					data: {
+						basePath : '',
+						allowFileWrites :  true
+					}
+				},
+				files: {
+					'server/default-config.php': ['server/default-config.template.php']
+				}
+			},
+
 			build: {
 				options: {
 					data: {
@@ -136,7 +212,19 @@ module.exports = function (grunt) {
 				files: {
 					'grunt/build/index.html': ['app/index.grunt']
 				}
-			}
+			},
+
+			buildServer: {
+				options: {
+					data: {
+						basePath : '',
+						allowFileWrites :  false
+					}
+				},
+				files: {
+					'server/default-config.php': ['server/default-config.template.php']
+				}
+			},
 		},
 
 		useminPrepare: {
@@ -158,13 +246,6 @@ module.exports = function (grunt) {
 			css: ['grunt/build/styles/{,*/}*.css']
 		},
 
-		ngmin: {
-			files: {
-				src:['grunt/build/js/editor.js'],
-				dest:'grunt/build/js/editor.js'
-			}
-		},
-
 		uglify: {
 			options: {
 				mangle:true,
@@ -173,34 +254,6 @@ module.exports = function (grunt) {
 			files: {
 				src:['grunt/build/js/editor.js'],
 				dest:'grunt/build/js/editor.js'
-			}
-		},
-
-		ngtemplates: {
-			editor: {
-				options: {
-					module: 'editor',
-					htmlmin: {
-						collapseBooleanAttributes:      true,
-						collapseWhitespace:             true,
-						removeAttributeQuotes:          true,
-						removeComments:                 true,
-						removeEmptyAttributes:          true,
-						removeRedundantAttributes:      true,
-						removeScriptTypeAttributes:     true,
-						removeStyleLinkTypeAttributes:  true
-					}
-				},
-				cwd:'app',
-				src: 'views/**/*.html',
-				dest: 'grunt/build/js/templates.js'
-			}
-		},
-
-		concat: {
-			IDMalert: {
-				src:  [ 'grunt/build/js/editor.js', '<%= ngtemplates.editor.dest %>' ],
-				dest: 'grunt/build/js/editor.js'
 			}
 		},
 
@@ -217,36 +270,7 @@ module.exports = function (grunt) {
                 files: ['app/styles/{,*/}*.css'],
                 tasks: ['copy:dev']
             }
-		},
-
-		php : {
-			test: {
-			   options: {
-				   base: 'server',
-				   port: 8010,
-				   keepalive: true,
-				   open: false
-			   }
-		   }
-		},
-
-		connect: {
-			server: {
-				options: {
-					hostname: '*',
-					tmpdir: 'grunt/work',
-					middleware: function(connect) {
-						return [
-							connect.static(require('path').resolve('stub')),
-							connect.static(require('path').resolve('grunt/work')),
-							connect.static(require('path').resolve('app')),
-							connect.static(require('path').resolve('resources'))
-						]
-					}
-				}
-			}
 		}
-
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-clean');
@@ -287,7 +311,8 @@ module.exports = function (grunt) {
 	grunt.registerTask('default', ['dev', 'connect', 'watch']);
 
 	/* run the dataserver as a seperate task in dev mode to be able to run the watch task in parallel */
-	grunt.registerTask('dataserver', ['php']);
+	grunt.registerTask('dataserver:dev', ['template:devServer','php']);
+	grunt.registerTask('dataserver:build', ['template:buildServer','php']);
 
 
 };

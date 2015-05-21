@@ -6,16 +6,16 @@ include_once( $dirName ."Util.php");
 
 class ScenarioService {
 
-    function getAssetsForProject ( ) {
+    function getAssetsForProject () {
 
         return $this->listDirectory( $dirName .'..'. BASEPATH_ASSETS );
     }
 
-    function getScenariosForProject ( ) {
+    function getScenariosForProject () {
 
         $scenarios = array();
 
-        foreach( scandir( $dirName .'..'. BASEPATH_SCENARIOS ) as $idx => $scenario ) {
+        foreach( scandir( $this->getScenariosRootPath() ) as $idx => $scenario ) {
 
             if ( $scenario !== '.' && $scenario !== '..') {
 
@@ -33,11 +33,21 @@ class ScenarioService {
 
     function getScenarioForProject ( $scenarioId ) {
 
-        $scenarioContents = file_get_contents( $dirName .'..'. BASEPATH_SCENARIOS . $scenarioId .'.json' );
+        $scenarioContents = file_get_contents( $this->getScenariosRootPath() . $scenarioId .'.json' );
 
         if ( $scenarioContents ) {
 
             return json_decode( $scenarioContents );
+        }
+    }
+
+    function getScenariosRootPath () {
+
+        if ( ALLOW_RELATIVE_FILE_WRITES ) {
+
+            return $dirName .'..'. BASEPATH_SCENARIOS;
+        } else {
+            return BASEPATH_SCENARIOS_ABS;
         }
     }
 
@@ -60,7 +70,7 @@ class ScenarioService {
 
     function saveScenarioForProject ( $scenarioId, $scenarioData ) {
 
-        $file = $dirName .'..'. BASEPATH_SCENARIOS . $scenarioId .'.json';
+        $file = $this->getScenariosRootPath() . $scenarioId .'.json';
 
         if ( is_writable( $file ) ) {
 

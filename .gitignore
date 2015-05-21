@@ -3,6 +3,8 @@
 .DS_Store
 node_modules
 .sass-cache
+default-config.php
+constants.js
 grunt/
 .tmp/
 project-assets/**/*
