@@ -46,7 +46,7 @@ class ScenarioService {
       $result = array();
 
         foreach (scandir($dir) as $f) {
-          if ($f !== '.' and $f !== '..') {
+          if ( substr_compare( $f, ".", 0, 1 ) !== 0 ) {
             if (is_dir("$dir/$f")) {
               $result = array_merge($result, $this->listDirectory("$dir/$f", "$prefix$f/"));
             } else {

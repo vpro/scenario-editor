@@ -45,22 +45,8 @@
         <div class="scenario-editor" ng-class="{'hidden': ! activeScenario }">
         
             <div class="row bg-info" id="display" ng-class="{'closed': ! playerVisible}">
-    
-                <div class="col-md-2">
 
-                    <div class="meta">
-                        <label for="script-name">Titel</label>
-                        <input id="script-name" type="text" ng-model="timeline.title" />
-                    </div>
-    
-                    <div class="meta">
-                        <label for="script-duration">Duur</label>
-                        <input id="script-duration" ng-model="timeline.duration" type="number" />
-                    </div>
-    
-                </div>
-    
-                <div class="col-md-10" id="player">
+                <div class="col-md-12" id="player">
     
                     <div id="scenario-player-container">
                         <se-player id="scenario-player"></se-player>
@@ -80,6 +66,20 @@
                 </div>
             </div>
 
+
+            <div class="row scenario-editor-controls">
+                <div class="col-md-10 col-md-push-2">
+                    <div class="meta">
+                        <label for="script-name">Titel</label>
+                        <input id="script-name" type="text" ng-model="timeline.title" />
+                    </div>
+                    <div class="meta">
+                        <label for="script-duration">Duur</label>
+                        <input id="script-duration" ng-model="timeline.duration" type="number" />
+                    </div>
+                </div>
+            </div>
+
             <div class="row scenario-editor-controls">
 
                 <div class="col-md-2">
@@ -88,6 +88,7 @@
 
                         <button class="btn-default btn" ng-class="{'disabled': !selectedActor}" ng-click="mainCtrl.addActor( selectedActor )">add {{selectedActor.name}}</button>
                     </div>
+
                 </div>
 
                 <div class="col-md-10">
