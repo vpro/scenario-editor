@@ -12,7 +12,8 @@
             "preload": {
                 "type": "image"
             },
-            "animationName": "zoom-1.2-1.6"
+            "animationName": "zoom-1.2-1.6",
+            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
         },
         {
             "title": "Danish Leopard",
@@ -26,24 +27,13 @@
                     "src": "img/still-danish-leopard-3.png",
                     "sizing": "cover"
                 },
-                "assetRoot": "http://localhost:8010/projects/srebrenica/project-assets/"
+                "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
             },
             "preload": {
                 "type": "image"
             },
-            "animationName": "zoom-1.2-1.6"
-        },
-        {
-            "title": "Voiceover 01",
-            "type": "audio",
-            "name": "Audio",
-            "start": 0,
-            "duration": 10500,
-            "offset": 0,
-            "src": "audio/voice_01.mp3",
-            "preload": {
-                "type": "audio"
-            }
+            "animationName": "zoom-1.2-1.6",
+            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
         },
         {
             "title": "Ambiant audio",
@@ -55,7 +45,21 @@
             "src": "audio/Srebr_muziek.mp3",
             "preload": {
                 "type": "audio"
-            }
+            },
+            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
+        },
+        {
+            "title": "Voiceover 01",
+            "type": "audio",
+            "name": "Audio",
+            "start": 0,
+            "duration": 10500,
+            "offset": 0,
+            "src": "audio/voice_01.mp3",
+            "preload": {
+                "type": "audio"
+            },
+            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
         },
         {
             "title": "UN soldier",
@@ -69,12 +73,13 @@
                     "src": "img/still-soldier-binoculars.png",
                     "sizing": "cover"
                 },
-                "assetRoot": "http://localhost:8010/projects/srebrenica/project-assets/"
+                "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
             },
             "preload": {
                 "type": "image"
             },
-            "animationName": "zoom-1.2-1.6"
+            "animationName": "zoom-1.2-1.6",
+            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
         },
         {
             "title": "Tank",
@@ -87,12 +92,14 @@
                 "background": {
                     "src": "img/still-aben-hede-tank.png",
                     "sizing": "cover"
-                }
+                },
+                "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
             },
             "preload": {
                 "type": "image"
             },
-            "animationName": "zoom-1.2-1.6"
+            "animationName": "zoom-1.2-1.6",
+            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
         },
         {
             "title": "Voiceover 02",
@@ -104,7 +111,8 @@
             "src": "audio/voice_02.mp3",
             "preload": {
                 "type": "audio"
-            }
+            },
+            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
         },
         {
             "title": "Tank fire",
@@ -117,12 +125,14 @@
                 "background": {
                     "src": "img/still-aben-hede-tank-fire.png",
                     "sizing": "cover"
-                }
+                },
+                "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
             },
             "preload": {
                 "type": "image"
             },
-            "animationName": "zoom-1.2-1.6"
+            "animationName": "zoom-1.2-1.6",
+            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
         },
         {
             "title": "Report",
@@ -135,12 +145,14 @@
                 "background": {
                     "src": "img/document-chetnik-pavle-djurisic-report.png",
                     "sizing": "cover"
-                }
+                },
+                "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
             },
             "preload": {
                 "type": "image"
             },
-            "animationName": "zoom-1.2-1.6"
+            "animationName": "zoom-1.2-1.6",
+            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
         },
         {
             "title": "Video All",
@@ -152,7 +164,8 @@
             "src": "video/Srebr_helefilmpje_480.mp4",
             "preload": {
                 "type": "video"
-            }
+            },
+            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
         },
         {
             "title": "Voiceover 03",
@@ -164,7 +177,8 @@
             "src": "audio/voice_03.mp3",
             "preload": {
                 "type": "audio"
-            }
+            },
+            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
         },
         {
             "title": "Voiceover 04",
@@ -176,7 +190,8 @@
             "src": "audio/voice_04.mp3",
             "preload": {
                 "type": "audio"
-            }
+            },
+            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
         },
         {
             "title": "Voiceover 05",
@@ -188,7 +203,8 @@
             "src": "audio/voice_05.mp3",
             "preload": {
                 "type": "audio"
-            }
+            },
+            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
         },
         {
             "title": "Voiceover 06",
@@ -200,7 +216,8 @@
             "src": "audio/voice_06.mp3",
             "preload": {
                 "type": "audio"
-            }
+            },
+            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
         },
         {
             "title": "Voiceover 07",
@@ -212,7 +229,8 @@
             "src": "audio/voice_07.mp3",
             "preload": {
                 "type": "audio"
-            }
+            },
+            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
         },
         {
             "title": "Voiceover 08",
@@ -224,7 +242,8 @@
             "src": "audio/voice_08.mp3",
             "preload": {
                 "type": "audio"
-            }
+            },
+            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
         },
         {
             "title": "Voiceover 09",
@@ -236,7 +255,8 @@
             "src": "audio/voice_09.mp3",
             "preload": {
                 "type": "audio"
-            }
+            },
+            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
         },
         {
             "title": "Voiceover 10",
@@ -248,7 +268,8 @@
             "src": "audio/voice_10.mp3",
             "preload": {
                 "type": "audio"
-            }
+            },
+            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
         },
         {
             "title": "Voiceover 11",
@@ -260,7 +281,8 @@
             "src": "audio/voice_11.mp3",
             "preload": {
                 "type": "audio"
-            }
+            },
+            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
         },
         {
             "title": "Voiceover 12",
@@ -272,7 +294,8 @@
             "src": "audio/voice_12.mp3",
             "preload": {
                 "type": "audio"
-            }
+            },
+            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
         },
         {
             "title": "Voiceover 13",
@@ -284,7 +307,8 @@
             "src": "audio/voice_13.mp3",
             "preload": {
                 "type": "audio"
-            }
+            },
+            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
         },
         {
             "title": "Voiceover 14",
@@ -296,6 +320,29 @@
             "src": "audio/voice_14.mp3",
             "preload": {
                 "type": "audio"
+            },
+            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
+        },
+        {
+            "type": "caption",
+            "name": "Caption",
+            "start": 0,
+            "duration": 5000,
+            "image": "",
+            "title": "Dit is dan wel een caption",
+            "subtitle": "",
+            "trigger": {
+                "event": "click",
+                "active": true,
+                "type": "video",
+                "src": ""
+            },
+            "template": {
+                "caption": {
+                    "trigger": {
+                        "title": ""
+                    }
+                }
             }
         }
     ]

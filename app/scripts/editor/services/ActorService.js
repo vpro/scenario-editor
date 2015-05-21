@@ -57,6 +57,13 @@ angular.module( 'SE' ).factory( 'ActorService', [
                         active: true,
                         type: 'video',
                         src: ''
+                    },
+                    template: {
+                        caption: {
+                            trigger: {
+                                title: ''
+                            }
+                        }
                     }
                 }
             ];
