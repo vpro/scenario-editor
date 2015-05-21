@@ -14,6 +14,7 @@ module.exports = function (grunt) {
 
 			options : {
 				name: 'SE',
+                deps: false,
 				dest: 'app/scripts/editor/constants.js'
 			},
 

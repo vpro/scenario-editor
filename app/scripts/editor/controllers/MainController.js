@@ -51,14 +51,26 @@ angular.module('SE').controller('MainController', [
 				}
 			},
 
-            openAssetSelector: function(){
+            openAssetSelector: function( caller ){
+
+                this.currentCaller = caller.target;
 
                 $( 'body' ).addClass( 'modal-open' );
                 $( '#asset-selector').addClass( 'open' );
 
                 ScenarioService.getAssetsForProject().then(
                     function( data ){
-                        $scope.availableAssets = data;
+
+                        var assetData = data.map(function( el, i, arr ){
+                            var type = el.substring( 0, el.indexOf( '/' ) );
+                            return {
+                                path: el.toString(),
+                                type: type.toString()
+                            };
+                        });
+
+                        $scope.availableAssets = assetData;
+
                     },
                     function( error ){
                         throw new Error( error );
@@ -72,11 +84,15 @@ angular.module('SE').controller('MainController', [
                 $( '#asset-selector').removeClass( 'open' );
             },
 
-            selectAsset: function( asset ){
+            selectAsset: function( assetPath ){
 
                 this.closeAssetSelector();
 
-                console.log( 'asset: ', asset );
+                if( assetPath ){
+                    this.currentCaller.value = assetPath;
+                    angular.element($(this.currentCaller)).triggerHandler('input');
+                }
+
             },
 
             addActor: function( actor ){

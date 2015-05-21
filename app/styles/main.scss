@@ -228,8 +228,6 @@ body.modal-open {
 }
 
 .asset-preview {
-    width: 60px;
-    height: 60px;
     float: left;
     padding: 4px;
     margin: 4px;
@@ -237,11 +235,24 @@ body.modal-open {
     cursor: pointer;
 }
 
+.asset-img {
+    width: 120px;
+    height: 120px;
+}
+
 .asset-img-thumb {
-    width: 40px;
-    height: 40px;
+    width: 100px;
+    height: 100px;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.asset-group {
+    clear: both;
+}
+
+.asset-group-title {
+    color: #fff;
 }
 
 /* @end asset selector */

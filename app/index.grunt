@@ -132,14 +132,14 @@
                         <div ng-if="actor.src">
                             <label for="actor-src-{{$index}}">src</label>
                             <input class="actor-edit-src" id="actor-src-{{$index}}"
-                                   ng-focus="mainCtrl.openAssetSelector()"
+                                   ng-focus="mainCtrl.openAssetSelector( $event )"
                                    ng-model="actor.src" />
                         </div>
 
                         <div ng-if="actor.template.background.src">
                             <label for="actor-src-{{$index}}">src</label>
                             <input class="actor-edit-src" id="actor-src-{{$index}}"
-                                   ng-focus="mainCtrl.openAssetSelector()"
+                                   ng-focus="mainCtrl.openAssetSelector( $event )"
                                    ng-model="actor.template.background.src" />
                         </div>
 
@@ -205,20 +205,25 @@
             <span class="glyphicon glyphicon-remove-circle"></span>
         </div>
 
-        <div ng-repeat="asset in availableAssets track by $index">
+        <div ng-repeat="(key, value) in availableAssets | groupBy: 'type'">
 
-            <div ng-switch on="asset">
+            <div class="asset-group asset-group-{{key}}">
+                <div class="asset-group-title">{{ key }}</div>
 
-                <div class="asset-preview asset-img" ng-switch="asset.indexOf('img') !== -1" ng-click="mainCtrl.selectAsset( asset )">
-                    <div class="asset-img-thumb" style="background-image: url({{assetRoot}}/{{asset}})"></div>
-                </div>
+                <div ng-repeat="asset in value">
 
-                <div class="asset-preview asset-audio" ng-switch="asset.indexOf('audio') > !== -1" ng-click="mainCtrl.selectAsset( asset )">
-                    {{asset}}
-                </div>
+                    <div class="asset-preview asset-img" ng-show="asset.path.indexOf('img/') !== -1" ng-click="mainCtrl.selectAsset( asset.path )">
+                        <div class="asset-img-thumb" style="background-image: url({{assetRoot}}{{asset.path}})"></div>
+                    </div>
 
-                <div class="asset-preview asset-video" ng-switch="asset.indexOf('video') !== -1" ng-click="mainCtrl.selectAsset( asset )">
-                    {{asset}}
+                    <div class="asset-preview asset-audio" ng-show="asset.path.indexOf('audio/') !== -1" ng-click="mainCtrl.selectAsset( asset.path )">
+                        {{asset.path}}
+                    </div>
+
+                    <div class="asset-preview asset-video" ng-show="asset.path.indexOf('video/') !== -1" ng-click="mainCtrl.selectAsset( asset.path )">
+                        {{asset.path}}
+                    </div>
+
                 </div>
 
             </div>
@@ -236,6 +241,7 @@
 
 	<!-- build:js js/vendor.js -->
 	<script src="scripts/vendor/angularjs/angular.min.js"></script>
+    <script src="scripts/vendor/angular-filter.min.js"></script>
 	<!-- endbuild -->
 
 	<!-- build:js js/editor.js -->

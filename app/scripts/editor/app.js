@@ -20,6 +20,10 @@
 		}
 	);
 
-	//angular.module('SE', []);
+	angular.module( 'SE',
+        [
+		    'angular.filter'
+	    ]
+    );
 
 }( window.require, window.vpro ));
