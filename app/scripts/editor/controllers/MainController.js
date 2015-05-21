@@ -19,13 +19,11 @@ angular.module('SE').controller('MainController', [
 
 		MainController.prototype = {
 
-
             init: function () {
 
 				ScenarioService.getScenariosForProject().then(function ( data ) {
 
 					$scope.scenarios = data;
-
 				});
 
                 $scope.actorTypes = ActorService.getActors();
@@ -42,11 +40,6 @@ angular.module('SE').controller('MainController', [
 						$scope.assetRoot = ASSET_ROOT;
 
 					    $scope.script = data;
-
-						$scope.timeline = {
-							title: data.title,
-							duration: data.duration
-						};
 
 						$scope.actors = data.actors;
 
@@ -105,10 +98,10 @@ angular.module('SE').controller('MainController', [
 
 			onDrag: function ( actor, x, y ) {
 
-                if( ( actor.start + actor.duration ) >= $scope.timeline.duration ) {
-                    actor.start = Math.round( x * $scope.timeline.duration ) - actor.duration;
+                if( ( actor.start + actor.duration ) >= $scope.script.duration ) {
+                    actor.start = Math.round( x * $scope.script.duration ) - actor.duration;
                 } else {
-                    actor.start = Math.round( x * $scope.timeline.duration );
+                    actor.start = Math.round( x * $scope.script.duration );
                 }
 
 				$scope.$apply();

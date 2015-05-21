@@ -4,7 +4,7 @@
     "version": "0.1.0",
     "config": {
         "dev": {
-            "jsServer": "http://localhost:8081",
+            "jsServer": "http://localhost:8080",
             "dataServer": "http://localhost:8010",
             "assetRoot": "http://localhost:8010/projects/srebrenica/project-assets/"
         },
