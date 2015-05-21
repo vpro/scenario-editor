@@ -38,8 +38,8 @@
 }
 
 .value {
-    text-align: right;
-    display: inline-block;
+    //text-align: right;
+    //display: inline-block;
 }
 
 input[type="number"] {
@@ -91,8 +91,8 @@ label {
 }
 
 .actor-image {
-    width: 4px;
-    height: 4px;
+    width: 0;
+    height: 0;
     background-size: contain;
     position: absolute;
     margin: 4px;
@@ -103,7 +103,7 @@ label {
 }
 
 .actor-src {
-    padding-top: 24px;
+    //padding-top: 24px;
 }
 
 .actor-delete {
@@ -211,11 +211,11 @@ body.modal-open {
         bottom: 0;
         left: 0;
 
-        padding: 10px;
+        padding: 20px 80px;
         overflow: auto;
         z-index: 999;
 
-        background: rgba(0,0,0,.8);
+        background: rgba(0,0,0,.85);
     }
 }
 
@@ -229,15 +229,19 @@ body.modal-open {
 
 .asset-preview {
     float: left;
-    padding: 4px;
-    margin: 4px;
-    background: cornflowerblue;
+    background: #337ab7;
     cursor: pointer;
+    color: #fff;
+    margin: 2px;
+    padding: 0 4px;
+    font-size: 13px;
 }
 
 .asset-img {
     width: 120px;
     height: 120px;
+    padding: 10px;
+    margin: 4px;
 }
 
 .asset-img-thumb {

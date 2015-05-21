@@ -105,12 +105,6 @@
     
                     <div class="col-md-2">
 
-                        <div class="actor-name"
-                             ng-click="actorDetailsOpen = !actorDetailsOpen">
-                            details ({{actor.name}})
-                            <!--{{$index}}-->
-                        </div>
-
                         <div>
                             <input class="actor-edit-title" type="text"
                                    ng-model="actor.title"
@@ -136,13 +130,6 @@
                                    ng-model="actor.src" />
                         </div>
 
-                        <div ng-if="actor.template.background.src">
-                            <label for="actor-src-{{$index}}">src</label>
-                            <input class="actor-edit-src" id="actor-src-{{$index}}"
-                                   ng-focus="mainCtrl.openAssetSelector( $event )"
-                                   ng-model="actor.template.background.src" />
-                        </div>
-
                         <div class="actormetadetails"
                              ng-init="actorDetailsOpen = false"
                              ng-show="actorDetailsOpen" >
@@ -164,18 +151,34 @@
 
     
                     <div class="col-md-10">
-    
-                        <div class="actor-src">
-                            <div class="value" ng-if="actor.preload.url.length > 0">
-                                {{actor.preload.url}}
-                                <div class="actor-image" style="background-image: url('{{assetRoot}}{{actor.preload.url}}')"></div>
+
+                        <div class="row">
+
+                            <div class="col-md-2">
+
+                                <div class="actor-name"
+                                     ng-click="actorDetailsOpen = !actorDetailsOpen">
+                                    details ({{actor.name}})
+                                </div>
+
                             </div>
-                            <div class="value"
-                                 ng-if="!actor.preload.url.length && actor.preload.url.length === undefined">
-                                {{actor.src}}
+
+                            <div class="col-md-4">
+
+                                <div class="actor-src">
+
+                                    <div class="value" ng-if="actor.src.length > 0 && ( actor.type == 'generic' || actor.type == 'ambi' )">
+                                        {{actor.src}}
+                                        <div class="actor-image" style="background-image: url('{{assetRoot}}{{actor.src}}')"></div>
+                                    </div>
+
+                                </div>
+
                             </div>
+
+
                         </div>
-    
+
                         <div se-draggable-container class="actor-timeline">
                             <div class="actor-timeline-title">{{actor.title}}</div>
                             <span se-draggable ondrag="mainCtrl.onDrag(actor, x, y)" ondrop="mainCtrl.onDrop()" class="indicator" ng-style="{
