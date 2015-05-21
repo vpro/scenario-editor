@@ -17,7 +17,8 @@ angular.module( 'SE' ).factory( 'ActorService', [
                     type: 'audio',
                     start: 0,
                     duration: 5000,
-                    offset: 0
+                    offset: 0,
+                    src: ''
                 },
                 {
                     type: 'generic',
@@ -26,7 +27,7 @@ angular.module( 'SE' ).factory( 'ActorService', [
                     duration: 5000,
                     template: {
                         background: {
-                            image: '',
+                            src: '',
                             sizing: 'cover'
                         }
                     }
@@ -38,7 +39,7 @@ angular.module( 'SE' ).factory( 'ActorService', [
                     duration: 5000,
                     template: {
                         background: {
-                            image: '',
+                            src: '',
                             sizing: 'contain'
                         }
                     }

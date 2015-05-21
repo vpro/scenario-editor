@@ -38,7 +38,7 @@ angular.module('SE').controller('MainController', [
 
 						$scope.activeScenario = scenario;
 
-						// Should be replaced by DATA_SERVER / projects/ projectname/ asset folder
+						//TODO: Should be replaced by DATA_SERVER / projects/ projectname/ asset folder
 						$scope.assetRoot = 'http://files.vpro.nl/frontend/srebrenica/assets/';
 
 					    $scope.script = data;
@@ -56,6 +56,24 @@ angular.module('SE').controller('MainController', [
 				}
 			},
 
+            getAssetsForProject: function(){
+
+
+
+            },
+
+            deleteActor: function( index ){
+
+                var actor = $scope.actors[ index ];
+
+                if( actor ){
+
+                    if( window.confirm( 'delete ' + actor.title + '?' ) ){
+                        $scope.actors.splice( index, 1);
+                    }
+
+                }
+            },
 
             addActor: function( actor ){
                 $scope.script.actors.push( angular.copy( actor ) );
@@ -79,6 +97,7 @@ angular.module('SE').controller('MainController', [
 
 			saveScenario : function () {
 
+				// TODO
 				// Wat hier nog niet goed gaat is dat de timeline name en duration niet worden opgeslagen
 				// in $scope.script dus die wijzigingen saven nog niet, de rest wel! :)
 

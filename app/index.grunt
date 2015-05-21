@@ -9,8 +9,7 @@
 	<!--<link rel="stylesheet" href="styles/normalize.css" type="text/css" media="all" />-->
 	<link rel="stylesheet" href="styles/main.css" type="text/css" media="all" />
     <link rel="stylesheet" href="styles/twitter-bootstrap/bootstrap.min.css" type="text/css" media="all" />
-    <!--<link rel="stylesheet" href="http://www.vpro.nl/resources/vpro/themes/vpronl/css/style.css" />-->
-    <link rel="stylesheet" href="http://david.vpro.nl:8085/cluster/specials-sample/resources/vpro/themes/specials/css/style.css"/>
+    <link rel="stylesheet" href="styles/style.css"/>
 	<!-- endbuild -->
 
 </head>
@@ -106,31 +105,47 @@
     
                     <div class="col-md-2">
 
-                        <div ng-click="actorDetailsOpen = !actorDetailsOpen" class="actor-name">
+                        <div class="actor-name"
+                             ng-click="actorDetailsOpen = !actorDetailsOpen">
                             details ({{actor.name}})
                             <!--{{$index}}-->
                         </div>
 
                         <div>
-                            <input class="actor-edit-title" ng-model="actor.title" ng-trim="false" type="text">
+                            <input class="actor-edit-title" type="text"
+                                   ng-model="actor.title"
+                                   ng-trim="false">
                         </div>
 
                         <div>
                             <label for="actor-start-{{$index}}">start </label>
-                            <input id="actor-start-{{$index}}" ng-model="actor.start" type="number" step="1000" />
+                            <input id="actor-start-{{$index}}" type="number" step="1000"
+                                   ng-model="actor.start"/>
                         </div>
     
                         <div>
                             <label for="actor-duration-{{$index}}">duur  </label>
-                            <input id="actor-duration-{{$index}}" ng-model="actor.duration" type="number" step="1000"/>
+                            <input id="actor-duration-{{$index}}" type="number" step="1000"
+                                   ng-model="actor.duration" />
                         </div>
 
                         <div ng-if="actor.src">
                             <label for="actor-src-{{$index}}">src</label>
-                            <input class="actor-edit-src" ng-model="actor.src" id="actor-src-{{$index}}">
+                            <input class="actor-edit-src" id="actor-src-{{$index}}"
+                                   ng-focus="mainCtrl.getAssetsForProject()"
+                                   ng-model="actor.src" />
                         </div>
 
-                        <div ng-init="actorDetailsOpen = false"  ng-show="actorDetailsOpen" class="actormetadetails">
+                        <div ng-if="actor.template.background.src">
+                            <label for="actor-src-{{$index}}">src</label>
+                            <input class="actor-edit-src" id="actor-src-{{$index}}"
+                                   ng-focus="mainCtrl.getAssetsForProject()"
+                                   ng-model="actor.template.background.src" />
+                        </div>
+
+                        <div class="actormetadetails"
+                             ng-init="actorDetailsOpen = false"
+                             ng-show="actorDetailsOpen" >
 
                             <div ng-if="actor.trigger">
                                 <label for="actor-trigger-{{$index}}">trigger</label>
@@ -145,6 +160,8 @@
                         </div>
     
                     </div>
+
+
     
                     <div class="col-md-10">
     
@@ -153,7 +170,8 @@
                                 {{actor.preload.url}}
                                 <div class="actor-image" style="background-image: url('{{assetRoot}}{{actor.preload.url}}')"></div>
                             </div>
-                            <div class="value" ng-if="!actor.preload.url.length && actor.preload.url.length === undefined">
+                            <div class="value"
+                                 ng-if="!actor.preload.url.length && actor.preload.url.length === undefined">
                                 {{actor.src}}
                             </div>
                         </div>
@@ -165,6 +183,11 @@
                                 width:(actor.duration/timeline.duration)*100+'%'
                             }"></span>
                         </div>
+
+                        <div class="actor-delete"
+                                ng-click="mainCtrl.deleteActor( $index )">
+                            <span class="glyphicon glyphicon-remove-sign"></span>
+                        </div>
     
                     </div>
     
@@ -173,6 +196,15 @@
             </div>
         </div>
 	</div>
+
+
+    <script type="text/ng-template" id="assetSelector.html">
+        <div class="asset-selector">
+            Hier komt een asset selector.
+        </div>
+    </script>
+
+
 
 
     <script src="<%- jsserver %>/embed/configuration.js?var=vpro"></script>
@@ -186,6 +218,7 @@
 	<script src="scripts/editor/app.js"></script>
 	<script src="scripts/editor/constants.js"></script>
 	<script src="scripts/editor/controllers/MainController.js"></script>
+	<script src="scripts/editor/controllers/AssetSelectorController.js"></script>
 
 	<script src="scripts/editor/services/ScenarioService.js"></script>
 	<script src="scripts/editor/services/ActorService.js"></script>

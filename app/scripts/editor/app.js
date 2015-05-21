@@ -20,6 +20,6 @@
 		}
 	);
 
-	angular.module('SE', []);
+	//angular.module('SE', []);
 
 }( window.require, window.vpro ));
