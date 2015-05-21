@@ -239,7 +239,6 @@
 	<script src="scripts/editor/app.js"></script>
 	<script src="scripts/editor/constants.js"></script>
 	<script src="scripts/editor/controllers/MainController.js"></script>
-	<script src="scripts/editor/controllers/AssetSelectorController.js"></script>
 
 	<script src="scripts/editor/services/ScenarioService.js"></script>
 	<script src="scripts/editor/services/ActorService.js"></script>
