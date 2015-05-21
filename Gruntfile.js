@@ -294,6 +294,7 @@ module.exports = function (grunt) {
 		'copy:build',
 		'ngconstant:build',
 		'template:build',
+		'template:buildServer',
 		'useminPrepare',
 		'concat:generated',
 		'clean:css',
