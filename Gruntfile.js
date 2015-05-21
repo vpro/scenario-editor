@@ -194,7 +194,7 @@ module.exports = function (grunt) {
 				options: {
 					data: {
 						basePath : '',
-						allowFileWrites :  true
+						allowRelativeFileWrites :  true
 					}
 				},
 				files: {
@@ -218,7 +218,7 @@ module.exports = function (grunt) {
 				options: {
 					data: {
 						basePath : '',
-						allowFileWrites :  false
+						allowRelativeFileWrites :  false
 					}
 				},
 				files: {
