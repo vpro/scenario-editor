@@ -13,8 +13,8 @@ angular.module('SE').controller('MainController', [
 		function MainController () {
 
             $scope.actorTypes = [];
-
             $scope.playerVisible = true;
+            $scope.audioActorsVisible = true;
 		}
 
 		MainController.prototype = {
@@ -172,11 +172,14 @@ angular.module('SE').controller('MainController', [
             },
 
 
-			togglePlayerVisible: function(){
-
+            togglePlayerVisible: function(){
 			   $scope.playerVisible = $scope.playerVisible === false;
+		    },
 
-		   }
+            toggleAudioActorsVisible: function(){
+                $scope.audioActorsVisible = $scope.audioActorsVisible === false;
+            }
+
 		};
 
 		return new MainController();

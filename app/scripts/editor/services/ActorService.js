@@ -5,6 +5,17 @@ angular.module( 'SE' ).factory( 'ActorService', [
 
         function ActorService() {
 
+            /**
+             *
+             * TODO: add actors
+             *
+             * - basic caption
+             * - caption with trigger -> video
+             * - caption with trigger -> audio
+             * - caption with trigger -> image gallery?
+             *
+             */
+
             this.actors = [
                 {
                     name: 'Image',
