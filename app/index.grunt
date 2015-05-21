@@ -44,13 +44,10 @@
         <!-- Maar even ter test de scenario selector hierboven ingezet voordat onderstaande zichtbaar is, kies eerst een scenario :) -->
         <div class="scenario-editor" ng-class="{'hidden': ! activeScenario }">
         
-            <div class="row" id="display" ng-class="{'closed': ! playerVisible}">
+            <div class="row bg-info" id="display" ng-class="{'closed': ! playerVisible}">
     
                 <div class="col-md-2">
-                    <textarea class="form-control" rows="16">
-                        {{script | json}}
-                    </textarea>
-    
+
                     <div class="meta">
                         <label for="script-name">Titel</label>
                         <input id="script-name" type="text" ng-model="timeline.title" />
@@ -72,35 +69,34 @@
                 </div>
     
             </div>
-    
-            <div class="row bg-info" id="controls">
-    
-                <div class="col-md-2">
-                    <button ng-show="!playerVisible" class="btn btn-primary" ng-click="mainCtrl.togglePlayerVisible()">show player</button>
-                    <button ng-show="playerVisible" class="btn btn-primary" ng-click="mainCtrl.togglePlayerVisible()">hide player</button>
-                </div>
-    
-                <div class="col-md-6">
-    
-                    <div class="form-inline">
-    
-                        <button class="btn btn-primary" ng-click="mainCtrl.sortActors()">sort</button>
-    
-                        <select class="form-control" ng-model="selectedActor" ng-options="actor as actor.name for actor in actorTypes"></select>
-    
-                        <button class="btn-primary btn" ng-class="{'disabled': !selectedActor}" ng-click="mainCtrl.addActor( selectedActor )">add {{selectedActor.name}}</button>
-    
-                    </div>
-    
-                </div>
-
-                <div class="col-md-2 col-md-push-1">
+            <div class="row scenario-editor-controls bg-info">
+                <div class="col-md-10 col-md-push-2">
                     <div class="btn-group">
                         <button class="btn btn-primary" ng-click="mainCtrl.previewScenario()">preview scenario</button>
+                        <button ng-show="!playerVisible" class="btn btn-primary" ng-click="mainCtrl.togglePlayerVisible()">show player</button>
+                        <button ng-show="playerVisible" class="btn btn-primary" ng-click="mainCtrl.togglePlayerVisible()">hide player</button>
                         <button class="btn btn-primary" ng-click="mainCtrl.saveScenario()">save scenario</button>
                     </div>
                 </div>
             </div>
+
+            <div class="row scenario-editor-controls">
+
+                <div class="col-md-2">
+                    <div class="form-inline">
+                        <select class="form-control" ng-model="selectedActor" ng-options="actor as actor.name for actor in actorTypes"></select>
+
+                        <button class="btn-default btn" ng-class="{'disabled': !selectedActor}" ng-click="mainCtrl.addActor( selectedActor )">add {{selectedActor.name}}</button>
+                    </div>
+                </div>
+
+                <div class="col-md-10">
+                    <button class="btn btn-default" ng-click="mainCtrl.sortActors()">
+                        <span>sort on starttime</span> <span class="glyphicon glyphicon-arrow-down"></span>
+                    </button>
+                </div>
+            </div>
+
 
             <div class="timeline">
     
