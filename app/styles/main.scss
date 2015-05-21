@@ -195,6 +195,38 @@ label {
 
 /* @start asset selector */
 
+body.modal-open {
+    overflow: hidden;
+}
+
+#asset-selector {
+
+    display: none;
+
+    &.open {
+        display: block;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        padding: 10px;
+        overflow: auto;
+        z-index: 999;
+
+        background: rgba(0,0,0,.8);
+    }
+}
+
+.asset-selector-close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+
 .asset-preview {
     width: 60px;
     height: 60px;
@@ -202,6 +234,7 @@ label {
     padding: 4px;
     margin: 4px;
     background: cornflowerblue;
+    cursor: pointer;
 }
 
 .asset-img-thumb {

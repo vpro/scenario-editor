@@ -199,11 +199,13 @@
 
 
 
-    <div class="asset-selector">
+    <div id="asset-selector">
+
+        <div class="asset-selector-close" ng-click="mainCtrl.closeAssetSelector()">
+            <span class="glyphicon glyphicon-remove-circle"></span>
+        </div>
 
         <div ng-repeat="asset in availableAssets track by $index">
-
-            <!--{{asset}}<br/>-->
 
             <div ng-switch on="asset">
 

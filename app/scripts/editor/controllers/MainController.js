@@ -60,6 +60,9 @@ angular.module('SE').controller('MainController', [
 
             openAssetSelector: function(){
 
+                $( 'body' ).addClass( 'modal-open' );
+                $( '#asset-selector').addClass( 'open' );
+
                 ScenarioService.getAssetsForProject().then(
                     function( data ){
                         $scope.availableAssets = data;
@@ -71,7 +74,15 @@ angular.module('SE').controller('MainController', [
 
             },
 
+            closeAssetSelector: function(){
+                $( 'body' ).removeClass( 'modal-open' );
+                $( '#asset-selector').removeClass( 'open' );
+            },
+
             selectAsset: function( asset ){
+
+                this.closeAssetSelector();
+
                 console.log( 'asset: ', asset );
             },
 
