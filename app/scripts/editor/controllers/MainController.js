@@ -90,7 +90,6 @@ angular.module('SE').controller('MainController', [
 
                 if( assetPath ){
                     this.currentCaller.value = assetPath;
-                    console.log( 'angular.element($(this.currentCaller)): ', angular.element($(this.currentCaller)) );
                     angular.element($(this.currentCaller)).triggerHandler('input');
                 }
 
