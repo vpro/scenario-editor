@@ -43,9 +43,7 @@ switch ( $resource ) {
 
             if ( isset( $scenarioData ) ) {
 
-                $scenarioData = json_decode( urldecode( $scenarioData ) );
-
-                if ( $scenarioService->saveScenarioForProject( $resourceId, json_encode( $scenarioData ) ) ) {
+                if ( $scenarioService->saveScenarioForProject( $resourceId, urldecode( $scenarioData ) ) ) {
 
                     Util::wrapOutput(array("saved"=>"success"), $callback);
 

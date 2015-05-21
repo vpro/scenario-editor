@@ -18,17 +18,21 @@ angular.module( 'SE' ).directive( 'sePlayer',
 
                     bindScopeEvents: function () {
 
-                        $scope.$watch('script', function ( newScript, oldScript ) {
+                        $scope.$on( 'scenario:update', function ( e, newScript ) {
 
-                            if ( newScript &&
-                                JSON.stringify( this.scriptData || {} ) !== JSON.stringify( newScript ) ) {
+                            if ( newScript && ! this.scriptData ) {
 
-                                this.scriptData = newScript;
+                                this.scriptData = newScript; // will make a reference
 
                                 if ( this.playerReady ) {
                                     this.player.setScript( this.scriptData );
                                 }
+                            } else if ( this.scriptData && this.playerReady ) {
+
+                                this.player.timer.stop();
+                                this.player.setScript( this.scriptData );
                             }
+
                         }.bind( this ));
 
                     },

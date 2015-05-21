@@ -52,6 +52,8 @@ angular.module('SE').controller('MainController', [
 
 						this.sortActors();
 
+						this.previewScenario();
+
 					}.bind(this));
 				}
 			},
@@ -95,6 +97,11 @@ angular.module('SE').controller('MainController', [
 				$scope.$apply();
 			},
 
+			previewScenario : function () {
+
+				$scope.$emit( 'scenario:update', $scope.script );
+			},
+
 			saveScenario : function () {
 
 				// TODO
@@ -102,9 +109,14 @@ angular.module('SE').controller('MainController', [
 				// in $scope.script dus die wijzigingen saven nog niet, de rest wel! :)
 
 				ScenarioService.saveScenarioForProject( $scope.activeScenario, $scope.script ).then(function () {
-					alert('jeejj it worked.');
-				}, function () {
-					alert('sorry, save didn\'t happen');
+
+					alert('The scenario has been saved and will be previewed.');
+
+					this.previewScenario();
+
+
+				}.bind( this ), function () {
+					alert('Sorry, there was an error during saving.');
 				});
 			},
 

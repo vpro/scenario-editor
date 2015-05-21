@@ -95,7 +95,10 @@
                 </div>
 
                 <div class="col-md-2 col-md-push-1">
-                    <button class="btn btn-primary" ng-click="mainCtrl.saveScenario()">save scenario</button>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" ng-click="mainCtrl.previewScenario()">preview scenario</button>
+                        <button class="btn btn-primary" ng-click="mainCtrl.saveScenario()">save scenario</button>
+                    </div>
                 </div>
             </div>
 
