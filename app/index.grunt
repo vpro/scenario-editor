@@ -117,28 +117,56 @@
 
                         <div class="col-md-2">
 
-                            <div>
-                                <input class="actor-edit-title" type="text"
+
+
+                            <div ng-if="actor.title !== undefined">
+                                <label for="actor-edit-title-{{$index}}">title</label>
+                                <input id="actor-edit-title-{{$index}}"
+                                       class="actor-edit-title"
+                                       type="text"
                                        ng-model="actor.title">
                             </div>
 
                             <div>
                                 <label for="actor-start-{{$index}}">start </label>
-                                <input id="actor-start-{{$index}}" type="number" step="1000"
+                                <input id="actor-start-{{$index}}"
+                                       type="number"
+                                       step="1000"
                                        ng-model="actor.start"/>
                             </div>
 
                             <div>
                                 <label for="actor-duration-{{$index}}">duur  </label>
-                                <input id="actor-duration-{{$index}}" type="number" step="1000"
+                                <input id="actor-duration-{{$index}}"
+                                       type="number"
+                                       step="1000"
                                        ng-model="actor.duration" />
                             </div>
 
-                            <div ng-if="actor.src">
+                            <!--src is either a property on the root of actor-->
+                            <div ng-if="actor.src !== undefined">
                                 <label for="actor-src-{{$index}}">src</label>
-                                <input class="actor-edit-src" id="actor-src-{{$index}}"
+                                <input class="actor-edit-src"
+                                       id="actor-src-{{$index}}"
                                        ng-focus="mainCtrl.openAssetSelector( $event )"
                                        ng-model="actor.src" />
+                            </div>
+
+                            <!--or a property of the actor's template-->
+                            <div ng-if="actor.template.background.src !== undefined">
+                                <label for="actor-background-src-{{$index}}">src</label>
+                                <input class="actor-edit-src"
+                                       id="actor-background-src-{{$index}}"
+                                       ng-focus="mainCtrl.openAssetSelector( $event )"
+                                       ng-model="actor.template.background.src" />
+                            </div>
+
+                            <div ng-if="actor.template.caption.src !== undefined">
+                                <label for="actor-template-caption-src-{{$index}}">src</label>
+                                <input class="actor-edit-src"
+                                       id="actor-template-caption-src-{{$index}}"
+                                       ng-focus="mainCtrl.openAssetSelector( $event )"
+                                       ng-model="actor.template.caption.src" />
                             </div>
 
                             <div>
@@ -150,24 +178,30 @@
                                 </select>
                             </div>
 
+                            <div ng-if="actor.template.caption.title !== undefined">
+                                <label for="actor-edit-captiontitle-{{$index}}">caption title</label>
+                                <input id="actor-edit-captiontitle-{{$index}}"
+                                       class="actor-edit-title"
+                                       type="text"
+                                       ng-model="actor.template.caption.title">
+                            </div>
+
+                            <div ng-if="actor.template.caption.subtitle !== undefined">
+                                <label for="actor-edit-subtitle-{{$index}}">caption sub</label>
+                                <input id="actor-edit-subtitle-{{$index}}"
+                                       class="actor-edit-title"
+                                       type="text"
+                                       ng-model="actor.template.caption.subtitle">
+                            </div>
+
+
                             <div ng-if="actor.trigger">
 
-                                <label>trigger</label>
-
-                                <div class="sub-option">
-                                    <label for="actor-trigger-active-{{$index}}">active</label>
-                                    <input type="checkbox" id="actor-trigger-active-{{$index}}"
+                                <div>
+                                    <label for="actor-trigger-active-{{$index}}">trigger</label>
+                                    <input type="checkbox"
+                                           id="actor-trigger-active-{{$index}}"
                                            ng-model="actor.trigger.active">
-                                </div>
-
-                                <div ng-if="actor.trigger.active" class="sub-option">
-                                    <label for="actor-trigger-type-{{$index}}">AV type</label>
-
-                                    <select id="actor-trigger-type-{{$index}}"
-                                            ng-model="actor.trigger.type">
-                                        <option value="audio">audio</option>
-                                        <option value="video">video</option>
-                                    </select>
                                 </div>
 
                                 <div ng-if="actor.trigger.active" class="sub-option">
@@ -180,7 +214,17 @@
                                 </div>
 
                                 <div ng-if="actor.trigger.active" class="sub-option">
-                                    <label for="actor-trigger-src-{{$index}}">src</label>
+                                    <label for="actor-trigger-type-{{$index}}">av-type</label>
+
+                                    <select id="actor-trigger-type-{{$index}}"
+                                            ng-model="actor.trigger.type">
+                                        <option value="audio">audio</option>
+                                        <option value="video">video</option>
+                                    </select>
+                                </div>
+
+                                <div ng-if="actor.trigger.active" class="sub-option">
+                                    <label for="actor-trigger-src-{{$index}}">av-src</label>
 
                                     <input id="actor-trigger-src-{{$index}}"
                                            class="actor-edit-src"
@@ -190,6 +234,9 @@
                                 </div>
 
                             </div>
+
+
+
 
                         </div>
 
@@ -205,15 +252,27 @@
 
                                         <div class="value">
 
+                                            <!--if there is name-->
                                             <span ng-if="actor.name.length">{{actor.name}}</span>
 
-                                            <span ng-if="actor.src.length > 0"
-                                                  ng-class="{'actor-src-preview': (actor.type == 'generic' || actor.type == 'ambi')}">
-                                                - {{actor.src}}
+                                            <!--if there is a root src-->
+                                            <span ng-if="actor.src.length > 0 || actor.template.background.src.length > 0"
+                                                  ng-class="{'actor-src-preview': (actor.type === 'generic' || actor.type === 'ambi')}">
+                                                - {{actor.src}}{{actor.template.background.src}}
                                             </span>
 
-                                            <div class="actor-thumb" style="background-image: url('{{assetRoot}}{{actor.src}}')"
-                                                 ng-if="actor.type == 'generic' || actor.type == 'ambi'">
+                                            <div ng-if="actor.type === 'generic' || actor.type === 'ambi'">
+
+                                                <div class="actor-thumb"
+                                                     ng-if="actor.src !== undefined && actor.src.length > 0"
+                                                     style="background-image: url('{{assetRoot}}{{actor.src}}')">
+                                                </div>
+
+                                                <div class="actor-thumb"
+                                                     ng-if="actor.template.background.src !== undefined && actor.template.background.src.length > 0"
+                                                     style="background-image: url('{{assetRoot}}{{actor.template.background.src}}')">
+                                                </div>
+
                                             </div>
 
                                         </div>
@@ -221,7 +280,6 @@
                                     </div>
 
                                 </div>
-
 
                             </div>
 

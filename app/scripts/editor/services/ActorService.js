@@ -9,6 +9,8 @@ angular.module( 'SE' ).factory( 'ActorService', [
              *
              * TODO: add actors
              *
+             * - add preload properties
+             *
              * - basic caption
              * - caption with trigger -> video
              * - caption with trigger -> audio
@@ -20,6 +22,7 @@ angular.module( 'SE' ).factory( 'ActorService', [
                 {
                     name: 'Audio',
                     type: 'audio',
+                    title: '',
                     start: 0,
                     duration: 5000,
                     offset: 0,
@@ -28,6 +31,7 @@ angular.module( 'SE' ).factory( 'ActorService', [
                 {
                     type: 'generic',
                     name: 'Image Cover',
+                    title: '',
                     start: 0,
                     duration: 5000,
                     template: {
@@ -40,6 +44,7 @@ angular.module( 'SE' ).factory( 'ActorService', [
                 {
                     type: 'generic',
                     name: 'Image Contain',
+                    title: '',
                     start: 0,
                     duration: 5000,
                     template: {
@@ -52,22 +57,21 @@ angular.module( 'SE' ).factory( 'ActorService', [
                 {
                     type: 'caption',
                     name: 'Caption',
+                    title: '',
                     start: 0,
                     duration: 5000,
                     image: '',
-                    title: '',
-                    subtitle: '',
                     trigger: {
                         event: 'click',
-                        active: true,
+                        active: false,
                         type: 'video',
                         src: ''
                     },
                     template: {
                         caption: {
-                            trigger: {
-                                title: ''
-                            }
+                            src: '',
+                            title: '',
+                            subtitle: ''
                         }
                     }
                 }

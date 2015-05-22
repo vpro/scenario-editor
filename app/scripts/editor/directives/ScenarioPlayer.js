@@ -25,12 +25,12 @@ angular.module( 'SE' ).directive( 'sePlayer',
                                 this.scriptData = newScript; // will make a reference
 
                                 if ( this.playerReady ) {
-                                    this.player.setScript( this.scriptData );
+                                    this.player.setScript( this.getSafeScriptForPlayer() );
                                 }
                             } else if ( this.scriptData && this.playerReady ) {
 
                                 this.player.timer.stop();
-                                this.player.setScript( this.scriptData );
+                                this.player.setScript( this.getSafeScriptForPlayer() );
                             }
 
                         }.bind( this ));
@@ -43,7 +43,7 @@ angular.module( 'SE' ).directive( 'sePlayer',
                             this.playerReady = true;
 
                             if ( this.scriptData ) {
-                                this.player.setScript( this.scriptData );
+                                this.player.setScript( this.getSafeScriptForPlayer() );
                             }
 
                             var animations = this.player.getAnimations();

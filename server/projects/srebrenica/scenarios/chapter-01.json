@@ -8,320 +8,11 @@
             "type": "ambi",
             "start": 0,
             "duration": 206000,
-            "src": "img/still-istina-document-stamp.png",
+            "src": "img\/still-istina-document-stamp.png",
             "preload": {
                 "type": "image"
             },
-            "animationName": "zoom-1.2-1.6",
-            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
-        },
-        {
-            "title": "Danish Leopard",
-            "type": "generic",
-            "name": "Image Cover",
-            "start": 0,
-            "duration": 5000,
-            "src": "img/still-danish-leopard-3.png",
-            "template": {
-                "background": {
-                    "src": "img/still-danish-leopard-3.png",
-                    "sizing": "cover"
-                },
-                "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
-            },
-            "preload": {
-                "type": "image"
-            },
-            "animationName": "zoom-1.2-1.6",
-            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
-        },
-        {
-            "title": "Ambiant audio",
-            "type": "audio",
-            "name": "Audio",
-            "start": 0,
-            "duration": 231000,
-            "offset": 0,
-            "src": "audio/Srebr_muziek.mp3",
-            "preload": {
-                "type": "audio"
-            },
-            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
-        },
-        {
-            "title": "Voiceover 01",
-            "type": "audio",
-            "name": "Audio",
-            "start": 0,
-            "duration": 10500,
-            "offset": 0,
-            "src": "audio/voice_01.mp3",
-            "preload": {
-                "type": "audio"
-            },
-            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
-        },
-        {
-            "title": "UN soldier",
-            "type": "generic",
-            "name": "Image Cover",
-            "start": 5000,
-            "duration": 5000,
-            "src": "img/still-soldier-binoculars.png",
-            "template": {
-                "background": {
-                    "src": "img/still-soldier-binoculars.png",
-                    "sizing": "cover"
-                },
-                "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
-            },
-            "preload": {
-                "type": "image"
-            },
-            "animationName": "zoom-1.2-1.6",
-            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
-        },
-        {
-            "title": "Tank",
-            "type": "generic",
-            "name": "Image Cover",
-            "start": 10000,
-            "duration": 2500,
-            "src": "img/still-aben-hede-tank.png",
-            "template": {
-                "background": {
-                    "src": "img/still-aben-hede-tank.png",
-                    "sizing": "cover"
-                },
-                "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
-            },
-            "preload": {
-                "type": "image"
-            },
-            "animationName": "zoom-1.2-1.6",
-            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
-        },
-        {
-            "title": "Voiceover 02",
-            "type": "audio",
-            "name": "Audio",
-            "start": 11000,
-            "duration": 12000,
-            "offset": 0,
-            "src": "audio/voice_02.mp3",
-            "preload": {
-                "type": "audio"
-            },
-            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
-        },
-        {
-            "title": "Tank fire",
-            "type": "generic",
-            "name": "Image Cover",
-            "start": 12500,
-            "duration": 2500,
-            "src": "img/still-aben-hede-tank-fire.png",
-            "template": {
-                "background": {
-                    "src": "img/still-aben-hede-tank-fire.png",
-                    "sizing": "cover"
-                },
-                "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
-            },
-            "preload": {
-                "type": "image"
-            },
-            "animationName": "zoom-1.2-1.6",
-            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
-        },
-        {
-            "title": "Report",
-            "type": "generic",
-            "name": "Image Cover",
-            "start": 15000,
-            "duration": 5000,
-            "src": "img/document-chetnik-pavle-djurisic-report.png",
-            "template": {
-                "background": {
-                    "src": "img/document-chetnik-pavle-djurisic-report.png",
-                    "sizing": "cover"
-                },
-                "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
-            },
-            "preload": {
-                "type": "image"
-            },
-            "animationName": "zoom-1.2-1.6",
-            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
-        },
-        {
-            "title": "Video All",
-            "type": "video",
-            "name": "Video",
-            "start": 20000,
-            "duration": 50000,
-            "offset": 0,
-            "src": "video/Srebr_helefilmpje_480.mp4",
-            "preload": {
-                "type": "video"
-            },
-            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
-        },
-        {
-            "title": "Voiceover 03",
-            "type": "audio",
-            "name": "Audio",
-            "start": 24000,
-            "duration": 7500,
-            "offset": 0,
-            "src": "audio/voice_03.mp3",
-            "preload": {
-                "type": "audio"
-            },
-            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
-        },
-        {
-            "title": "Voiceover 04",
-            "type": "audio",
-            "name": "Audio",
-            "start": 32000,
-            "duration": 13000,
-            "offset": 0,
-            "src": "audio/voice_04.mp3",
-            "preload": {
-                "type": "audio"
-            },
-            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
-        },
-        {
-            "title": "Voiceover 05",
-            "type": "audio",
-            "name": "Audio",
-            "start": 46000,
-            "duration": 9500,
-            "offset": 0,
-            "src": "audio/voice_05.mp3",
-            "preload": {
-                "type": "audio"
-            },
-            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
-        },
-        {
-            "title": "Voiceover 06",
-            "type": "audio",
-            "name": "Audio",
-            "start": 56000,
-            "duration": 11500,
-            "offset": 0,
-            "src": "audio/voice_06.mp3",
-            "preload": {
-                "type": "audio"
-            },
-            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
-        },
-        {
-            "title": "Voiceover 07",
-            "type": "audio",
-            "name": "Audio",
-            "start": 68000,
-            "duration": 22000,
-            "offset": 0,
-            "src": "audio/voice_07.mp3",
-            "preload": {
-                "type": "audio"
-            },
-            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
-        },
-        {
-            "title": "Voiceover 08",
-            "type": "audio",
-            "name": "Audio",
-            "start": 90000,
-            "duration": 21000,
-            "offset": 0,
-            "src": "audio/voice_08.mp3",
-            "preload": {
-                "type": "audio"
-            },
-            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
-        },
-        {
-            "title": "Voiceover 09",
-            "type": "audio",
-            "name": "Audio",
-            "start": 111000,
-            "duration": 12000,
-            "offset": 0,
-            "src": "audio/voice_09.mp3",
-            "preload": {
-                "type": "audio"
-            },
-            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
-        },
-        {
-            "title": "Voiceover 10",
-            "type": "audio",
-            "name": "Audio",
-            "start": 124000,
-            "duration": 8000,
-            "offset": 0,
-            "src": "audio/voice_10.mp3",
-            "preload": {
-                "type": "audio"
-            },
-            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
-        },
-        {
-            "title": "Voiceover 11",
-            "type": "audio",
-            "name": "Audio",
-            "start": 132000,
-            "duration": 21000,
-            "offset": 0,
-            "src": "audio/voice_11.mp3",
-            "preload": {
-                "type": "audio"
-            },
-            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
-        },
-        {
-            "title": "Voiceover 12",
-            "type": "audio",
-            "name": "Audio",
-            "start": 153000,
-            "duration": 8500,
-            "offset": 0,
-            "src": "audio/voice_12.mp3",
-            "preload": {
-                "type": "audio"
-            },
-            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
-        },
-        {
-            "title": "Voiceover 13",
-            "type": "audio",
-            "name": "Audio",
-            "start": 162000,
-            "duration": 17500,
-            "offset": 0,
-            "src": "audio/voice_13.mp3",
-            "preload": {
-                "type": "audio"
-            },
-            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
-        },
-        {
-            "title": "Voiceover 14",
-            "type": "audio",
-            "name": "Audio",
-            "start": 180000,
-            "duration": 8500,
-            "offset": 0,
-            "src": "audio/voice_14.mp3",
-            "preload": {
-                "type": "audio"
-            },
-            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
+            "animationName": "zoom-1.2-1.6"
         },
         {
             "type": "caption",
@@ -333,16 +24,293 @@
             "subtitle": "",
             "trigger": {
                 "event": "click",
-                "active": true,
+                "active": false,
                 "type": "video",
                 "src": ""
             },
             "template": {
                 "caption": {
-                    "trigger": {
-                        "title": ""
-                    }
+                    "src": "img\/document-chetnik-pavle-djurisic-report.png",
+                    "title": "",
+                    "subtitle": ""
                 }
+            }
+        },
+        {
+            "title": "Ambiant audio",
+            "type": "audio",
+            "name": "Audio",
+            "start": 0,
+            "duration": 231000,
+            "offset": 0,
+            "src": "audio\/Srebr_muziek.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+        {
+            "title": "Voiceover 01",
+            "type": "audio",
+            "name": "Audio",
+            "start": 0,
+            "duration": 10500,
+            "offset": 0,
+            "src": "audio\/voice_01.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+        {
+            "title": "Danish Leopard",
+            "type": "generic",
+            "name": "Image Cover",
+            "start": 0,
+            "duration": 5000,
+            "template": {
+                "background": {
+                    "src": "img\/still-danish-leopard-3.png",
+                    "sizing": "cover"
+                }
+            },
+            "preload": {
+                "type": "image"
+            },
+            "animationName": "zoom-1.2-1.6"
+        },
+        {
+            "title": "UN soldier",
+            "type": "generic",
+            "name": "Image Cover",
+            "start": 5000,
+            "duration": 5000,
+            "template": {
+                "background": {
+                    "src": "img\/still-soldier-binoculars.png",
+                    "sizing": "cover"
+                }
+            },
+            "preload": {
+                "type": "image"
+            },
+            "animationName": "zoom-1.2-1.6"
+        },
+        {
+            "title": "Tank",
+            "type": "generic",
+            "name": "Image Cover",
+            "start": 10000,
+            "duration": 2500,
+            "template": {
+                "background": {
+                    "src": "img\/still-aben-hede-tank.png",
+                    "sizing": "cover"
+                }
+            },
+            "preload": {
+                "type": "image"
+            },
+            "animationName": "zoom-1.2-1.6"
+        },
+        {
+            "title": "Voiceover 02",
+            "type": "audio",
+            "name": "Audio",
+            "start": 11000,
+            "duration": 12000,
+            "offset": 0,
+            "src": "audio\/voice_02.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+        {
+            "title": "Tank fire",
+            "type": "generic",
+            "name": "Image Cover",
+            "start": 12500,
+            "duration": 2500,
+            "template": {
+                "background": {
+                    "src": "img\/still-aben-hede-tank-fire.png",
+                    "sizing": "cover"
+                }
+            },
+            "preload": {
+                "type": "image"
+            },
+            "animationName": "zoom-1.2-1.6"
+        },
+        {
+            "title": "Report",
+            "type": "generic",
+            "name": "Image Cover",
+            "start": 15000,
+            "duration": 5000,
+            "template": {
+                "background": {
+                    "src": "img\/document-chetnik-pavle-djurisic-report.png",
+                    "sizing": "cover"
+                }
+            },
+            "preload": {
+                "type": "image"
+            },
+            "animationName": "zoom-1.2-1.6"
+        },
+        {
+            "title": "Video All",
+            "type": "video",
+            "name": "Video",
+            "start": 20000,
+            "duration": 50000,
+            "offset": 0,
+            "src": "video\/Srebr_helefilmpje_480.mp4",
+            "preload": {
+                "type": "video"
+            }
+        },
+        {
+            "title": "Voiceover 03",
+            "type": "audio",
+            "name": "Audio",
+            "start": 24000,
+            "duration": 7500,
+            "offset": 0,
+            "src": "audio\/voice_03.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+        {
+            "title": "Voiceover 04",
+            "type": "audio",
+            "name": "Audio",
+            "start": 32000,
+            "duration": 13000,
+            "offset": 0,
+            "src": "audio\/voice_04.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+        {
+            "title": "Voiceover 05",
+            "type": "audio",
+            "name": "Audio",
+            "start": 46000,
+            "duration": 9500,
+            "offset": 0,
+            "src": "audio\/voice_05.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+        {
+            "title": "Voiceover 06",
+            "type": "audio",
+            "name": "Audio",
+            "start": 56000,
+            "duration": 11500,
+            "offset": 0,
+            "src": "audio\/voice_06.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+        {
+            "title": "Voiceover 07",
+            "type": "audio",
+            "name": "Audio",
+            "start": 68000,
+            "duration": 22000,
+            "offset": 0,
+            "src": "audio\/voice_07.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+        {
+            "title": "Voiceover 08",
+            "type": "audio",
+            "name": "Audio",
+            "start": 90000,
+            "duration": 21000,
+            "offset": 0,
+            "src": "audio\/voice_08.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+        {
+            "title": "Voiceover 09",
+            "type": "audio",
+            "name": "Audio",
+            "start": 111000,
+            "duration": 12000,
+            "offset": 0,
+            "src": "audio\/voice_09.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+        {
+            "title": "Voiceover 10",
+            "type": "audio",
+            "name": "Audio",
+            "start": 124000,
+            "duration": 8000,
+            "offset": 0,
+            "src": "audio\/voice_10.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+        {
+            "title": "Voiceover 11",
+            "type": "audio",
+            "name": "Audio",
+            "start": 132000,
+            "duration": 21000,
+            "offset": 0,
+            "src": "audio\/voice_11.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+        {
+            "title": "Voiceover 12",
+            "type": "audio",
+            "name": "Audio",
+            "start": 153000,
+            "duration": 8500,
+            "offset": 0,
+            "src": "audio\/voice_12.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+        {
+            "title": "Voiceover 13",
+            "type": "audio",
+            "name": "Audio",
+            "start": 162000,
+            "duration": 17500,
+            "offset": 0,
+            "src": "audio\/voice_13.mp3",
+            "preload": {
+                "type": "audio"
+            }
+        },
+        {
+            "title": "Voiceover 14",
+            "type": "audio",
+            "name": "Audio",
+            "start": 180000,
+            "duration": 8500,
+            "offset": 0,
+            "src": "audio\/voice_14.mp3",
+            "preload": {
+                "type": "audio"
             }
         }
     ]
