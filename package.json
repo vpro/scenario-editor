@@ -9,7 +9,7 @@
             "assetRoot": "http://localhost:8010/projects/srebrenica/project-assets/"
         },
         "production": {
-            "jsServer": "http://js.vpro.nl",
+            "jsServer": "http://js-test.vpro.nl",
             "dataServer": "http://files.vpro.nl/scenario-editor",
             "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
         }
