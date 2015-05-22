@@ -325,9 +325,12 @@ module.exports = function (grunt) {
 	grunt.registerTask('default', ['dev:watch']);
 
 
-	/* run the dataserver as a seperate task in dev mode to be able to run the watch task in parallel */
+	// run the dataserver as a seperate task in dev mode to be able to run the watch task in parallel
 	grunt.registerTask('dataserver:dev', ['template:devServer','php']);
-	grunt.registerTask('dataserver:build', ['template:buildServer','php']);
+
+
+		// dataserver:build creates a deployable version of the server/ folder
+	grunt.registerTask('dataserver:build', ['template:buildServer']);
 
 
 };
