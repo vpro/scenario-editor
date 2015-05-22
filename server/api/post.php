@@ -49,11 +49,18 @@ switch ( $resource ) {
 
             $scenarioData = Util::getPostVar("scenario", "raw");
 
-            if ( isset( $scenarioData ) ) {
+            if ( isset( $scenarioData ) && $scenarioData !== '' ) {
 
-                $scenarioData = json_decode( urldecode( $scenarioData ) );
+                $scenarioData = json_decode( utf8_encode( urldecode( $scenarioData ) ) );
 
-                if ( $scenarioService->saveScenarioForProject( $resourceId, json_encode( $scenarioData, JSON_PRETTY_PRINT ) ) ) {
+                    // JSON_PRETTY_PRINT is available as of PHP 5.4, files.vpro.nl is 5.3.29
+                if ( defined( 'JSON_PRETTY_PRINT' ) ) {
+                    $scenarioData = json_encode( $scenarioData, JSON_PRETTY_PRINT );
+                } else {
+                    $scenarioData = json_encode( $scenarioData );
+                }
+
+                if ( $scenarioService->saveScenarioForProject( $resourceId, $scenarioData ) ) {
 
                     Util::wrapOutput(array("saved"=>"success"), $callback);
 

@@ -69,7 +69,6 @@ class ScenarioService {
     }
 
     function saveScenarioForProject ( $scenarioId, $scenarioData ) {
-
         $file = $this->getScenariosRootPath() . $scenarioId .'.json';
 
         if ( is_writable( $file ) ) {
