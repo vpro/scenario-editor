@@ -10,7 +10,6 @@
           href="img/vpro.ico">
 
 	<!-- build:css styles/app.css -->
-	<!--<link rel="stylesheet" href="styles/normalize.css" type="text/css" media="all" />-->
 	<link rel="stylesheet" href="styles/main.css" type="text/css" media="all" />
     <link rel="stylesheet" href="styles/twitter-bootstrap/bootstrap.min.css" type="text/css" media="all" />
     <link rel="stylesheet" href="styles/style.css"/>

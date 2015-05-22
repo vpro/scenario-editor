@@ -13,28 +13,38 @@ module.exports = function (grunt) {
 		clean: {
 			dev: ['grunt/work/**/*'],
 			build: ['grunt/build/**/*'],
-			css:['grunt/build/styles/*.css'],
+			css:['grunt/build/styles/*.css', 'grunt/build/styles/twitter-bootstrap'],
 			scripts:['grunt/build/scripts','grunt/build/js/templates.js']
 		},
 
 		concat: {
-			IDMalert: {
+			templates: {
 				src:  [ 'grunt/build/js/editor.js', '<%= ngtemplates.editor.dest %>' ],
 				dest: 'grunt/build/js/editor.js'
 			}
 		},
 
 		connect: {
-			server: {
+			dev: {
 				options: {
 					hostname: '*',
-					tmpdir: 'grunt/work',
 					middleware: function(connect) {
 						return [
 							connect.static(require('path').resolve('stub')),
 							connect.static(require('path').resolve('grunt/work')),
-							connect.static(require('path').resolve('app')),
-							connect.static(require('path').resolve('resources'))
+							connect.static(require('path').resolve('app'))
+						]
+					}
+				}
+			},
+
+			build: {
+				options: {
+					hostname: '*',
+					keepalive: true,
+					middleware: function(connect) {
+						return [
+							connect.static(require('path').resolve('grunt/build'))
 						]
 					}
 				}
@@ -56,9 +66,15 @@ module.exports = function (grunt) {
 				files: [
 					{
 						cwd:'app/styles',
-						src:['*.css'],
+						src:['*.css', 'twitter-bootstrap/bootstrap.min.css'],
 						expand:true,
 						dest:'grunt/build/styles/'
+					},
+					{
+						cwd:'app/styles',
+						src:['fonts/*'],
+						expand:true,
+						dest:'grunt/build/'
 					},
 					{
 						cwd:'app/scripts',
@@ -75,14 +91,6 @@ module.exports = function (grunt) {
 						dest:'grunt/build/js/app.js'
 					}
 				]
-			},
-			deploy: {
-				files: [{
-					cwd:'grunt/build',
-					src:['**/*'],
-					expand:true,
-					dest:'../web'
-				}]
 			}
 		},
 
@@ -224,7 +232,7 @@ module.exports = function (grunt) {
 				files: {
 					'server/default-config.php': ['server/default-config.template.php']
 				}
-			},
+			}
 		},
 
 		useminPrepare: {
@@ -291,8 +299,8 @@ module.exports = function (grunt) {
 	grunt.registerTask('build', [
 		'clean:build',
 		'sass:build',
-		'copy:build',
 		'ngconstant:build',
+		'copy:build',
 		'template:build',
 		'template:buildServer',
 		'useminPrepare',
@@ -302,14 +310,20 @@ module.exports = function (grunt) {
 		'usemin',
 		'ngmin',
 		'ngtemplates',
-		'concat:IDMalert',
+		'concat:templates',
 		'uglify',
-		'clean:scripts',
-		'copy:deploy'
+		'clean:scripts'
 	]);
 
-	grunt.registerTask('dev', ['clean:dev', 'sass:dev', 'copy:dev', 'ngconstant:dev', 'template:dev']);
-	grunt.registerTask('default', ['dev', 'connect', 'watch']);
+		// for testing against the build settings
+	grunt.registerTask('test:build', ['build', 'connect:build']);
+
+	grunt.registerTask('dev', ['clean:dev', 'sass:dev', 'ngconstant:dev', 'copy:dev', 'template:dev']);
+	grunt.registerTask('dev:watch', ['dev', 'connect:dev', 'watch']);
+
+
+	grunt.registerTask('default', ['dev:watch']);
+
 
 	/* run the dataserver as a seperate task in dev mode to be able to run the watch task in parallel */
 	grunt.registerTask('dataserver:dev', ['template:devServer','php']);
