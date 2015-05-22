@@ -64,6 +64,15 @@ angular.module( 'SE' ).directive( 'sePlayer',
                         this.bindPlayerEvents();
                     },
 
+                        // return a 'copy' of the script so the Scenario Player can't
+                        // mess with it's referenced contents
+                    getSafeScriptForPlayer : function () {
+
+                        var scriptAsString = JSON.stringify( this.scriptData );
+
+                        return JSON.parse( scriptAsString );
+                    },
+
                     init: function ( element ) {
 
                         $window.require( ['vpro/gui/scenarioPlayer/js/App'], this.createPlayer.bind( this ) );
