@@ -15,12 +15,11 @@ angular.module( 'SE' ).factory( 'ScenarioService', [
 
                 var deferred = $q.defer();
 
-                $http.jsonp( DATA_SERVER +'/api/get.php', {
+                $http.get( DATA_SERVER +'/api/get.php', {
 
                     params : {
                         project : projectName || 'srebrenica',
-                        resource: 'assets',
-                        callback : 'JSON_CALLBACK'
+                        resource: 'assets'
                     }
 
                 }).then(
@@ -42,12 +41,11 @@ angular.module( 'SE' ).factory( 'ScenarioService', [
 
                 var deferred = $q.defer();
 
-                $http.jsonp( DATA_SERVER +'/api/get.php', {
+                $http.get( DATA_SERVER +'/api/get.php', {
 
                     params : {
                         project : projectName || 'srebrenica',
-                        resource: 'scenarios',
-                        callback : 'JSON_CALLBACK'
+                        resource: 'scenarios'
                     }
 
                 }).then(
@@ -69,13 +67,12 @@ angular.module( 'SE' ).factory( 'ScenarioService', [
 
                 var deferred = $q.defer();
 
-                $http.jsonp( DATA_SERVER +'/api/get.php', {
+                $http.get( DATA_SERVER +'/api/get.php', {
 
                     params : {
                         project : projectName || 'srebrenica',
                         resource: 'scenarios',
-                        id: scenarioId || 'chapter-01',
-                        callback : 'JSON_CALLBACK'
+                        id: scenarioId || 'chapter-01'
                     }
 
                 }).then(
@@ -104,22 +101,20 @@ angular.module( 'SE' ).factory( 'ScenarioService', [
 
                 var deferred = $q.defer();
 
-                /*
-                     Een post werkt niet vanuit JSONP, dus voorlopig maar even de data via de URL meegeven, kijken hoever
-                     we daar mee komen :)
-                 */
+                $http.post( DATA_SERVER +'/api/post.php',  'scenario='+ encodeURIComponent( JSON.stringify( scenarioData ) ),
 
-                $http.jsonp( DATA_SERVER +'/api/post.php', {
+                    {
+                        headers : {
+                            'Content-type' : 'application/x-www-form-urlencoded'
+                        },
 
-                    params : {
-                        project : projectName || 'srebrenica',
-                        resource: 'scenarios',
-                        id: scenarioId || 'chapter-01',
-                        scenario : scenarioData,
-                        callback : 'JSON_CALLBACK'
+                        params : {
+                            project : projectName || 'srebrenica',
+                            resource: 'scenarios',
+                            id: scenarioId || 'chapter-01'
+                        }
                     }
-
-                }).then(
+                ).then(
 
                     function (response) {
                         deferred.resolve(response.data);

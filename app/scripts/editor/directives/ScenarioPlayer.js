@@ -6,7 +6,7 @@ angular.module( 'SE' ).directive( 'sePlayer',
 
         return {
             restrict: 'E',
-            controller: ['$scope', '$window', 'DATA_SERVER', 'ASSET_ROOT', function ( $scope, $window, DATA_SERVER, ASSET_ROOT ) {
+            controller: ['$scope', '$window', 'ASSET_ROOT', function ( $scope, $window, ASSET_ROOT ) {
 
                 function ScenarioPlayer () {
 
