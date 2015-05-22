@@ -18,12 +18,6 @@ angular.module( 'SE' ).factory( 'ActorService', [
 
             this.actors = [
                 {
-                    name: 'Image',
-                    type: 'image',
-                    start: 0,
-                    duration: 5000
-                },
-                {
                     name: 'Audio',
                     type: 'audio',
                     start: 0,

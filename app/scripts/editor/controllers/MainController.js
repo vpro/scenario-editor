@@ -27,6 +27,20 @@ angular.module('SE').controller('MainController', [
 				});
 
                 $scope.actorTypes = ActorService.getActors();
+
+				this.bindScopeHandlers();
+			},
+
+			bindScopeHandlers: function(){
+				$scope.$on( 'player-animations', function( e, animations ){
+
+                    $scope.animationNames = animations.map(function( animation ){
+                        return animation.name;
+                    });
+
+                    $scope.$apply();
+
+                }.bind( this ));
 			},
 
 			activateScenario : function ( scenario ) {

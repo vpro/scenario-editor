@@ -46,6 +46,10 @@ angular.module( 'SE' ).directive( 'sePlayer',
                                 this.player.setScript( this.scriptData );
                             }
 
+                            var animations = this.player.getAnimations();
+
+                            $scope.$emit( 'player-animations', animations );
+
                         }.bind(this) );
                     },
 

@@ -119,8 +119,7 @@
 
                             <div>
                                 <input class="actor-edit-title" type="text"
-                                       ng-model="actor.title"
-                                       ng-trim="false">
+                                       ng-model="actor.title">
                             </div>
 
                             <div>
@@ -142,18 +141,52 @@
                                        ng-model="actor.src" />
                             </div>
 
-                            <div class="actormetadetails"
-                                 ng-init="actorDetailsOpen = false"
-                                 ng-show="actorDetailsOpen" >
+                            <div>
+                                <label for="actor-animation-{{$index}}">animation </label>
+                                <select id="actor-animation-{{$index}}"
+                                        ng-model="actor.animationName"
+                                        ng-options="animationName as animationName for animationName in animationNames">
+                                    <option value=""></option>
+                                </select>
+                            </div>
 
-                                <div ng-if="actor.trigger">
-                                    <label for="actor-trigger-{{$index}}">trigger</label>
-                                    <span id="actor-trigger-{{$index}}" class="value">{{actor.trigger}}</span>
+                            <div ng-if="actor.trigger">
+
+                                <label>trigger</label>
+
+                                <div class="sub-option">
+                                    <label for="actor-trigger-active-{{$index}}">active</label>
+                                    <input type="checkbox" id="actor-trigger-active-{{$index}}"
+                                           ng-model="actor.trigger.active">
                                 </div>
 
-                                <div ng-if="actor.animationName">
-                                    <label for="actor-animation-{{$index}}">animation </label>
-                                    <span id="actor-animation-{{$index}}" class="value">{{actor.animationName}}</span>
+                                <div ng-if="actor.trigger.active" class="sub-option">
+                                    <label for="actor-trigger-type-{{$index}}">AV type</label>
+
+                                    <select id="actor-trigger-type-{{$index}}"
+                                            ng-model="actor.trigger.type">
+                                        <option value="audio">audio</option>
+                                        <option value="video">video</option>
+                                    </select>
+                                </div>
+
+                                <div ng-if="actor.trigger.active" class="sub-option">
+                                    <label for="actor-trigger-event-{{$index}}">event</label>
+
+                                    <select id="actor-trigger-event-{{$index}}"
+                                            ng-model="actor.trigger.event">
+                                        <option value="click">click</option>
+                                    </select>
+                                </div>
+
+                                <div ng-if="actor.trigger.active" class="sub-option">
+                                    <label for="actor-trigger-src-{{$index}}">src</label>
+
+                                    <input id="actor-trigger-src-{{$index}}"
+                                           class="actor-edit-src"
+                                           ng-model="actor.trigger.src"
+                                           ng-focus="mainCtrl.openAssetSelector( $event )">
+                                    </input>
                                 </div>
 
                             </div>
@@ -166,22 +199,23 @@
 
                             <div class="row">
 
-                                <div class="col-md-2">
-
-                                    <div class="actor-name"
-                                         ng-click="actorDetailsOpen = !actorDetailsOpen">
-                                        details ({{actor.name}})
-                                    </div>
-
-                                </div>
-
                                 <div class="col-md-4">
 
                                     <div class="actor-src">
 
-                                        <div class="value" ng-if="actor.src.length > 0 && ( actor.type == 'generic' || actor.type == 'ambi' )">
-                                            {{actor.src}}
-                                            <div class="actor-image" style="background-image: url('{{assetRoot}}{{actor.src}}')"></div>
+                                        <div class="value">
+
+                                            <span ng-if="actor.name.length">{{actor.name}}</span>
+
+                                            <span ng-if="actor.src.length > 0"
+                                                  ng-class="{'actor-src-preview': (actor.type == 'generic' || actor.type == 'ambi')}">
+                                                - {{actor.src}}
+                                            </span>
+
+                                            <div class="actor-thumb" style="background-image: url('{{assetRoot}}{{actor.src}}')"
+                                                 ng-if="actor.type == 'generic' || actor.type == 'ambi'">
+                                            </div>
+
                                         </div>
 
                                     </div>

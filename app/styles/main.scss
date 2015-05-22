@@ -44,15 +44,10 @@
 }
 
 .se-actor.actor-audio.ng-hide:not(.ng-hide-animate) {
-    display: block!important;
+    display: block!important; // override bootstrap :-(
     max-height: 0;
     padding: 0;
-    margin: 0;
-}
-
-.value {
-    //text-align: right;
-    //display: inline-block;
+    margin-bottom: 0;
 }
 
 input[type="number"] {
@@ -90,11 +85,10 @@ label {
 
 .value {
     font-size: 12px;
-    cursor: pointer;
     color: #888;
 
     &:hover {
-        .actor-image {
+        .actor-thumb {
             width: 320px;
             height: 180px;
             z-index: 9999;
@@ -103,7 +97,7 @@ label {
     }
 }
 
-.actor-image {
+.actor-thumb {
     width: 0;
     height: 0;
     background-size: contain;
@@ -115,8 +109,8 @@ label {
     background-position: center center;
 }
 
-.actor-src {
-    //padding-top: 24px;
+.actor-src-preview {
+    text-decoration: underline;
 }
 
 .actor-delete {
@@ -151,6 +145,10 @@ label {
         color: #000;
     }
 
+}
+
+.sub-option {
+    padding: 0 0 0 10px;
 }
 
 #scenario-selector {
