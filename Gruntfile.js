@@ -160,6 +160,7 @@ module.exports = function (grunt) {
 		php : {
 			test: {
 			   options: {
+				   hostname: '0.0.0.0',
 				   base: 'server',
 				   port: 8010,
 				   keepalive: true,
