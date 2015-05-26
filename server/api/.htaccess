@@ -1,5 +1,5 @@
 # This will only work on the deployment server, not on the local Grunt-PHP one.
-# There you will have to use the query parameters as mentioned in the get.ph/post.php
+# There you will have to use the query parameters as mentioned in the get.php/post.php
 
 RewriteEngine on
 Options +FollowSymlinks

@@ -17,7 +17,7 @@ class ScenarioService {
 
         foreach( scandir( $this->getScenariosRootPath() ) as $idx => $scenario ) {
 
-            if ( $scenario !== '.' && $scenario !== '..') {
+            if ( substr_compare( $scenario, ".", 0, 1 ) !== 0 ) {
 
                 $scenario = explode( '.', $scenario );
                 array_pop( $scenario ); // remove (.)json
