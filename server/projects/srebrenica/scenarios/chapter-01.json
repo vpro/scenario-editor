@@ -15,26 +15,21 @@
             "animationName": "zoom-1.2-1.6"
         },
         {
-            "type": "caption",
-            "name": "Caption",
+            "title": "Danish Leopard",
+            "type": "generic",
+            "name": "Image Cover",
             "start": 0,
             "duration": 5000,
-            "image": "",
-            "title": "Dit is dan wel een caption",
-            "subtitle": "",
-            "trigger": {
-                "event": "click",
-                "active": false,
-                "type": "video",
-                "src": ""
-            },
             "template": {
-                "caption": {
-                    "src": "img\/document-chetnik-pavle-djurisic-report.png",
-                    "title": "",
-                    "subtitle": ""
+                "background": {
+                    "src": "img\/still-danish-leopard-3.png",
+                    "sizing": "cover"
                 }
-            }
+            },
+            "preload": {
+                "type": "image"
+            },
+            "animationName": "zoom-1.2-1.6"
         },
         {
             "title": "Ambiant audio",
@@ -59,23 +54,6 @@
             "preload": {
                 "type": "audio"
             }
-        },
-        {
-            "title": "Danish Leopard",
-            "type": "generic",
-            "name": "Image Cover",
-            "start": 0,
-            "duration": 5000,
-            "template": {
-                "background": {
-                    "src": "img\/still-danish-leopard-3.png",
-                    "sizing": "cover"
-                }
-            },
-            "preload": {
-                "type": "image"
-            },
-            "animationName": "zoom-1.2-1.6"
         },
         {
             "title": "UN soldier",
@@ -158,13 +136,14 @@
             "animationName": "zoom-1.2-1.6"
         },
         {
-            "title": "Video All",
             "type": "video",
             "name": "Video",
+            "title": "Een video",
             "start": 20000,
-            "duration": 50000,
+            "duration": 125000,
             "offset": 0,
             "src": "video\/Srebr_helefilmpje_480.mp4",
+            "cover": true,
             "preload": {
                 "type": "video"
             }
@@ -312,6 +291,28 @@
             "preload": {
                 "type": "audio"
             }
+        },
+        {
+            "type": "caption",
+            "name": "Caption",
+            "title": "Dit is een caption",
+            "start": 0,
+            "duration": 5000,
+            "image": "",
+            "trigger": {
+                "event": "click",
+                "active": true,
+                "type": "video",
+                "src": "video\/Srebr_helefilmpje_480.mp4"
+            },
+            "template": {
+                "caption": {
+                    "src": "img\/still-soldier-binoculars.png",
+                    "title": "Dit is een caption",
+                    "subtitle": "Met een subtitle"
+                }
+            },
+            "animationName": "captionFromLeft"
         }
     ]
 }
