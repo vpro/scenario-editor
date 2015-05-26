@@ -13,6 +13,8 @@
 	<link rel="stylesheet" href="styles/main.css" type="text/css" media="all" />
     <link rel="stylesheet" href="styles/twitter-bootstrap/bootstrap.min.css" type="text/css" media="all" />
     <link rel="stylesheet" href="styles/style.css"/>
+    <link rel="stylesheet" href="styles/icons.css"/>
+    <link rel="stylesheet" href="http://files.vpro.nl/fontface/iconfont/iconfont.css"/>
 	<!-- endbuild -->
 
 </head>
@@ -143,6 +145,13 @@
                                        ng-model="actor.duration" />
                             </div>
 
+                            <div ng-if="actor.cover !== undefined">
+                                <label for="actor-video-cover-{{$index}}">cover</label>
+                                <input type="checkbox"
+                                       id="actor-video-cover-{{$index}}"
+                                       ng-model="actor.cover" />
+                            </div>
+
                             <!--src is either a property on the root of actor-->
                             <div ng-if="actor.src !== undefined">
                                 <label for="actor-src-{{$index}}">src</label>
@@ -183,7 +192,7 @@
                                 <input id="actor-edit-captiontitle-{{$index}}"
                                        class="actor-edit-title"
                                        type="text"
-                                       ng-model="actor.template.caption.title">
+                                       ng-model="actor.template.caption.title"/>
                             </div>
 
                             <div ng-if="actor.template.caption.subtitle !== undefined">
@@ -191,7 +200,7 @@
                                 <input id="actor-edit-subtitle-{{$index}}"
                                        class="actor-edit-title"
                                        type="text"
-                                       ng-model="actor.template.caption.subtitle">
+                                       ng-model="actor.template.caption.subtitle"/>
                             </div>
 
 
@@ -201,7 +210,7 @@
                                     <label for="actor-trigger-active-{{$index}}">trigger</label>
                                     <input type="checkbox"
                                            id="actor-trigger-active-{{$index}}"
-                                           ng-model="actor.trigger.active">
+                                           ng-model="actor.trigger.active"/>
                                 </div>
 
                                 <div ng-if="actor.trigger.active" class="sub-option">
