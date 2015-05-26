@@ -29,6 +29,20 @@ angular.module( 'SE' ).factory( 'ActorService', [
                     src: ''
                 },
                 {
+                    type: 'video',
+                    name: 'Video',
+                    title: '',
+                    start: 0,
+                    duration: 5000,
+                    offset: 0,
+                    src: '',
+                    cover: true,
+                    preload:
+                    {
+                        type: 'video'
+                    }
+                },
+                {
                     type: 'generic',
                     name: 'Image Cover',
                     title: '',
