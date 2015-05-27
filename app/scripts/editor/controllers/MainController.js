@@ -15,6 +15,7 @@ angular.module('SE').controller('MainController', [
             $scope.actorTypes = [];
             $scope.playerVisible = true;
             $scope.audioActorsVisible = true;
+            $scope.compactView= false;
 		}
 
 		MainController.prototype = {
@@ -95,7 +96,7 @@ angular.module('SE').controller('MainController', [
 
             closeAssetSelector: function(){
                 $( 'body' ).removeClass( 'modal-open' );
-                $( '#asset-selector').removeClass( 'open' );
+                $( '#asset-selector' ).removeClass( 'open' );
             },
 
             selectAsset: function( assetPath ){
@@ -110,7 +111,13 @@ angular.module('SE').controller('MainController', [
             },
 
             addActor: function( actor ){
+
                 $scope.script.actors.push( angular.copy( actor ) );
+
+                $( 'html, body' ).animate({
+                    scrollTop: $(document).height()
+                }, 500);
+
             },
 
             deleteActor: function( index ){
@@ -192,6 +199,10 @@ angular.module('SE').controller('MainController', [
 
             toggleAudioActorsVisible: function(){
                 $scope.audioActorsVisible = $scope.audioActorsVisible === false;
+            },
+
+            toggleCompactView: function(){
+                $scope.compactView = $scope.compactView === false;
             }
 
 		};

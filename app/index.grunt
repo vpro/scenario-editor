@@ -71,6 +71,9 @@
                         <button ng-show="!audioActorsVisible" class="btn btn-primary" ng-click="mainCtrl.toggleAudioActorsVisible()">show audio actors</button>
                         <button ng-show="audioActorsVisible" class="btn btn-primary" ng-click="mainCtrl.toggleAudioActorsVisible()">hide audio actors</button>
 
+                        <button ng-show="!compactView" class="btn btn-primary" ng-click="mainCtrl.toggleCompactView()">compact</button>
+                        <button ng-show="compactView" class="btn btn-primary" ng-click="mainCtrl.toggleCompactView()">normal</button>
+
                         <button class="btn btn-primary" ng-click="mainCtrl.saveScenario()">save scenario</button>
                     </div>
                 </div>
@@ -113,13 +116,12 @@
     
                 <div class="row se-actor actor-{{actor.type}}"
                      ng-repeat="actor in actors track by $index"
-                     ng-hide="actor.type === 'audio' && !audioActorsVisible">
+                     ng-hide="actor.type === 'audio' && !audioActorsVisible"
+                     ng-class="{'compact': compactView === true}">
 
                     <div>
 
                         <div class="col-md-2">
-
-
 
                             <div ng-if="actor.title !== undefined">
                                 <label for="actor-edit-title-{{$index}}">title</label>
@@ -179,7 +181,7 @@
                             </div>
 
                             <div>
-                                <label for="actor-animation-{{$index}}">animation </label>
+                                <label for="actor-animation-{{$index}}">ani</label>
                                 <select id="actor-animation-{{$index}}"
                                         ng-model="actor.animationName"
                                         ng-options="animationName as animationName for animationName in animationNames">
@@ -253,42 +255,10 @@
 
                         <div class="col-md-10">
 
-                            <div class="row">
+                            <div class="actor-src">
 
-                                <div class="col-md-4">
-
-                                    <div class="actor-src">
-
-                                        <div class="value">
-
-                                            <!--if there is name-->
-                                            <span ng-if="actor.name.length">{{actor.name}}</span>
-
-                                            <!--if there is a root src-->
-                                            <span ng-if="actor.src.length > 0 || actor.template.background.src.length > 0"
-                                                  ng-class="{'actor-src-preview': (actor.type === 'generic' || actor.type === 'ambi')}">
-                                                - {{actor.src}}{{actor.template.background.src}}
-                                            </span>
-
-                                            <div ng-if="actor.type === 'generic' || actor.type === 'ambi'">
-
-                                                <div class="actor-thumb"
-                                                     ng-if="actor.src !== undefined && actor.src.length > 0"
-                                                     style="background-image: url('{{assetRoot}}{{actor.src}}')">
-                                                </div>
-
-                                                <div class="actor-thumb"
-                                                     ng-if="actor.template.background.src !== undefined && actor.template.background.src.length > 0"
-                                                     style="background-image: url('{{assetRoot}}{{actor.template.background.src}}')">
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
+                                <!--if there is name-->
+                                <div class="value" ng-if="actor.name.length">{{actor.name}}</div>
 
                             </div>
 
@@ -299,6 +269,25 @@
                                     width:(actor.duration/script.duration)*100+'%'
                                 }"></span>
                             </div>
+
+                            <div ng-if="actor.type === 'generic' || actor.type === 'ambi'">
+
+                                <div class="actor-thumb"
+                                     ng-if="actor.src !== undefined && actor.src.length > 0"
+                                     style="background-image: url('{{assetRoot}}{{actor.src}}')">
+                                </div>
+
+                                <div class="actor-thumb"
+                                     ng-if="actor.template.background.src !== undefined && actor.template.background.src.length > 0"
+                                     style="background-image: url('{{assetRoot}}{{actor.template.background.src}}')">
+                                </div>
+
+                            </div>
+
+                            <!--if there is a root src-->
+                            <span class="value" ng-if="actor.src.length > 0 || actor.template.background.src.length > 0">
+                                  {{actor.src}}{{actor.template.background.src}}
+                            </span>
 
                             <div class="actor-delete"
                                     ng-click="mainCtrl.deleteActor( $index )">
