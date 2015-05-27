@@ -267,7 +267,7 @@
                             <div se-draggable-container class="actor-timeline">
                                 <div class="actor-timeline-title">
                                     <span ng-if="actor.start !== undefined">{{actor.start | millSecondsToTimeString}}</span>
-                                    <span> - </span>
+                                    <span ng-if="actor.title !== ''"> - </span>
                                     {{actor.title}}
                                 </div>
                                 <span se-draggable ondrag="mainCtrl.onDrag(actor, x, y)" ondrop="mainCtrl.onDrop()" class="indicator" ng-style="{
