@@ -3,19 +3,20 @@ angular.module('SE').controller('MainController', [
 	'$scope',
 	'ScenarioService',
     'ActorService',
+    '$cookieStore',
 	'DATA_SERVER',
     'ASSET_ROOT',
 
-	function ($scope, ScenarioService, ActorService, DATA_SERVER, ASSET_ROOT ) {
+	function ($scope, ScenarioService, ActorService, $cookieStore, DATA_SERVER, ASSET_ROOT ) {
 
 		'use strict';
 
 		function MainController () {
 
             $scope.actorTypes = [];
-            $scope.playerVisible = true;
-            $scope.audioActorsVisible = true;
-            $scope.compactView= false;
+            $scope.playerVisible = $cookieStore.get( 'playerVisible' ) || true;
+            $scope.audioActorsVisible = $cookieStore.get( 'audioActorsVisible' ) || true;
+            $scope.compactView = $cookieStore.get( 'compactView' ) || false;
 		}
 
 		MainController.prototype = {
@@ -194,15 +195,18 @@ angular.module('SE').controller('MainController', [
 
 
             togglePlayerVisible: function(){
-			   $scope.playerVisible = $scope.playerVisible === false;
+                $scope.playerVisible = $scope.playerVisible === false;
+                $cookieStore.put( 'playerVisible', $scope.playerVisible );
 		    },
 
             toggleAudioActorsVisible: function(){
                 $scope.audioActorsVisible = $scope.audioActorsVisible === false;
+                $cookieStore.put( 'audioActorsVisible', $scope.audioActorsVisible );
             },
 
             toggleCompactView: function(){
                 $scope.compactView = $scope.compactView === false;
+                $cookieStore.put( 'compactView', $scope.compactView );
             }
 
 		};

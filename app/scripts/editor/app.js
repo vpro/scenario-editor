@@ -22,7 +22,8 @@
 
 	angular.module( 'SE',
         [
-		    'angular.filter'
+		    'angular.filter',
+			'ngCookies'
 	    ]
     );
 

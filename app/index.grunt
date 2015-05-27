@@ -350,6 +350,7 @@
 
 	<!-- build:js js/vendor.js -->
 	<script src="scripts/vendor/angularjs/angular.min.js"></script>
+	<script src="scripts/vendor/angularjs/angular-cookies.min.js"></script>
     <script src="scripts/vendor/angular-filter.min.js"></script>
 	<!-- endbuild -->
 
