@@ -15,7 +15,7 @@
 
 
 .meta {
-    padding: 6px 0;
+
     .label {
         width: 60px;
         display: inline-block;
@@ -31,7 +31,6 @@
 
 .se-actor {
     padding: 10px 0;
-    width: 100%;
     zoom: 1;
     margin-bottom: 2px;
     background: #e1e1e1;
@@ -154,8 +153,8 @@ label {
 }
 
 .scenario-editor-controls {
-    padding-top: 20px;
-    padding-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 #display {

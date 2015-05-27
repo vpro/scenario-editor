@@ -25,25 +25,24 @@
 
         <div class="row">
 
-            <div class="col-md-8 col-md-push-2">
+            <div class="col col-md-12">
 
-                <div ng-if="scenarios" id="scenario-selector">
-                    <h2 class="h6">Select a scenario</h2>
-                    <!-- Op de een of andere manier komt ng-model niet op de scope, dus ik geef hem hier
-                        maar door aan de activateScenario method welke vervolgens het scenario inlaadt
-                        en de naam van het scenario als scope.activeScenario set.
+                <form ng-if="scenarios" class="form-horizontal form-inline">
+                    <div class="form-group col-sm-12">
+                        <!-- Op de een of andere manier komt ng-model niet op de scope, dus ik geef hem hier
+                            maar door aan de activateScenario method welke vervolgens het scenario inlaadt
+                            en de naam van het scenario als scope.activeScenario set.
 
-                        TODO: fix this as described in http://stackoverflow.com/a/22768720
-                     -->
-                    <select class="form-control" ng-model="selectedScenario" ng-change="mainCtrl.activateScenario( selectedScenario )">
-                        <option value="">Select...</option>
-                        <option ng-repeat="scenario in scenarios" value="{{scenario}}" ng-selected="scenario == selectedScenario">{{scenario}}</option>
-                    </select>
-
-                </div>
-
+                            TODO: fix this as described in http://stackoverflow.com/a/22768720
+                         -->
+                        <label for="scenario-selector" class="col-sm-4 h6 control-label"><nobr>Select a scenario</nobr></label>
+                        <select id="scenario-selector" class="col-sm-8 form-control" ng-model="selectedScenario" ng-change="mainCtrl.activateScenario( selectedScenario )">
+                            <option value="">Select...</option>
+                            <option ng-repeat="scenario in scenarios" value="{{scenario}}" ng-selected="scenario == selectedScenario">{{scenario}}</option>
+                        </select>
+                    </div>
+                </form>
             </div>
-
         </div>
         
         <!-- Maar even ter test de scenario selector hierboven ingezet voordat onderstaande zichtbaar is, kies eerst een scenario :) -->
@@ -61,27 +60,8 @@
     
             </div>
             <div class="row scenario-editor-controls bg-info">
-                <div class="col-md-10 col-md-push-2">
-                    <div class="btn-group">
-                        <button class="btn btn-primary" ng-click="mainCtrl.previewScenario()">preview scenario</button>
 
-                        <button ng-show="!playerVisible" class="btn btn-primary" ng-click="mainCtrl.togglePlayerVisible()">show player</button>
-                        <button ng-show="playerVisible" class="btn btn-primary" ng-click="mainCtrl.togglePlayerVisible()">hide player</button>
-
-                        <button ng-show="!audioActorsVisible" class="btn btn-primary" ng-click="mainCtrl.toggleAudioActorsVisible()">show audio actors</button>
-                        <button ng-show="audioActorsVisible" class="btn btn-primary" ng-click="mainCtrl.toggleAudioActorsVisible()">hide audio actors</button>
-
-                        <button ng-show="!compactView" class="btn btn-primary" ng-click="mainCtrl.toggleCompactView()">compact</button>
-                        <button ng-show="compactView" class="btn btn-primary" ng-click="mainCtrl.toggleCompactView()">normal</button>
-
-                        <button class="btn btn-primary" ng-click="mainCtrl.saveScenario()">save scenario</button>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="row scenario-editor-controls">
-                <div class="col-md-10 col-md-push-2">
+                <div class="col-md-3">
                     <div class="meta">
                         <label for="script-name">Titel</label>
                         <input id="script-name" type="text" ng-model="script.name" />
@@ -91,23 +71,38 @@
                         <input id="script-duration" ng-model="script.duration" type="number" />
                     </div>
                 </div>
-            </div>
 
-            <div class="row scenario-editor-controls">
+                <div class="col-md-9">
 
-                <div class="col-md-2">
-                    <div class="form-inline">
-                        <select class="form-control" ng-model="selectedActor" ng-options="actor as actor.name for actor in actorTypes"></select>
+                    <div class="btn-group">
 
-                        <button class="btn-default btn" ng-class="{'disabled': !selectedActor}" ng-click="mainCtrl.addActor( selectedActor )">add {{selectedActor.name}}</button>
+                        <button ng-show="!playerVisible" class="btn btn-primary" ng-click="mainCtrl.togglePlayerVisible()">show player</button>
+                        <button ng-show="playerVisible" class="btn btn-primary" ng-click="mainCtrl.togglePlayerVisible()">hide player</button>
+
+                        <button ng-show="!audioActorsVisible" class="btn btn-primary" ng-click="mainCtrl.toggleAudioActorsVisible()">show audio</button>
+                        <button ng-show="audioActorsVisible" class="btn btn-primary" ng-click="mainCtrl.toggleAudioActorsVisible()">hide audio</button>
+
+                        <button ng-show="!compactView" class="btn btn-primary" ng-click="mainCtrl.toggleCompactView()">compact</button>
+                        <button ng-show="compactView" class="btn btn-primary" ng-click="mainCtrl.toggleCompactView()">normal</button>
+
+                        <button class="btn btn-primary" ng-click="mainCtrl.sortActors()">
+                            <span>sort on starttime</span> <span class="glyphicon glyphicon-arrow-down"></span>
+                        </button>
                     </div>
 
-                </div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" ng-click="mainCtrl.previewScenario()">preview</button>
+                        <button class="btn btn-primary" ng-click="mainCtrl.saveScenario()">save</button>
+                    </div>
 
-                <div class="col-md-10">
-                    <button class="btn btn-default" ng-click="mainCtrl.sortActors()">
-                        <span>sort on starttime</span> <span class="glyphicon glyphicon-arrow-down"></span>
-                    </button>
+                    <div class="btn-group">
+                        <div class="form-inline">
+                            <select class="form-control" ng-model="selectedActor" ng-options="actor as actor.name for actor in actorTypes"></select>
+
+                            <button class="btn-default btn" ng-class="{'disabled': !selectedActor}" ng-click="mainCtrl.addActor( selectedActor )">add</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -258,7 +253,14 @@
                             <div class="actor-src">
 
                                 <!--if there is name-->
-                                <div class="value" ng-if="actor.name.length">{{actor.name}}</div>
+                                <div class="value" ng-if="actor.name.length">
+
+                                    <span class="glyphicon glyphicon-music" ng-if="actor.type === 'audio'"></span>
+                                    <span class="glyphicon glyphicon-film" ng-if="actor.type === 'video'"></span>
+                                    <span class="glyphicon glyphicon-picture" ng-if="actor.type === 'generic'"></span>
+
+                                    {{actor.name}}
+                                </div>
 
                             </div>
 
