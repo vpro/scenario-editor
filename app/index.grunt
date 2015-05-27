@@ -265,7 +265,10 @@
                             </div>
 
                             <div se-draggable-container class="actor-timeline">
-                                <div class="actor-timeline-title">{{actor.title}}</div>
+                                <div class="actor-timeline-title">
+                                    <span ng-if="actor.start !== undefined">{{actor.start | millSecondsToTimeString}}</span>
+                                    {{actor.title}}
+                                </div>
                                 <span se-draggable ondrag="mainCtrl.onDrag(actor, x, y)" ondrop="mainCtrl.onDrop()" class="indicator" ng-style="{
                                     left:(actor.start/script.duration)*100+'%',
                                     width:(actor.duration/script.duration)*100+'%'
@@ -357,6 +360,7 @@
 	<!-- build:js js/editor.js -->
 	<script src="scripts/editor/app.js"></script>
 	<script src="scripts/editor/constants.js"></script>
+	<script src="scripts/editor/filters.js"></script>
 	<script src="scripts/editor/controllers/MainController.js"></script>
 
 	<script src="scripts/editor/services/ScenarioService.js"></script>
