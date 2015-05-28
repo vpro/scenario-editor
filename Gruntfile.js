@@ -28,6 +28,7 @@ module.exports = function (grunt) {
 			dev: {
 				options: {
 					hostname: '*',
+					port: '8081',
 					middleware: function(connect) {
 						return [
 							connect.static(require('path').resolve('stub')),
@@ -162,7 +163,7 @@ module.exports = function (grunt) {
 			   options: {
 				   hostname: '0.0.0.0',
 				   base: 'server',
-				   port: 8010,
+				   port: 8082,
 				   keepalive: true,
 				   open: false
 			   }

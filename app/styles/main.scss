@@ -110,6 +110,15 @@ label {
     cursor: pointer;
 }
 
+.actor-change-order {
+    cursor: pointer;
+    color: #888;
+
+    &:hover {
+        color: #000;
+    }
+}
+
 .actor-timeline {
 
     position: relative;
@@ -144,6 +153,9 @@ label {
 #scenario-selector {
     padding-bottom: 10px;
 }
+
+
+
 
 /* @start scenario-player */
 
@@ -189,6 +201,23 @@ label {
         }
     }
 
+}
+
+body.player-fullscreen {
+
+    #scenario-player-container {
+        position: fixed !important;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+    }
+
+    .timeline,
+    .scenario-editor-controls {
+        display: none;
+    }
 }
 
 /* @end scenario-player */

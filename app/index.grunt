@@ -19,7 +19,7 @@
 
 </head>
 
-<body>
+<body ng-class="{'player-fullscreen': playerFullScreen === true }">
 
 	<div class="container-fluid">
 
@@ -83,11 +83,8 @@
                         <button ng-show="audioActorsVisible" class="btn btn-primary" ng-click="mainCtrl.toggleAudioActorsVisible()">hide audio</button>
 
                         <button ng-show="!compactView" class="btn btn-primary" ng-click="mainCtrl.toggleCompactView()">compact</button>
-                        <button ng-show="compactView" class="btn btn-primary" ng-click="mainCtrl.toggleCompactView()">normal</button>
+                        <button ng-show="compactView" class="btn btn-primary" ng-click="mainCtrl.toggleCompactView()">expand</button>
 
-                        <button class="btn btn-primary" ng-click="mainCtrl.sortActors()">
-                            <span>sort on starttime</span> <span class="glyphicon glyphicon-arrow-down"></span>
-                        </button>
                     </div>
 
                     <div class="btn-group">
@@ -103,6 +100,10 @@
                         </div>
                     </div>
 
+                    <div class="value btn-group">
+                        &lt;f&gt; for fullscreen
+                    </div>
+
                 </div>
             </div>
 
@@ -116,139 +117,160 @@
 
                     <div>
 
-                        <div class="col-md-2">
+                        <div class="col-md-3">
 
-                            <div ng-if="actor.title !== undefined">
-                                <label for="actor-edit-title-{{$index}}">title</label>
-                                <input id="actor-edit-title-{{$index}}"
-                                       class="actor-edit-title"
-                                       type="text"
-                                       ng-model="actor.title">
-                            </div>
+                            <div class="row">
 
-                            <div>
-                                <label for="actor-start-{{$index}}">start </label>
-                                <input id="actor-start-{{$index}}"
-                                       type="number"
-                                       step="1000"
-                                       ng-model="actor.start"/>
-                            </div>
+                                <div class="col-md-10">
 
-                            <div>
-                                <label for="actor-duration-{{$index}}">duur  </label>
-                                <input id="actor-duration-{{$index}}"
-                                       type="number"
-                                       step="1000"
-                                       ng-model="actor.duration" />
-                            </div>
+                                    <div ng-if="actor.title !== undefined">
+                                        <label for="actor-edit-title-{{$index}}">title</label>
+                                        <input id="actor-edit-title-{{$index}}"
+                                               class="actor-edit-title"
+                                               type="text"
+                                               ng-model="actor.title">
+                                    </div>
 
-                            <div ng-if="actor.cover !== undefined">
-                                <label for="actor-video-cover-{{$index}}">cover</label>
-                                <input type="checkbox"
-                                       id="actor-video-cover-{{$index}}"
-                                       ng-model="actor.cover" />
-                            </div>
+                                    <div>
+                                        <label for="actor-start-{{$index}}">start </label>
+                                        <input id="actor-start-{{$index}}"
+                                               type="number"
+                                               step="1000"
+                                               ng-model="actor.start"/>
+                                    </div>
 
-                            <!--src is either a property on the root of actor-->
-                            <div ng-if="actor.src !== undefined">
-                                <label for="actor-src-{{$index}}">src</label>
-                                <input class="actor-edit-src"
-                                       id="actor-src-{{$index}}"
-                                       ng-focus="mainCtrl.openAssetSelector( $event )"
-                                       ng-model="actor.src" />
-                            </div>
+                                    <div>
+                                        <label for="actor-duration-{{$index}}">duur  </label>
+                                        <input id="actor-duration-{{$index}}"
+                                               type="number"
+                                               step="1000"
+                                               ng-model="actor.duration" />
+                                    </div>
 
-                            <!--or a property of the actor's template-->
-                            <div ng-if="actor.template.background.src !== undefined">
-                                <label for="actor-background-src-{{$index}}">src</label>
-                                <input class="actor-edit-src"
-                                       id="actor-background-src-{{$index}}"
-                                       ng-focus="mainCtrl.openAssetSelector( $event )"
-                                       ng-model="actor.template.background.src" />
-                            </div>
+                                    <div ng-if="actor.cover !== undefined">
+                                        <label for="actor-video-cover-{{$index}}">cover</label>
+                                        <input type="checkbox"
+                                               id="actor-video-cover-{{$index}}"
+                                               ng-model="actor.cover" />
+                                    </div>
 
-                            <div ng-if="actor.template.caption.src !== undefined">
-                                <label for="actor-template-caption-src-{{$index}}">src</label>
-                                <input class="actor-edit-src"
-                                       id="actor-template-caption-src-{{$index}}"
-                                       ng-focus="mainCtrl.openAssetSelector( $event )"
-                                       ng-model="actor.template.caption.src" />
-                            </div>
+                                    <!--src is either a property on the root of actor-->
+                                    <div ng-if="actor.src !== undefined">
+                                        <label for="actor-src-{{$index}}">src</label>
+                                        <input class="actor-edit-src"
+                                               id="actor-src-{{$index}}"
+                                               ng-focus="mainCtrl.openAssetSelector( $event )"
+                                               ng-model="actor.src" />
+                                    </div>
 
-                            <div>
-                                <label for="actor-animation-{{$index}}">ani</label>
-                                <select id="actor-animation-{{$index}}"
-                                        ng-model="actor.animationName"
-                                        ng-options="animationName as animationName for animationName in animationNames">
-                                    <option value=""></option>
-                                </select>
-                            </div>
+                                    <!--or a property of the actor's template-->
+                                    <div ng-if="actor.template.background.src !== undefined">
+                                        <label for="actor-background-src-{{$index}}">src</label>
+                                        <input class="actor-edit-src"
+                                               id="actor-background-src-{{$index}}"
+                                               ng-focus="mainCtrl.openAssetSelector( $event )"
+                                               ng-model="actor.template.background.src" />
+                                    </div>
 
-                            <div ng-if="actor.template.caption.title !== undefined">
-                                <label for="actor-edit-captiontitle-{{$index}}">caption title</label>
-                                <input id="actor-edit-captiontitle-{{$index}}"
-                                       class="actor-edit-title"
-                                       type="text"
-                                       ng-model="actor.template.caption.title"/>
-                            </div>
+                                    <div ng-if="actor.template.caption.src !== undefined">
+                                        <label for="actor-template-caption-src-{{$index}}">src</label>
+                                        <input class="actor-edit-src"
+                                               id="actor-template-caption-src-{{$index}}"
+                                               ng-focus="mainCtrl.openAssetSelector( $event )"
+                                               ng-model="actor.template.caption.src" />
+                                    </div>
 
-                            <div ng-if="actor.template.caption.subtitle !== undefined">
-                                <label for="actor-edit-subtitle-{{$index}}">caption sub</label>
-                                <input id="actor-edit-subtitle-{{$index}}"
-                                       class="actor-edit-title"
-                                       type="text"
-                                       ng-model="actor.template.caption.subtitle"/>
-                            </div>
+                                    <div>
+                                        <label for="actor-animation-{{$index}}">ani</label>
+                                        <select id="actor-animation-{{$index}}"
+                                                ng-model="actor.animationName"
+                                                ng-options="animationName as animationName for animationName in animationNames">
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+
+                                    <div ng-if="actor.template.caption.title !== undefined">
+                                        <label for="actor-edit-captiontitle-{{$index}}">caption title</label>
+                                        <input id="actor-edit-captiontitle-{{$index}}"
+                                               class="actor-edit-title"
+                                               type="text"
+                                               ng-model="actor.template.caption.title"/>
+                                    </div>
+
+                                    <div ng-if="actor.template.caption.subtitle !== undefined">
+                                        <label for="actor-edit-subtitle-{{$index}}">caption sub</label>
+                                        <input id="actor-edit-subtitle-{{$index}}"
+                                               class="actor-edit-title"
+                                               type="text"
+                                               ng-model="actor.template.caption.subtitle"/>
+                                    </div>
 
 
-                            <div ng-if="actor.trigger">
+                                    <div ng-if="actor.trigger">
 
-                                <div>
-                                    <label for="actor-trigger-active-{{$index}}">trigger</label>
-                                    <input type="checkbox"
-                                           id="actor-trigger-active-{{$index}}"
-                                           ng-model="actor.trigger.active"/>
+                                        <div>
+                                            <label for="actor-trigger-active-{{$index}}">trigger</label>
+                                            <input type="checkbox"
+                                                   id="actor-trigger-active-{{$index}}"
+                                                   ng-model="actor.trigger.active"/>
+                                        </div>
+
+                                        <div ng-if="actor.trigger.active" class="sub-option">
+                                            <label for="actor-trigger-event-{{$index}}">event</label>
+
+                                            <select id="actor-trigger-event-{{$index}}"
+                                                    ng-model="actor.trigger.event">
+                                                <option value="click">click</option>
+                                            </select>
+                                        </div>
+
+                                        <div ng-if="actor.trigger.active" class="sub-option">
+                                            <label for="actor-trigger-type-{{$index}}">av-type</label>
+
+                                            <select id="actor-trigger-type-{{$index}}"
+                                                    ng-model="actor.trigger.type">
+                                                <option value="audio">audio</option>
+                                                <option value="video">video</option>
+                                            </select>
+                                        </div>
+
+                                        <div ng-if="actor.trigger.active" class="sub-option">
+                                            <label for="actor-trigger-src-{{$index}}">av-src</label>
+
+                                            <input id="actor-trigger-src-{{$index}}"
+                                                   class="actor-edit-src"
+                                                   ng-model="actor.trigger.src"
+                                                   ng-focus="mainCtrl.openAssetSelector( $event )">
+                                            </input>
+                                        </div>
+
+                                    </div>
+
                                 </div>
 
-                                <div ng-if="actor.trigger.active" class="sub-option">
-                                    <label for="actor-trigger-event-{{$index}}">event</label>
+                                <div class="col-md-2">
+                                    <div class="actor-change-order"
+                                         ng-click="mainCtrl.moveActor( $index, $index -1 )"
+                                         ng-hide="$first">
+                                        <span class="glyphicon glyphicon-arrow-up"></span>
+                                    </div>
 
-                                    <select id="actor-trigger-event-{{$index}}"
-                                            ng-model="actor.trigger.event">
-                                        <option value="click">click</option>
-                                    </select>
-                                </div>
+                                    <div class="actor-change-order"
+                                         ng-click="mainCtrl.moveActor( $index, $index + 1 )"
+                                         ng-hide="$last">
+                                        <span class="glyphicon glyphicon-arrow-down"></span>
+                                    </div>
 
-                                <div ng-if="actor.trigger.active" class="sub-option">
-                                    <label for="actor-trigger-type-{{$index}}">av-type</label>
+                                    <div class="value">{{actor.zindex}}</div>
 
-                                    <select id="actor-trigger-type-{{$index}}"
-                                            ng-model="actor.trigger.type">
-                                        <option value="audio">audio</option>
-                                        <option value="video">video</option>
-                                    </select>
-                                </div>
-
-                                <div ng-if="actor.trigger.active" class="sub-option">
-                                    <label for="actor-trigger-src-{{$index}}">av-src</label>
-
-                                    <input id="actor-trigger-src-{{$index}}"
-                                           class="actor-edit-src"
-                                           ng-model="actor.trigger.src"
-                                           ng-focus="mainCtrl.openAssetSelector( $event )">
-                                    </input>
                                 </div>
 
                             </div>
-
-
-
 
                         </div>
 
 
-
-                        <div class="col-md-10">
+                        <div class="col-md-9">
 
                             <div class="actor-src">
 

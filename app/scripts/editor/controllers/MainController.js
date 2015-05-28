@@ -1,5 +1,6 @@
 
 angular.module('SE').controller('MainController', [
+    '$document',
 	'$scope',
 	'ScenarioService',
     'ActorService',
@@ -7,7 +8,7 @@ angular.module('SE').controller('MainController', [
 	'DATA_SERVER',
     'ASSET_ROOT',
 
-	function ($scope, ScenarioService, ActorService, $cookieStore, DATA_SERVER, ASSET_ROOT ) {
+	function ( $document, $scope, ScenarioService, ActorService, $cookieStore, DATA_SERVER, ASSET_ROOT ) {
 
 		'use strict';
 
@@ -17,6 +18,7 @@ angular.module('SE').controller('MainController', [
             $scope.playerVisible = $cookieStore.get( 'playerVisible' ) || true;
             $scope.audioActorsVisible = $cookieStore.get( 'audioActorsVisible' ) || true;
             $scope.compactView = $cookieStore.get( 'compactView' ) || false;
+            $scope.playerFullScreen = $cookieStore.get( 'playerFullScreen' ) || false;
 		}
 
 		MainController.prototype = {
@@ -30,6 +32,7 @@ angular.module('SE').controller('MainController', [
 
                 $scope.actorTypes = ActorService.getActors();
 
+                this.bindHandlers();
 				this.bindScopeHandlers();
 			},
 
@@ -45,6 +48,20 @@ angular.module('SE').controller('MainController', [
                 }.bind( this ));
 			},
 
+            bindHandlers: function(){
+
+                $document.bind( 'keypress', function( e ) {
+
+                    var tag = e.target.tagName.toLowerCase();
+
+                    if( tag !== 'input' && tag !== 'textarea' && e.which === 102 ){
+                        this.togglePlayerFullScreen();
+                    }
+
+                }.bind( this ));
+
+            },
+
 			activateScenario : function ( scenario ) {
 
 				if ( scenario !== '' ) {
@@ -58,8 +75,6 @@ angular.module('SE').controller('MainController', [
 					    $scope.script = data;
 
 						$scope.actors = data.actors;
-
-						this.sortActors();
 
 						this.previewScenario();
 
@@ -119,6 +134,8 @@ angular.module('SE').controller('MainController', [
                     scrollTop: $(document).height()
                 }, 500);
 
+                this.updateZindices();
+
             },
 
             deleteActor: function( index ){
@@ -132,6 +149,9 @@ angular.module('SE').controller('MainController', [
                     }
 
                 }
+
+                this.updateZindices();
+
             },
 
 			onDrag: function ( actor, x, y ) {
@@ -177,22 +197,29 @@ angular.module('SE').controller('MainController', [
 				});
 			},
 
-			sortActors: function () {
+            moveActor: function( old_index, new_index ){
 
-				$scope.actors.sort( function ( a, b ) {
+                if ( new_index >= $scope.actors.length ) {
+                    var k = new_index - $scope.actors.length;
 
-					if (a.start < b.start) {
-						return -1;
-					}
-					if (a.start === b.start) {
-						return 0;
-					}
-					if (a.start > b.start) {
-						return 1;
-					}
-				});
+                    while ( ( k-- ) + 1 ) {
+                        $scope.actors.push( undefined );
+                    }
+                }
+                $scope.actors.splice( new_index, 0, $scope.actors.splice( old_index, 1 )[0]);
+
+                this.updateZindices();
+
             },
 
+            updateZindices: function(){
+
+                var len = $scope.actors.length;
+
+                $scope.actors.forEach( function( actor, i ){
+                    actor.zindex = len - i;
+                });
+            },
 
             togglePlayerVisible: function(){
                 $scope.playerVisible = $scope.playerVisible === false;
@@ -207,6 +234,13 @@ angular.module('SE').controller('MainController', [
             toggleCompactView: function(){
                 $scope.compactView = $scope.compactView === false;
                 $cookieStore.put( 'compactView', $scope.compactView );
+            },
+
+            togglePlayerFullScreen: function(){
+                $scope.playerFullScreen = $scope.playerFullScreen === false;
+                $cookieStore.put( 'playerFullScreen', $scope.playerFullScreen );
+
+                $scope.$apply();
             }
 
 		};
