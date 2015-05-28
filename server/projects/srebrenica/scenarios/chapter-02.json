@@ -1,5 +1,110 @@
 {
     "name": "Srebrenica chapter 02",
-    "duration": 42000,
-    "actors": []
+    "duration": 283000,
+    "actors": [
+        {
+            "type": "video",
+            "name": "Video",
+            "title": "",
+            "start": 0,
+            "duration": 283000,
+            "offset": 0,
+            "src": "video\/Srebr_deel1_v03.mp4",
+            "cover": false,
+            "preload": {
+                "type": "video"
+            },
+            "zindex": 7
+        },
+        {
+            "type": "generic",
+            "name": "Image Cover",
+            "title": "",
+            "start": 262625,
+            "duration": 20000,
+            "template": {
+                "background": {
+                    "src": "img\/zoom07.jpg",
+                    "sizing": "cover"
+                }
+            },
+            "animationName": "zoom-1.0-1.5-20s--fade1s",
+            "zindex": 6
+        },
+        {
+            "type": "generic",
+            "name": "Image Cover",
+            "title": "",
+            "start": 262625,
+            "duration": 20000,
+            "template": {
+                "background": {
+                    "src": "img\/zoom08.jpg",
+                    "sizing": "cover"
+                }
+            },
+            "animationName": "zoom-1.0-1.5-20s--fade1s",
+            "zindex": 5
+        },
+        {
+            "type": "generic",
+            "name": "Image Cover",
+            "title": "",
+            "start": 262625,
+            "duration": 20000,
+            "template": {
+                "background": {
+                    "src": "img\/zoom09.jpg",
+                    "sizing": "cover"
+                }
+            },
+            "animationName": "zoom-1.0-1.5-20s--fade1s",
+            "zindex": 4
+        },
+        {
+            "type": "generic",
+            "name": "Image Cover",
+            "title": "",
+            "start": 262625,
+            "duration": 20000,
+            "template": {
+                "background": {
+                    "src": "img\/zoom10.jpg",
+                    "sizing": "cover"
+                }
+            },
+            "animationName": "zoom-1.0-1.5-20s--fade1s",
+            "zindex": 3
+        },
+        {
+            "type": "generic",
+            "name": "Image Cover",
+            "title": "",
+            "start": 262625,
+            "duration": 20000,
+            "template": {
+                "background": {
+                    "src": "img\/zoom11.jpg",
+                    "sizing": "cover"
+                }
+            },
+            "animationName": "zoom-1.0-1.5-20s--fade1s",
+            "zindex": 2
+        },
+        {
+            "type": "generic",
+            "name": "Image Cover",
+            "title": "",
+            "start": 262625,
+            "duration": 20000,
+            "template": {
+                "background": {
+                    "src": "img\/zoom12.jpg",
+                    "sizing": "cover"
+                }
+            },
+            "animationName": "zoom-1.0-1.5-20s--fade1s",
+            "zindex": 1
+        }
+    ]
 }

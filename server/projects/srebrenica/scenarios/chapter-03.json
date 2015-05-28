@@ -1,0 +1,457 @@
+{
+    "name": "Srebrenica chapter 03",
+    "duration": 255000,
+    "actors": [
+        {
+            "title": "Ambiant audio",
+            "type": "audio",
+            "name": "Audio",
+            "start": 0,
+            "duration": 205000,
+            "offset": 0,
+            "src": "audio\/Srebr_muziek.mp3",
+            "preload": {
+                "type": "audio"
+            },
+            "zindex": 30
+        },
+        {
+            "title": "Voiceover 01",
+            "type": "audio",
+            "name": "Audio",
+            "start": 0,
+            "duration": 10500,
+            "offset": 0,
+            "src": "audio\/voice_01.mp3",
+            "preload": {
+                "type": "audio"
+            },
+            "zindex": 29
+        },
+        {
+            "type": "caption",
+            "name": "Caption",
+            "title": "",
+            "start": 0,
+            "duration": 5000,
+            "image": "",
+            "trigger": {
+                "event": "click",
+                "active": true,
+                "type": "video",
+                "src": "video\/dutch_se_van_512kb.mp4"
+            },
+            "template": {
+                "caption": {
+                    "src": "img\/still-soldier-binoculars.png",
+                    "title": "Dutchbat",
+                    "subtitle": "Vertrek uit Srebrenica"
+                }
+            },
+            "animationName": "captionTopLeft",
+            "zindex": 28
+        },
+        {
+            "type": "caption",
+            "name": "Caption",
+            "title": "",
+            "start": 5000,
+            "duration": 5000,
+            "image": "",
+            "trigger": {
+                "event": "click",
+                "active": true,
+                "type": "video",
+                "src": "video\/dutch_se_van_512kb.mp4"
+            },
+            "template": {
+                "caption": {
+                    "src": "img\/still-soldier-binoculars.png",
+                    "title": "Dutchbat",
+                    "subtitle": "Vertrek uit Srebrenica"
+                }
+            },
+            "animationName": "captionTopRight",
+            "zindex": 27
+        },
+        {
+            "type": "caption",
+            "name": "Caption",
+            "title": "",
+            "start": 10000,
+            "duration": 5000,
+            "image": "",
+            "trigger": {
+                "event": "click",
+                "active": true,
+                "type": "video",
+                "src": "video\/dutch_se_van_512kb.mp4"
+            },
+            "template": {
+                "caption": {
+                    "src": "img\/still-soldier-binoculars.png",
+                    "title": "Dutchbat",
+                    "subtitle": "Vertrek uit Srebrenica"
+                }
+            },
+            "animationName": "captionBottomRight",
+            "zindex": 26
+        },
+        {
+            "type": "caption",
+            "name": "Caption",
+            "title": "",
+            "start": 15000,
+            "duration": 5000,
+            "image": "",
+            "trigger": {
+                "event": "click",
+                "active": true,
+                "type": "video",
+                "src": "video\/dutch_se_van_512kb.mp4"
+            },
+            "template": {
+                "caption": {
+                    "src": "img\/still-soldier-binoculars.png",
+                    "title": "Dutchbat",
+                    "subtitle": "Vertrek uit Srebrenica"
+                }
+            },
+            "animationName": "captionBottomLeft",
+            "zindex": 25
+        },
+        {
+            "type": "generic",
+            "name": "Image Contain",
+            "title": "",
+            "start": 2374,
+            "duration": 7000,
+            "template": {
+                "background": {
+                    "src": "img\/tito-fade.png",
+                    "sizing": "contain"
+                }
+            },
+            "animationName": "fade1s",
+            "zindex": 24
+        },
+        {
+            "type": "generic",
+            "name": "Image Cover",
+            "title": "",
+            "start": 0,
+            "duration": 20000,
+            "template": {
+                "background": {
+                    "src": "img\/export-4327b.jpg",
+                    "sizing": "cover"
+                }
+            },
+            "animationName": "fade1s",
+            "zindex": 23
+        },
+        {
+            "title": "Voiceover 02",
+            "type": "audio",
+            "name": "Audio",
+            "start": 12000,
+            "duration": 12000,
+            "offset": 0,
+            "src": "audio\/voice_02.mp3",
+            "preload": {
+                "type": "audio"
+            },
+            "zindex": 22
+        },
+        {
+            "type": "generic",
+            "name": "Image Cover",
+            "title": "",
+            "start": 19000,
+            "duration": 20000,
+            "template": {
+                "background": {
+                    "src": "img\/export-8060b.jpg",
+                    "sizing": "cover"
+                }
+            },
+            "animationName": "fade1s",
+            "zindex": 21
+        },
+        {
+            "title": "Voiceover 03",
+            "type": "audio",
+            "name": "Audio",
+            "start": 26000,
+            "duration": 7500,
+            "offset": 0,
+            "src": "audio\/voice_03.mp3",
+            "preload": {
+                "type": "audio"
+            },
+            "zindex": 20
+        },
+        {
+            "title": "Voiceover 04",
+            "type": "audio",
+            "name": "Audio",
+            "start": 35000,
+            "duration": 13000,
+            "offset": 0,
+            "src": "audio\/voice_04.mp3",
+            "preload": {
+                "type": "audio"
+            },
+            "zindex": 19
+        },
+        {
+            "type": "generic",
+            "name": "Image Cover",
+            "title": "",
+            "start": 38000,
+            "duration": 20000,
+            "template": {
+                "background": {
+                    "src": "img\/export-8797b.jpg",
+                    "sizing": "cover"
+                }
+            },
+            "animationName": "fade1s",
+            "zindex": 18
+        },
+        {
+            "title": "Voiceover 05",
+            "type": "audio",
+            "name": "Audio",
+            "start": 50000,
+            "duration": 9500,
+            "offset": 0,
+            "src": "audio\/voice_05.mp3",
+            "preload": {
+                "type": "audio"
+            },
+            "zindex": 17
+        },
+        {
+            "type": "generic",
+            "name": "Image Cover",
+            "title": "",
+            "start": 57000,
+            "duration": 20000,
+            "template": {
+                "background": {
+                    "src": "img\/export-4313b.jpg",
+                    "sizing": "cover"
+                }
+            },
+            "animationName": "fade1s",
+            "zindex": 16
+        },
+        {
+            "title": "Voiceover 06",
+            "type": "audio",
+            "name": "Audio",
+            "start": 61000,
+            "duration": 11500,
+            "offset": 0,
+            "src": "audio\/voice_06.mp3",
+            "preload": {
+                "type": "audio"
+            },
+            "zindex": 15
+        },
+        {
+            "title": "Voiceover 07",
+            "type": "audio",
+            "name": "Audio",
+            "start": 74000,
+            "duration": 22000,
+            "offset": 0,
+            "src": "audio\/voice_07.mp3",
+            "preload": {
+                "type": "audio"
+            },
+            "zindex": 14
+        },
+        {
+            "type": "generic",
+            "name": "Image Cover",
+            "title": "",
+            "start": 76000,
+            "duration": 20000,
+            "template": {
+                "background": {
+                    "src": "img\/still-aben-hede-tank.png",
+                    "sizing": "cover"
+                }
+            },
+            "animationName": "fade1s",
+            "zindex": 13
+        },
+        {
+            "type": "generic",
+            "name": "Image Cover",
+            "title": "",
+            "start": 95000,
+            "duration": 20000,
+            "template": {
+                "background": {
+                    "src": "img\/still-aben-hede-tank-fire.png",
+                    "sizing": "cover"
+                }
+            },
+            "animationName": "fade1s",
+            "zindex": 12
+        },
+        {
+            "title": "Voiceover 08",
+            "type": "audio",
+            "name": "Audio",
+            "start": 97000,
+            "duration": 21000,
+            "offset": 0,
+            "src": "audio\/voice_08.mp3",
+            "preload": {
+                "type": "audio"
+            },
+            "zindex": 11
+        },
+        {
+            "type": "generic",
+            "name": "Image Cover",
+            "title": "",
+            "start": 116000,
+            "duration": 20000,
+            "template": {
+                "background": {
+                    "src": "img\/export-4156b.jpg",
+                    "sizing": "cover"
+                }
+            },
+            "animationName": "zoom-1.0-1.5-20s--fade1s",
+            "zindex": 10
+        },
+        {
+            "title": "Voiceover 09",
+            "type": "audio",
+            "name": "Audio",
+            "start": 119000,
+            "duration": 12000,
+            "offset": 0,
+            "src": "audio\/voice_09.mp3",
+            "preload": {
+                "type": "audio"
+            },
+            "zindex": 9
+        },
+        {
+            "title": "Voiceover 10",
+            "type": "audio",
+            "name": "Audio",
+            "start": 133000,
+            "duration": 8000,
+            "offset": 0,
+            "src": "audio\/voice_10.mp3",
+            "preload": {
+                "type": "audio"
+            },
+            "zindex": 8
+        },
+        {
+            "title": "Voiceover 11",
+            "type": "audio",
+            "name": "Audio",
+            "start": 142000,
+            "duration": 21000,
+            "offset": 0,
+            "src": "audio\/voice_11.mp3",
+            "preload": {
+                "type": "audio"
+            },
+            "zindex": 7
+        },
+        {
+            "title": "Voiceover 12",
+            "type": "audio",
+            "name": "Audio",
+            "start": 164000,
+            "duration": 8500,
+            "offset": 0,
+            "src": "audio\/voice_12.mp3",
+            "preload": {
+                "type": "audio"
+            },
+            "zindex": 6
+        },
+        {
+            "title": "Voiceover 13",
+            "type": "audio",
+            "name": "Audio",
+            "start": 174000,
+            "duration": 17500,
+            "offset": 0,
+            "src": "audio\/voice_13.mp3",
+            "preload": {
+                "type": "audio"
+            },
+            "zindex": 5
+        },
+        {
+            "title": "Voiceover 14",
+            "type": "audio",
+            "name": "Audio",
+            "start": 193000,
+            "duration": 8500,
+            "offset": 0,
+            "src": "audio\/voice_14.mp3",
+            "preload": {
+                "type": "audio"
+            },
+            "zindex": 4
+        },
+        {
+            "type": "video",
+            "name": "Video",
+            "title": "",
+            "start": 204835,
+            "duration": 50000,
+            "offset": 0,
+            "src": "video\/Srebr_deel4_v02.mp4",
+            "cover": true,
+            "preload": {
+                "type": "video"
+            },
+            "zindex": 3
+        },
+        {
+            "type": "generic",
+            "name": "Image Contain",
+            "title": "Tito standalone",
+            "start": 206928,
+            "duration": 7000,
+            "template": {
+                "background": {
+                    "src": "img\/tito-fade.png",
+                    "sizing": "contain"
+                }
+            },
+            "animationName": "fade1s",
+            "zindex": 2
+        },
+        {
+            "type": "generic",
+            "name": "Image Contain",
+            "title": "Tito monument",
+            "start": 211906,
+            "duration": 5000,
+            "template": {
+                "background": {
+                    "src": "img\/tito-statue.png",
+                    "sizing": "contain"
+                }
+            },
+            "animationName": "fade1s",
+            "zindex": 1
+        }
+    ]
+}
