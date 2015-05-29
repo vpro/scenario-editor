@@ -56,7 +56,7 @@ angular.module( 'SE' ).directive( 'sePlayer',
                     createPlayer: function ( ScenarioPlayerApp ) {
 
                         this.player = new ScenarioPlayerApp( {
-                            rootNode: 'se-player',
+                            rootNode: 'se-player.scenario-player',
                             assetRoot: ASSET_ROOT
                         } );
 

@@ -12811,7 +12811,7 @@ p.sliding-visual-teaser-summary {
 /* @start text hyperlinks */
 /* @start scenario player */
 /* line 12, sass/components/_scenario-player.scss */
-#scenario-player-platform-area {
+.platform.scenario-player-platform-area {
   position: fixed;
   width: 100%;
   top: 0;
@@ -12825,38 +12825,17 @@ p.sliding-visual-teaser-summary {
 }
 
 /* line 27, sass/components/_scenario-player.scss */
-#scenario-player-container {
+.scenario-player-container {
   height: 100%;
 }
-/* line 31, sass/components/_scenario-player.scss */
-#scenario-player-container #scenario-player,
-#scenario-player-container #viewercontainer {
+
+/* line 32, sass/components/_scenario-player.scss */
+.scenario-player {
   position: relative;
   height: 100%;
 }
-/* line 37, sass/components/_scenario-player.scss */
-#scenario-player-container #playercontrols {
-  position: absolute;
-  bottom: 0;
-  color: #fff;
-}
-/* line 43, sass/components/_scenario-player.scss */
-#scenario-player-container #playercontrols button {
-  display: none;
-  background: transparent;
-  color: #fff;
-  border: none;
-  font-size: 16px;
-  line-height: 16px;
-  cursor: pointer;
-}
-/* line 52, sass/components/_scenario-player.scss */
-#scenario-player-container #viewercontainer {
-  position: relative;
-  transition: margin 0.2s;
-}
-/* line 57, sass/components/_scenario-player.scss */
-#scenario-player-container #viewer {
+/* line 36, sass/components/_scenario-player.scss */
+.scenario-player .scenario-player-viewer {
   position: absolute;
   z-index: 1;
   top: 0;
@@ -12865,44 +12844,30 @@ p.sliding-visual-teaser-summary {
   right: 0;
   overflow: hidden;
 }
-/* line 67, sass/components/_scenario-player.scss */
-#scenario-player-container #viewer-ambi {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 0;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  /* demo bg image  */
-}
-/* line 82, sass/components/_scenario-player.scss */
-#scenario-player-container #audioplayer {
+/* line 46, sass/components/_scenario-player.scss */
+.scenario-player #audioplayer {
   width: 100%;
 }
-/* line 86, sass/components/_scenario-player.scss */
-#scenario-player-container #audioplayer audio {
+/* line 50, sass/components/_scenario-player.scss */
+.scenario-player #audioplayer audio {
   width: 100%;
   height: 45px;
 }
-/* line 91, sass/components/_scenario-player.scss */
-#scenario-player-container .scenarioplayer-modal {
+/* line 55, sass/components/_scenario-player.scss */
+.scenario-player .scenarioplayer-modal {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.8);
 }
-/* line 96, sass/components/_scenario-player.scss */
-#scenario-player-container #scenario-player.modal-open .scenarioplayer-modal,
-#scenario-player-container .modal.open {
+/* line 61, sass/components/_scenario-player.scss */
+.scenario-player.modal-open .scenarioplayer-modal {
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 20;
+  z-index: 920;
 }
-/* line 109, sass/components/_scenario-player.scss */
-#scenario-player-container #modal-close {
+/* line 70, sass/components/_scenario-player.scss */
+.scenario-player #modal-close {
   position: absolute;
   right: 12px;
   top: 12px;
@@ -12911,22 +12876,22 @@ p.sliding-visual-teaser-summary {
   line-height: 24px;
   color: #fff;
 }
-/* line 118, sass/components/_scenario-player.scss */
-#scenario-player-container #modal-content {
+/* line 79, sass/components/_scenario-player.scss */
+.scenario-player #modal-content {
   width: 80%;
   height: 80%;
   margin: 48px auto;
 }
-/* line 124, sass/components/_scenario-player.scss */
-#scenario-player-container #modal-content video {
+/* line 85, sass/components/_scenario-player.scss */
+.scenario-player #modal-content video {
   width: 100%;
   height: 100%;
 }
 
 /* @end scenario player */
 /* @start scenario player controls */
-/* line 140, sass/components/_scenario-player.scss */
-#scenario-player #timeline {
+/* line 101, sass/components/_scenario-player.scss */
+.scenario-player .scenario-player-scrubber {
   position: absolute;
   bottom: 0;
   -moz-transition: bottom 0.1s ease-in-out;
@@ -12939,8 +12904,8 @@ p.sliding-visual-teaser-summary {
   z-index: 10;
   background: rgba(0, 0, 0, 0.4);
 }
-/* line 153, sass/components/_scenario-player.scss */
-#scenario-player .timeline-thumb {
+/* line 114, sass/components/_scenario-player.scss */
+.scenario-player .scenario-player-scrubber-thumb {
   width: 100px;
   height: 100%;
   position: absolute;
@@ -12950,8 +12915,8 @@ p.sliding-visual-teaser-summary {
   text-align: center;
   background: #E0C420;
 }
-/* line 163, sass/components/_scenario-player.scss */
-#scenario-player .timeline-thumb .indicator {
+/* line 124, sass/components/_scenario-player.scss */
+.scenario-player .scenario-player-scrubber-thumb .indicator {
   display: table-cell;
   vertical-align: middle;
   font-size: 16px;
@@ -12965,32 +12930,32 @@ p.sliding-visual-teaser-summary {
   top: 2px;
   left: 0;
 }
-/* line 174, sass/components/_scenario-player.scss */
-#scenario-player .timeline-thumb i {
+/* line 135, sass/components/_scenario-player.scss */
+.scenario-player .scenario-player-scrubber-thumb i {
   display: table-cell;
   text-align: right;
   vertical-align: middle;
   color: #000;
 }
-/* line 182, sass/components/_scenario-player.scss */
-#scenario-player .timeline-thumb.loader {
+/* line 143, sass/components/_scenario-player.scss */
+.scenario-player .scenario-player-scrubber-thumb.loader {
   display: none;
 }
-/* line 187, sass/components/_scenario-player.scss */
-#scenario-player.modal-open #timeline {
+/* line 148, sass/components/_scenario-player.scss */
+.scenario-player.modal-open .scenario-player-scrubber {
   visibility: hidden;
 }
-/* line 193, sass/components/_scenario-player.scss */
-#scenario-player.noscript #timeline {
+/* line 154, sass/components/_scenario-player.scss */
+.scenario-player.noscript .scenario-player-scrubber {
   visibility: hidden;
 }
-/* line 200, sass/components/_scenario-player.scss */
-#scenario-player.loading .timeline-thumb.loader {
+/* line 161, sass/components/_scenario-player.scss */
+.scenario-player.loading .scenario-player-scrubber-thumb.loader {
   display: block;
   cursor: default;
 }
-/* line 205, sass/components/_scenario-player.scss */
-#scenario-player.loading .timeline-thumb.controls {
+/* line 166, sass/components/_scenario-player.scss */
+.scenario-player.loading .scenario-player-scrubber-thumb.controls {
   display: none;
 }
 
@@ -13078,17 +13043,13 @@ p.sliding-visual-teaser-summary {
   background: #bbb;
 }
 
-/**
-    *
-    * Actors
-    *
-    */
-/* line 7, sass/components/_scenario-player-actors.scss */
+/* @start actor */
+/* line 3, sass/components/_scenario-player-actors.scss */
 .actor {
   position: absolute;
 }
 
-/* line 11, sass/components/_scenario-player-actors.scss */
+/* line 8, sass/components/_scenario-player-actors.scss */
 .actor.background {
   background-position: center center;
   background-repeat: no-repeat;
@@ -13096,7 +13057,26 @@ p.sliding-visual-teaser-summary {
   height: 100%;
 }
 
-/* line 18, sass/components/_scenario-player-actors.scss */
+/* line 15, sass/components/_scenario-player-actors.scss */
+.actor-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+/* line 20, sass/components/_scenario-player-actors.scss */
+.actor-container .enhance {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAECAYAAACk7+45AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABlJREFUeNpiYGBg8GXABnwZ////D2YBBBgAIboDmWNYRQ4AAAAASUVORK5CYII=);
+  background-repeat: repeat;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  content: '';
+  z-index: 999;
+}
+
+/* @end actor */
+/* @start caption */
+/* line 38, sass/components/_scenario-player-actors.scss */
 .actor.caption {
   z-index: 10;
   display: table;
@@ -13104,7 +13084,7 @@ p.sliding-visual-teaser-summary {
   cursor: pointer;
 }
 
-/* line 25, sass/components/_scenario-player-actors.scss */
+/* line 45, sass/components/_scenario-player-actors.scss */
 .actor.caption .caption-image {
   display: table-cell;
   width: 5em;
@@ -13116,7 +13096,7 @@ p.sliding-visual-teaser-summary {
   background-color: #E0C420;
 }
 
-/* line 36, sass/components/_scenario-player-actors.scss */
+/* line 56, sass/components/_scenario-player-actors.scss */
 .actor.caption .caption-content {
   display: table-cell;
   background-color: rgba(0, 0, 0, 0.8);
@@ -13125,31 +13105,31 @@ p.sliding-visual-teaser-summary {
   line-height: 1.2em;
 }
 
-/* line 44, sass/components/_scenario-player-actors.scss */
+/* line 64, sass/components/_scenario-player-actors.scss */
 .actor.caption.trigger .caption-text {
   padding-bottom: 1em;
 }
 
-/* line 48, sass/components/_scenario-player-actors.scss */
+/* line 68, sass/components/_scenario-player-actors.scss */
 .actor.caption .title {
   display: block;
   color: #fff;
   margin-bottom: 0.2em;
 }
 
-/* line 54, sass/components/_scenario-player-actors.scss */
+/* line 74, sass/components/_scenario-player-actors.scss */
 .actor.caption .subtitle {
   display: block;
   color: #9F9F9F;
 }
 
-/* line 58, sass/components/_scenario-player-actors.scss */
+/* line 78, sass/components/_scenario-player-actors.scss */
 .actor.caption .caption-buttons {
   padding-bottom: 0.5em;
   white-space: nowrap;
 }
 
-/* line 63, sass/components/_scenario-player-actors.scss */
+/* line 83, sass/components/_scenario-player-actors.scss */
 .actor.caption .caption-buttons button {
   background: #E0C420;
   color: #000;
@@ -13162,24 +13142,27 @@ p.sliding-visual-teaser-summary {
   margin-left: 0.6em;
 }
 
-/* line 75, sass/components/_scenario-player-actors.scss */
+/* @end caption */
+/* @start audio */
+/* line 102, sass/components/_scenario-player-actors.scss */
 .actor.audio {
   visibility: hidden;
 }
 
-/* line 79, sass/components/_scenario-player-actors.scss */
+/* @end audio */
+/* @start video */
+/* line 113, sass/components/_scenario-player-actors.scss */
 .actor.video {
   width: 100%;
   height: 100%;
 }
-
-/* line 84, sass/components/_scenario-player-actors.scss */
+/* line 117, sass/components/_scenario-player-actors.scss */
 .actor.video video {
   width: 100%;
   height: 100%;
 }
 
-/* line 92, sass/components/_scenario-player-actors.scss */
+/* line 124, sass/components/_scenario-player-actors.scss */
 .actor.video.cover video {
   position: absolute;
   top: 50%;
@@ -13193,82 +13176,66 @@ p.sliding-visual-teaser-summary {
   transform: translateX(-50%) translateY(-50%);
 }
 
-/* line 105, sass/components/_scenario-player-actors.scss */
-.actor-container {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-/* line 110, sass/components/_scenario-player-actors.scss */
-.actor-container .enhance {
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAECAYAAACk7+45AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABlJREFUeNpiYGBg8GXABnwZ////D2YBBBgAIboDmWNYRQ4AAAAASUVORK5CYII=);
-  background-repeat: repeat;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  content: '';
-  z-index: 999;
-}
-
+/* @end video */
 /*
-    Default layout - #scenario-player-platform-area.open
+    Default layout - .scenario-player-platform-area.open
     - full screen scenarioplayer
     - hidden content area
 
-    Longread layout - #scenario-player-platform-area.closed
+    Longread layout - .scenario-player-platform-area.closed
     - minimized scenario player
     - visible content area
 */
 /* When hovering over the chapter controls */
 /* line 17, sass/components/_scenario-player-chaptered.scss */
-#scenario-player-container.show-toggle #timeline {
+.scenario-player-container.show-toggle .scenario-player-scrubber {
   bottom: 4px;
 }
 /* line 21, sass/components/_scenario-player-chaptered.scss */
-#scenario-player-container.show-toggle #scenario-player-chapter-container {
+.scenario-player-container.show-toggle .scenario-player-chapter-container {
   bottom: -94px;
 }
 
 /* When longread is open and scenarioplayer is hidden */
 /* line 29, sass/components/_scenario-player-chaptered.scss */
-#scenario-player-platform-area.closed {
+.scenario-player-platform-area.closed {
   height: 30px;
 }
 /* line 34, sass/components/_scenario-player-chaptered.scss */
-#scenario-player-platform-area.closed .scenario-player-chapter.active .scenario-player-chapter-player-toggle {
+.scenario-player-platform-area.closed .scenario-player-chapter.active .scenario-player-chapter-player-toggle {
   display: block;
 }
 /* line 39, sass/components/_scenario-player-chaptered.scss */
-#scenario-player-platform-area.closed .scenario-player-chapter-longread-toggle {
+.scenario-player-platform-area.closed .scenario-player-chapter-longread-toggle {
   display: none;
 }
 /* line 43, sass/components/_scenario-player-chaptered.scss */
-#scenario-player-platform-area.closed #scenario-player-chapter-meta {
+.scenario-player-platform-area.closed .scenario-player-chapter-meta {
   height: 50px;
 }
 /* line 47, sass/components/_scenario-player-chaptered.scss */
-#scenario-player-platform-area.closed #timeline {
+.scenario-player-platform-area.closed .scenario-player-scrubber {
   bottom: 0;
 }
 
 /* When intermediate is open */
 /* line 57, sass/components/_scenario-player-chaptered.scss */
-#scenario-player-container.intermediate-open #scenario-player-intermediate {
+.scenario-player-container.intermediate-open .scenario-player-intermediate {
   top: 0%;
   opacity: 1;
 }
 /* line 62, sass/components/_scenario-player-chaptered.scss */
-#scenario-player-container.intermediate-open #timeline {
+.scenario-player-container.intermediate-open .scenario-player-scrubber {
   bottom: 50px;
 }
 /* line 66, sass/components/_scenario-player-chaptered.scss */
-#scenario-player-container.intermediate-open #scenario-player-chapter-container {
+.scenario-player-container.intermediate-open .scenario-player-chapter-container {
   bottom: -48px;
 }
 
 /* @start chapter navigation */
 /* line 76, sass/components/_scenario-player-chaptered.scss */
-#scenario-player-chapter-container {
+.scenario-player-chapter-container {
   position: absolute;
   z-index: 1;
   width: 100%;
@@ -13280,22 +13247,22 @@ p.sliding-visual-teaser-summary {
 }
 
 /* line 85, sass/components/_scenario-player-chaptered.scss */
-.edit-mode #scenario-player-chapter-container {
+.edit-mode .scenario-player-chapter-container {
   bottom: 0;
   position: relative;
 }
 
 /* line 92, sass/components/_scenario-player-chaptered.scss */
-#scenario-player-container.modal-open #scenario-player-chapters {
+.scenario-player-container.modal-open .scenario-player-chapters {
   background: #000;
 }
 /* line 95, sass/components/_scenario-player-chaptered.scss */
-#scenario-player-container.modal-open .scenario-player-chapter {
+.scenario-player-container.modal-open .scenario-player-chapter {
   display: none;
 }
 
 /* line 100, sass/components/_scenario-player-chaptered.scss */
-#scenario-player-chapters {
+.scenario-player-chapters {
   height: 48px;
 }
 
@@ -13304,7 +13271,7 @@ p.sliding-visual-teaser-summary {
   float: left;
   background: #463d18;
   color: #000;
-  padding-top: 16px;
+  padding-top: 10px;
   padding-right: 24px;
   padding-bottom: 16px;
   padding-left: 24px;
@@ -13320,28 +13287,24 @@ p.sliding-visual-teaser-summary {
   zoom: 1;
   text-transform: lowercase;
 }
-/* line 121, sass/components/_scenario-player-chaptered.scss */
-.scenario-player-chapter.active.longread-loaded {
-  padding-top: 10px;
-}
-/* line 125, sass/components/_scenario-player-chaptered.scss */
-.scenario-player-chapter.active .scenario-player-chapter-title {
+/* line 119, sass/components/_scenario-player-chaptered.scss */
+.scenario-player-chapter .scenario-player-chapter-title {
   padding-bottom: 4px;
 }
-/* line 130, sass/components/_scenario-player-chaptered.scss */
+/* line 123, sass/components/_scenario-player-chaptered.scss */
 .scenario-player-chapter.active, .scenario-player-chapter:hover {
   background: #ffd72e;
 }
-/* line 137, sass/components/_scenario-player-chaptered.scss */
-.scenario-player-chapter.longread-loaded .scenario-player-chapter-longread-toggle {
+/* line 128, sass/components/_scenario-player-chaptered.scss */
+.scenario-player-chapter .scenario-player-chapter-longread-toggle {
   display: block;
 }
-/* line 143, sass/components/_scenario-player-chaptered.scss */
+/* line 133, sass/components/_scenario-player-chaptered.scss */
 .scenario-player-chapter:last-child {
   border: none;
 }
 
-/* line 148, sass/components/_scenario-player-chaptered.scss */
+/* line 138, sass/components/_scenario-player-chaptered.scss */
 .scenario-player-chapter-title {
   font-size: 16px;
   line-height: 16px;
@@ -13349,7 +13312,7 @@ p.sliding-visual-teaser-summary {
   cursor: pointer;
 }
 
-/* line 154, sass/components/_scenario-player-chaptered.scss */
+/* line 144, sass/components/_scenario-player-chaptered.scss */
 .scenario-player-chapter-player-toggle,
 .scenario-player-chapter-longread-toggle {
   display: none;
@@ -13361,14 +13324,14 @@ p.sliding-visual-teaser-summary {
   zoom: 1;
   text-transform: lowercase;
 }
-/* line 160, sass/components/_scenario-player-chaptered.scss */
+/* line 150, sass/components/_scenario-player-chaptered.scss */
 .scenario-player-chapter-player-toggle .arrow-down,
 .scenario-player-chapter-longread-toggle .arrow-down {
   padding: 0 4px 0 0;
 }
 
-/* line 165, sass/components/_scenario-player-chaptered.scss */
-#longread-toggle-title {
+/* line 155, sass/components/_scenario-player-chaptered.scss */
+.longread-toggle-title {
   font-family: "simplistic_sans", "SimplisticSans", Arial, Helvetica, Sans, FreeSans, "Nimbus Sans L", Garuda, sans-serif;
   filter: progid:DXImageTransform.Microsoft.AlphaImageLoader('src=http://files.vpro.nl/fontface/iefix.png,sizingMethod=crop');
   zoom: 1;
@@ -13379,16 +13342,16 @@ p.sliding-visual-teaser-summary {
   text-transform: inherit;
 }
 
-/* line 172, sass/components/_scenario-player-chaptered.scss */
-#scenario-player-chapter-meta {
+/* line 162, sass/components/_scenario-player-chaptered.scss */
+.scenario-player-chapter-meta {
   width: 100%;
   height: 50px;
   background: #ffd72e;
   padding: 16px 24px;
 }
 
-/* line 180, sass/components/_scenario-player-chaptered.scss */
-#scenario-player-chapter-description {
+/* line 170, sass/components/_scenario-player-chaptered.scss */
+.scenario-player-chapter-description {
   font-family: "vpro_vesta", Verdana, Arial, Helvetica, Sans, FreeSans, "Nimbus Sans L", Garuda, sans-serif;
   font-size: 12px;
   line-height: 12px;
@@ -13396,8 +13359,8 @@ p.sliding-visual-teaser-summary {
 
 /* @end chapter navigation */
 /* @start chapter intermediate */
-/* line 192, sass/components/_scenario-player-chaptered.scss */
-#scenario-player-intermediate {
+/* line 182, sass/components/_scenario-player-chaptered.scss */
+.scenario-player-intermediate {
   position: absolute;
   top: 100%;
   right: 0;
@@ -13423,8 +13386,8 @@ p.sliding-visual-teaser-summary {
 
 /* @end chapter intermediate */
 /* @start intermediate */
-/* line 221, sass/components/_scenario-player-chaptered.scss */
-#scenario-player-intermediate {
+/* line 211, sass/components/_scenario-player-chaptered.scss */
+.scenario-player-intermediate {
   font-family: "simplistic_sans", "SimplisticSans", Arial, Helvetica, Sans, FreeSans, "Nimbus Sans L", Garuda, sans-serif;
   font-weight: bold;
   text-align: left;
@@ -13434,7 +13397,7 @@ p.sliding-visual-teaser-summary {
   cursor: pointer;
 }
 
-/* line 233, sass/components/_scenario-player-chaptered.scss */
+/* line 223, sass/components/_scenario-player-chaptered.scss */
 .intermediate-countdown {
   padding: 60px 0 0 56px;
   font-size: 20px;
@@ -13442,14 +13405,14 @@ p.sliding-visual-teaser-summary {
   text-transform: lowercase;
 }
 
-/* line 239, sass/components/_scenario-player-chaptered.scss */
+/* line 229, sass/components/_scenario-player-chaptered.scss */
 .intermediate-title {
   font-size: 56px;
   line-height: 56px;
   padding: 20px 0 0;
   text-transform: lowercase;
 }
-/* line 244, sass/components/_scenario-player-chaptered.scss */
+/* line 234, sass/components/_scenario-player-chaptered.scss */
 .intermediate-title .glyph, .intermediate-title .breadcrumb-list li:after, .breadcrumb-list .intermediate-title li:after, .intermediate-title .event-overview-navigation .prev-month, .event-overview-navigation .intermediate-title .prev-month, .intermediate-title .event-overview-navigation .next-month, .event-overview-navigation .intermediate-title .next-month, .intermediate-title .header-jump-menu .nav:before, .header-jump-menu .intermediate-title .nav:before, .intermediate-title .header-jump-menu .search:before, .header-jump-menu .intermediate-title .search:before, .intermediate-title .my-playlist-link-icon, .intermediate-title .navigation-to-top:after, .intermediate-title .pager-previous-link span, .pager-previous-link .intermediate-title span, .intermediate-title .pager-next-link span, .pager-next-link .intermediate-title span, .intermediate-title .sliding-teaser-group-title-link-icon, .intermediate-title .teaser-group-title-link-icon, .intermediate-title .player-warning-icon:after, .intermediate-title .player-info-icon:after {
   color: #ffd72e;
   font-size: 56px;
@@ -13459,7 +13422,7 @@ p.sliding-visual-teaser-summary {
   height: 56px;
 }
 
-/* line 253, sass/components/_scenario-player-chaptered.scss */
+/* line 243, sass/components/_scenario-player-chaptered.scss */
 .intermediate-description {
   padding: 20px 0 0 56px;
   font-size: 20px;
@@ -13468,23 +13431,23 @@ p.sliding-visual-teaser-summary {
 
 /* @end intermediate */
 /* @start longread area */
-/* line 265, sass/components/_scenario-player-chaptered.scss */
-#scenario-player-content-area {
+/* line 255, sass/components/_scenario-player-chaptered.scss */
+.scenario-player-content-area {
   overflow: hidden;
   height: 0;
 }
-/* line 269, sass/components/_scenario-player-chaptered.scss */
-#scenario-player-content-area.open {
+/* line 259, sass/components/_scenario-player-chaptered.scss */
+.scenario-player-content-area.open {
   height: auto;
   margin: 160px 0 0 0;
 }
 
-/* line 277, sass/components/_scenario-player-chaptered.scss */
-.edit-mode #scenario-player-container {
+/* line 267, sass/components/_scenario-player-chaptered.scss */
+.edit-mode .scenario-player-container {
   height: 50%;
 }
-/* line 281, sass/components/_scenario-player-chaptered.scss */
-.edit-mode #scenario-player-content-area {
+/* line 271, sass/components/_scenario-player-chaptered.scss */
+.edit-mode .scenario-player-content-area {
   overflow: auto;
 }
 
