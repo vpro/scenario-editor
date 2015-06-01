@@ -12,9 +12,6 @@
 	<!-- build:css styles/app.css -->
 	<link rel="stylesheet" href="styles/main.css" type="text/css" media="all" />
     <link rel="stylesheet" href="styles/twitter-bootstrap/bootstrap.min.css" type="text/css" media="all" />
-    <link rel="stylesheet" href="styles/style.css"/>
-    <link rel="stylesheet" href="styles/icons.css"/>
-    <link rel="stylesheet" href="http://files.vpro.nl/fontface/iconfont/iconfont.css"/>
 	<!-- endbuild -->
 
 </head>
