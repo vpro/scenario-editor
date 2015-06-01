@@ -57,7 +57,8 @@ angular.module( 'SE' ).directive( 'sePlayer',
 
                         this.player = new ScenarioPlayerApp( {
                             rootNode: 'se-player.scenario-player',
-                            assetRoot: ASSET_ROOT
+                            assetRoot: ASSET_ROOT,
+                            skin: 'srebrenica'
                         } );
 
 
