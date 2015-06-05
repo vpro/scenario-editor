@@ -228,16 +228,26 @@
                                                     ng-model="actor.trigger.type">
                                                 <option value="audio">audio</option>
                                                 <option value="video">video</option>
+                                                <option value="iframe">iframe</option>
                                             </select>
                                         </div>
 
-                                        <div ng-if="actor.trigger.active" class="sub-option">
+                                        <div ng-if="actor.trigger.active && ( actor.trigger.type === 'audio' || actor.trigger.type === 'video' )" class="sub-option">
                                             <label for="actor-trigger-src-{{$index}}">av-src</label>
 
                                             <input id="actor-trigger-src-{{$index}}"
                                                    class="actor-edit-src"
                                                    ng-model="actor.trigger.src"
                                                    ng-focus="mainCtrl.openAssetSelector( $event )">
+                                            </input>
+                                        </div>
+
+                                        <div ng-if="actor.trigger.active && actor.trigger.type === 'iframe'" class="sub-option">
+                                            <label for="actor-trigger-iframe-src-{{$index}}">iframe-src</label>
+
+                                            <input id="actor-trigger-iframe-src-{{$index}}"
+                                                   class="actor-edit-src"
+                                                   ng-model="actor.trigger.iframesrc">
                                             </input>
                                         </div>
 

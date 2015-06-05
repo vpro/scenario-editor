@@ -79,7 +79,8 @@ angular.module( 'SE' ).factory( 'ActorService', [
                         event: 'click',
                         active: false,
                         type: 'video',
-                        src: ''
+                        src: '',
+                        iframesrc: ''
                     },
                     template: {
                         caption: {
