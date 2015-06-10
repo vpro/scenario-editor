@@ -80,7 +80,8 @@ angular.module( 'SE' ).factory( 'ActorService', [
                         active: false,
                         type: 'video',
                         src: '',
-                        iframesrc: ''
+                        iframesrc: '',
+                        galleryroot: ''
                     },
                     template: {
                         caption: {

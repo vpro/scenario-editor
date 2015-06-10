@@ -229,6 +229,7 @@
                                                 <option value="audio">audio</option>
                                                 <option value="video">video</option>
                                                 <option value="iframe">iframe</option>
+                                                <option value="gallery">gallery</option>
                                             </select>
                                         </div>
 
@@ -248,6 +249,15 @@
                                             <input id="actor-trigger-iframe-src-{{$index}}"
                                                    class="actor-edit-src"
                                                    ng-model="actor.trigger.iframesrc">
+                                            </input>
+                                        </div>
+
+                                        <div ng-if="actor.trigger.active && actor.trigger.type === 'gallery'" class="sub-option">
+                                            <label for="actor-trigger-gallery-root-{{$index}}">gallery-root</label>
+
+                                            <input id="actor-trigger-gallery-root-{{$index}}"
+                                                   class="actor-edit-src"
+                                                   ng-model="actor.trigger.galleryroot">
                                             </input>
                                         </div>
 
