@@ -14,7 +14,7 @@ angular.module( 'SE' ).factory( 'ActorService', [
              * - basic caption
              * - caption with trigger -> video
              * - caption with trigger -> audio
-             * - caption with trigger -> image gallery?
+             * - caption with trigger -> image gallery
              *
              */
 
@@ -26,8 +26,12 @@ angular.module( 'SE' ).factory( 'ActorService', [
                     start: 0,
                     duration: 5000,
                     offset: 0,
-                    src: ''
+                    src: '',
+                    preload: {
+                        type: 'audio'
+                    }
                 },
+
                 {
                     type: 'video',
                     name: 'Video',
@@ -37,11 +41,11 @@ angular.module( 'SE' ).factory( 'ActorService', [
                     offset: 0,
                     src: '',
                     cover: true,
-                    preload:
-                    {
+                    preload: {
                         type: 'video'
                     }
                 },
+
                 {
                     type: 'generic',
                     name: 'Image Cover',
@@ -53,8 +57,12 @@ angular.module( 'SE' ).factory( 'ActorService', [
                             src: '',
                             sizing: 'cover'
                         }
+                    },
+                    preload: {
+                        type: 'image'
                     }
                 },
+
                 {
                     type: 'generic',
                     name: 'Image Contain',
@@ -66,15 +74,18 @@ angular.module( 'SE' ).factory( 'ActorService', [
                             src: '',
                             sizing: 'contain'
                         }
+                    },
+                    preload: {
+                        type: 'image'
                     }
                 },
+
                 {
                     type: 'caption',
                     name: 'Caption',
                     title: '',
                     start: 0,
                     duration: 5000,
-                    image: '',
                     trigger: {
                         event: 'click',
                         active: false,
@@ -89,6 +100,9 @@ angular.module( 'SE' ).factory( 'ActorService', [
                             title: '',
                             subtitle: ''
                         }
+                    },
+                    preload: {
+                        type: 'image'
                     }
                 }
             ];
