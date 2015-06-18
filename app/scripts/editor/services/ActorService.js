@@ -99,7 +99,8 @@ angular.module( 'SE' ).factory( 'ActorService', [
                         caption: {
                             src: '',
                             title: '',
-                            subtitle: ''
+                            subtitle: '',
+                            portrait: false
                         }
                     },
                     preload: {

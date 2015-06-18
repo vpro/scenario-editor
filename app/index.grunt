@@ -186,6 +186,13 @@
                                         </select>
                                     </div>
 
+                                    <div ng-if="actor.type == 'caption'">
+                                        <label for="actor-edit-captionportrait-{{$index}}">caption=portrait</label>
+                                        <input type="checkbox"
+                                               id="actor-edit-captionportrait-{{$index}}"
+                                               ng-model="actor.template.caption.portrait"/>
+                                    </div>
+
                                     <div ng-if="actor.template.caption.title !== undefined">
                                         <label for="actor-edit-captiontitle-{{$index}}">caption title</label>
                                         <input id="actor-edit-captiontitle-{{$index}}"
