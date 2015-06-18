@@ -36,17 +36,37 @@ angular.module('SE').controller('MainController', [
 				this.bindScopeHandlers();
 			},
 
-			bindScopeHandlers: function(){
-				$scope.$on( 'player-animations', function( e, animations ){
+            activateScenario : function ( scenario ) {
 
-                    $scope.animationNames = animations.map(function( animation ){
-                        return animation.name;
-                    });
+                if ( scenario !== '' ) {
 
-                    $scope.$apply();
+                    ScenarioService.getScenarioForProject( scenario ).then(function ( data ) {
 
-                }.bind( this ));
-			},
+                        $scope.activeScenario = scenario;
+
+                        $scope.assetRoot = ASSET_ROOT;
+
+                        $scope.script = data;
+
+                        $scope.actors = data.actors;
+
+                        this.previewScenario();
+
+                    }.bind(this));
+                }
+            },
+
+            addActor: function( actor ){
+
+                $scope.script.actors.push( angular.copy( actor ) );
+
+                $( 'html, body' ).animate({
+                    scrollTop: $(document).height()
+                }, 500);
+
+                this.updateZindices();
+
+            },
 
             bindHandlers: function(){
 
@@ -62,80 +82,21 @@ angular.module('SE').controller('MainController', [
 
             },
 
-			activateScenario : function ( scenario ) {
+			bindScopeHandlers: function(){
+				$scope.$on( 'player-animations', function( e, animations ){
 
-				if ( scenario !== '' ) {
+                    $scope.animationNames = animations.map(function( animation ){
+                        return animation.name;
+                    });
 
-					ScenarioService.getScenarioForProject( scenario ).then(function ( data ) {
+                    $scope.$apply();
 
-						$scope.activeScenario = scenario;
-
-						$scope.assetRoot = ASSET_ROOT;
-
-					    $scope.script = data;
-
-						$scope.actors = data.actors;
-
-						this.previewScenario();
-
-					}.bind(this));
-				}
+                }.bind( this ));
 			},
-
-            openAssetSelector: function( caller ){
-
-                this.currentCaller = caller.target;
-
-                $( 'body' ).addClass( 'modal-open' );
-                $( '#asset-selector').addClass( 'open' );
-
-                ScenarioService.getAssetsForProject().then(
-                    function( data ){
-
-                        var assetData = data.map(function( el, i, arr ){
-                            var type = el.substring( 0, el.indexOf( '/' ) );
-                            return {
-                                path: el.toString(),
-                                type: type.toString()
-                            };
-                        });
-
-                        $scope.availableAssets = assetData;
-
-                    },
-                    function( error ){
-                        throw new Error( error );
-                    }
-                );
-
-            },
 
             closeAssetSelector: function(){
                 $( 'body' ).removeClass( 'modal-open' );
                 $( '#asset-selector' ).removeClass( 'open' );
-            },
-
-            selectAsset: function( assetPath ){
-
-                this.closeAssetSelector();
-
-                if( assetPath ){
-                    this.currentCaller.value = assetPath;
-                    angular.element($(this.currentCaller)).triggerHandler('input');
-                }
-
-            },
-
-            addActor: function( actor ){
-
-                $scope.script.actors.push( angular.copy( actor ) );
-
-                $( 'html, body' ).animate({
-                    scrollTop: $(document).height()
-                }, 500);
-
-                this.updateZindices();
-
             },
 
             deleteActor: function( index ){
@@ -149,6 +110,31 @@ angular.module('SE').controller('MainController', [
                     }
 
                 }
+
+                this.updateZindices();
+
+            },
+
+            getGalleryAssets: function( galleryName ){
+
+                return $scope.availableAssets.filter( function( el ){
+                    return  el.path.indexOf( 'gallery/' + galleryName + '/' ) === 0;
+                }).map( function( el ){
+                    return el.path;
+                });
+
+            },
+
+            moveActor: function( old_index, new_index ){
+
+                if ( new_index >= $scope.actors.length ) {
+                    var k = new_index - $scope.actors.length;
+
+                    while ( ( k-- ) + 1 ) {
+                        $scope.actors.push( undefined );
+                    }
+                }
+                $scope.actors.splice( new_index, 0, $scope.actors.splice( old_index, 1 )[0]);
 
                 this.updateZindices();
 
@@ -174,16 +160,70 @@ angular.module('SE').controller('MainController', [
 				$scope.$apply();
 			},
 
+            openAssetSelector: function( caller, actor ){
+
+                this.currentCaller = caller.target;
+                this.currentActor = actor;
+
+                $( 'body' ).addClass( 'modal-open' );
+                $( '#asset-selector').addClass( 'open' );
+
+                ScenarioService.getAssetsForProject().then(
+                    function( data ){
+
+                        var assetData = data.map(function( el, i, arr ){
+                            var type = el.substring( 0, el.indexOf( '/' ) );
+                            return {
+                                path: el.toString(),
+                                type: type.toString()
+                            };
+                        });
+
+                        var galleries = {};
+
+                        var filteredAssets = assetData.map( function( el, i, arr ){
+
+                            if( el.path.indexOf( 'gallery/' ) === 0 ){
+
+                                var galleryName = /gallery\/([^\/]+)\//.exec( el.path );
+
+                                if( galleryName && galleryName.length > 1 ){
+
+                                    if( typeof galleries[ galleryName[1] ] === 'undefined' ){
+                                        galleries[ galleryName[1] ] = true;
+
+                                        return {
+                                            path: galleryName[1],
+                                            type: 'gallery'
+                                        };
+
+                                    }
+                                }
+
+                            } else {
+                                return el;
+                            }
+
+                        }).filter( function ( el ) { return el; } );
+
+                        $scope.filteredAssets = filteredAssets;
+
+                        $scope.availableAssets = assetData;
+
+                    },
+                    function( error ){
+                        throw new Error( error );
+                    }
+                );
+
+            },
+
 			previewScenario : function () {
 
 				$scope.$emit( 'scenario:update', $scope.script );
 			},
 
 			saveScenario : function () {
-
-				// TODO
-				// Wat hier nog niet goed gaat is dat de timeline name en duration niet worden opgeslagen
-				// in $scope.script dus die wijzigingen saven nog niet, de rest wel! :)
 
 				ScenarioService.saveScenarioForProject( $scope.activeScenario, $scope.script ).then(function () {
 
@@ -197,34 +237,30 @@ angular.module('SE').controller('MainController', [
 				});
 			},
 
-            moveActor: function( old_index, new_index ){
+            selectAsset: function( assetPath, assetType ){
 
-                if ( new_index >= $scope.actors.length ) {
-                    var k = new_index - $scope.actors.length;
+                this.closeAssetSelector();
 
-                    while ( ( k-- ) + 1 ) {
-                        $scope.actors.push( undefined );
+                if( assetPath ){
+
+                    if( assetType === 'gallery' ){
+                        this.currentActor.trigger.galleryImages = this.getGalleryAssets( assetPath );
+                    } else {
+                        this.currentActor.trigger.galleryImages = [];
+                        this.currentActor.trigger.galleryroot = '';
                     }
+
+                    this.currentCaller.value = assetPath;
+                    angular.element($(this.currentCaller)).triggerHandler( 'input' );
+
                 }
-                $scope.actors.splice( new_index, 0, $scope.actors.splice( old_index, 1 )[0]);
 
-                this.updateZindices();
-
-            },
-
-            updateZindices: function(){
-
-                var len = $scope.actors.length;
-
-                $scope.actors.forEach( function( actor, i ){
-                    actor.zindex = len - i;
-                });
             },
 
             togglePlayerVisible: function(){
                 $scope.playerVisible = $scope.playerVisible === false;
                 $cookieStore.put( 'playerVisible', $scope.playerVisible );
-		    },
+            },
 
             toggleAudioActorsVisible: function(){
                 $scope.audioActorsVisible = $scope.audioActorsVisible === false;
@@ -241,6 +277,15 @@ angular.module('SE').controller('MainController', [
                 $cookieStore.put( 'playerFullScreen', $scope.playerFullScreen );
 
                 $scope.$apply();
+            },
+
+            updateZindices: function(){
+
+                var len = $scope.actors.length;
+
+                $scope.actors.forEach( function( actor, i ){
+                    actor.zindex = len - i;
+                });
             }
 
 		};

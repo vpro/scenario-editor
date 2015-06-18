@@ -156,7 +156,7 @@
                                         <label for="actor-src-{{$index}}">src</label>
                                         <input class="actor-edit-src"
                                                id="actor-src-{{$index}}"
-                                               ng-focus="mainCtrl.openAssetSelector( $event )"
+                                               ng-focus="mainCtrl.openAssetSelector( $event, actor )"
                                                ng-model="actor.src" />
                                     </div>
 
@@ -165,7 +165,7 @@
                                         <label for="actor-background-src-{{$index}}">src</label>
                                         <input class="actor-edit-src"
                                                id="actor-background-src-{{$index}}"
-                                               ng-focus="mainCtrl.openAssetSelector( $event )"
+                                               ng-focus="mainCtrl.openAssetSelector( $event, actor )"
                                                ng-model="actor.template.background.src" />
                                     </div>
 
@@ -173,7 +173,7 @@
                                         <label for="actor-template-caption-src-{{$index}}">src</label>
                                         <input class="actor-edit-src"
                                                id="actor-template-caption-src-{{$index}}"
-                                               ng-focus="mainCtrl.openAssetSelector( $event )"
+                                               ng-focus="mainCtrl.openAssetSelector( $event, actor )"
                                                ng-model="actor.template.caption.src" />
                                     </div>
 
@@ -239,7 +239,7 @@
                                             <input id="actor-trigger-src-{{$index}}"
                                                    class="actor-edit-src"
                                                    ng-model="actor.trigger.src"
-                                                   ng-focus="mainCtrl.openAssetSelector( $event )">
+                                                   ng-focus="mainCtrl.openAssetSelector( $event, actor )">
                                             </input>
                                         </div>
 
@@ -257,7 +257,8 @@
 
                                             <input id="actor-trigger-gallery-root-{{$index}}"
                                                    class="actor-edit-src"
-                                                   ng-model="actor.trigger.galleryroot">
+                                                   ng-model="actor.trigger.galleryroot"
+                                                   ng-focus="mainCtrl.openAssetSelector( $event, actor )">
                                             </input>
                                         </div>
 
@@ -357,22 +358,26 @@
             <span class="glyphicon glyphicon-remove-circle"></span>
         </div>
 
-        <div ng-repeat="(key, value) in availableAssets | groupBy: 'type'">
+        <div ng-repeat="(key, value) in filteredAssets | groupBy: 'type'">
 
             <div class="asset-group asset-group-{{key}}">
                 <div class="asset-group-title">{{ key }}</div>
 
                 <div ng-repeat="asset in value">
 
-                    <div class="asset-preview asset-img" ng-show="asset.path.indexOf('img/') !== -1" ng-click="mainCtrl.selectAsset( asset.path )">
+                    <div class="asset-preview asset-img" ng-show="asset.path.indexOf('img/') !== -1" ng-click="mainCtrl.selectAsset( asset.path, asset.type )">
                         <div class="asset-img-thumb" style="background-image: url({{assetRoot}}{{asset.path}})"></div>
                     </div>
 
-                    <div class="asset-preview asset-audio" ng-show="asset.path.indexOf('audio/') !== -1" ng-click="mainCtrl.selectAsset( asset.path )">
+                    <div class="asset-preview asset-audio" ng-show="asset.path.indexOf('audio/') !== -1" ng-click="mainCtrl.selectAsset( asset.path, asset.type )">
                         {{asset.path}}
                     </div>
 
-                    <div class="asset-preview asset-video" ng-show="asset.path.indexOf('video/') !== -1" ng-click="mainCtrl.selectAsset( asset.path )">
+                    <div class="asset-preview asset-video" ng-show="asset.path.indexOf('video/') !== -1" ng-click="mainCtrl.selectAsset( asset.path, asset.type )">
+                        {{asset.path}}
+                    </div>
+
+                    <div class="asset-preview asset-gallery" ng-show="asset.type === 'gallery'" ng-click="mainCtrl.selectAsset( asset.path, asset.type )">
                         {{asset.path}}
                     </div>
 
@@ -383,8 +388,6 @@
         </div>
 
     </div>
-
-
 
 
 

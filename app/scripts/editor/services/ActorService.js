@@ -92,7 +92,8 @@ angular.module( 'SE' ).factory( 'ActorService', [
                         type: 'video',
                         src: '',
                         iframesrc: '',
-                        galleryroot: ''
+                        galleryroot: '',
+                        galleryImages: []
                     },
                     template: {
                         caption: {

@@ -284,7 +284,14 @@ body.modal-open {
 }
 
 .asset-group {
-    clear: both;
+
+    padding: 0 0 20px;
+
+    &:after {
+        content:"";
+        display:table;
+        clear:both;
+    }
 }
 
 .asset-group-title {
