@@ -158,6 +158,8 @@
                                                id="actor-src-{{$index}}"
                                                ng-focus="mainCtrl.openAssetSelector( $event, actor )"
                                                ng-model="actor.src" />
+                                        <button class="actor-edit-src-clear"
+                                                ng-click="actor.src = ''">clear</button>
                                     </div>
 
                                     <!--or a property of the actor's template-->
@@ -167,6 +169,8 @@
                                                id="actor-background-src-{{$index}}"
                                                ng-focus="mainCtrl.openAssetSelector( $event, actor )"
                                                ng-model="actor.template.background.src" />
+                                        <button class="actor-edit-src-clear"
+                                                ng-click="actor.template.background.src = ''">clear</button>
                                     </div>
 
                                     <div ng-if="actor.template.caption.src !== undefined">
@@ -175,6 +179,8 @@
                                                id="actor-template-caption-src-{{$index}}"
                                                ng-focus="mainCtrl.openAssetSelector( $event, actor )"
                                                ng-model="actor.template.caption.src" />
+                                        <button class="actor-edit-src-clear"
+                                                ng-click="actor.template.caption.src = ''">clear</button>
                                     </div>
 
                                     <div>
@@ -246,8 +252,7 @@
                                             <input id="actor-trigger-src-{{$index}}"
                                                    class="actor-edit-src"
                                                    ng-model="actor.trigger.src"
-                                                   ng-focus="mainCtrl.openAssetSelector( $event, actor )">
-                                            </input>
+                                                   ng-focus="mainCtrl.openAssetSelector( $event, actor )" />
                                         </div>
 
                                         <div ng-if="actor.trigger.active && actor.trigger.type === 'iframe'" class="sub-option">

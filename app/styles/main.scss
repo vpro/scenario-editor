@@ -71,7 +71,16 @@ input[type="number"] {
     font-size: 12px;
 }
 
-.actor-edit-src,
+.actor-edit-src {
+    font-size: 13px;
+    line-height: 13px;
+    width: 120px;
+}
+
+.actor-edit-src-clear {
+    width: 46px;
+}
+
 .actor-edit-title {
     font-size: 13px;
     line-height: 13px;
