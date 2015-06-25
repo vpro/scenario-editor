@@ -279,7 +279,7 @@
 
                                             <select id="actor-trigger-label-{{$index}}"
                                                     ng-model="actor.trigger.label">
-                                                <option value="nu bekijken">nu bekijken</option>
+                                                <option value="nu bekijken" ng-selected="actor.trigger.label == undefined">nu bekijken</option>
                                                 <option value="nu beluisteren">nu beluisteren</option>
                                                 <option value="nu lezen">nu lezen</option>
                                             </select>
