@@ -274,6 +274,17 @@
                                             </input>
                                         </div>
 
+                                        <div ng-if="actor.trigger.active" class="sub-option">
+                                            <label for="actor-trigger-label-{{$index}}">button label</label>
+
+                                            <select id="actor-trigger-label-{{$index}}"
+                                                    ng-model="actor.trigger.label">
+                                                <option value="nu bekijken">nu bekijken</option>
+                                                <option value="nu beluisteren">nu beluisteren</option>
+                                                <option value="nu lezen">nu lezen</option>
+                                            </select>
+                                        </div>
+
                                     </div>
 
                                 </div>

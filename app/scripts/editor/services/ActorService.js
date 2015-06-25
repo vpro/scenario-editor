@@ -90,6 +90,7 @@ angular.module( 'SE' ).factory( 'ActorService', [
                         event: 'click',
                         active: false,
                         type: 'video',
+                        label: 'nu bekijken',
                         src: '',
                         iframesrc: '',
                         galleryroot: '',
