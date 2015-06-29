@@ -18,9 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
   }
   exit;
-}
+} else {
 
-header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Origin: *');
+}
 
 if ( isset( $callback ) ) {
     header("Content-Type: application/javascript"); // cause we're JSONPing
@@ -51,7 +52,7 @@ switch ( $resource ) {
 
             if ( isset( $scenarioData ) && $scenarioData !== '' ) {
 
-                $scenarioData = json_decode( utf8_encode( urldecode( $scenarioData ) ) );
+                $scenarioData = json_decode( urldecode( $scenarioData ) );
 
                     // JSON_PRETTY_PRINT is available as of PHP 5.4, files.vpro.nl is 5.3.29
                 if ( defined( 'JSON_PRETTY_PRINT' ) ) {
