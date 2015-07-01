@@ -389,7 +389,7 @@
                 <div ng-repeat="asset in value">
 
                     <div class="asset-preview asset-img" ng-show="asset.path.indexOf('img/') !== -1" ng-click="mainCtrl.selectAsset( asset.path, asset.type )">
-                        <div class="asset-img-thumb" style="background-image: url({{assetRoot}}{{asset.path}})"></div>
+                        <div class="asset-img-thumb" style="background-image: url('{{assetRoot}}{{asset.path}}')"></div>
                     </div>
 
                     <div class="asset-preview asset-audio" ng-show="asset.path.indexOf('audio/') !== -1" ng-click="mainCtrl.selectAsset( asset.path, asset.type )">
