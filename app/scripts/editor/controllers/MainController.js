@@ -245,7 +245,7 @@ angular.module('SE').controller('MainController', [
 
                     if( assetType === 'gallery' ){
                         this.currentActor.trigger.galleryImages = this.getGalleryAssets( assetPath );
-                    } else if( this.currentActor.trigger !== 'undefined' && this.currentActor.trigger.galleryImages !== 'undefined') {
+                    } else if( this.currentActor.hasOwnProperty( 'trigger' ) && this.currentActor.trigger.galleryImages !== 'undefined') {
                         this.currentActor.trigger.galleryImages = [];
                         this.currentActor.trigger.galleryroot = '';
                     }
