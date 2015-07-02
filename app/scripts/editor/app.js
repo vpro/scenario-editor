@@ -1,5 +1,5 @@
 
-(function( require, vproConfig ) {
+(function( require, vproConfig, dataServer ) {
 
 	'use strict';
 
@@ -20,11 +20,41 @@
 		}
 	);
 
-	angular.module( 'SE',
-        [
-		    'angular.filter',
-			'ngCookies'
-	    ]
-    );
+    var bookmarksContainer = document.getElementById( 'project-bookmarks' ),
+        projectName = getURLParameter( 'project' ),
+	    playerSkin = getURLParameter( 'skin' );
 
-}( window.require, window.vpro ));
+
+    if( !projectName ){
+        bookmarksContainer.style.display = 'block';
+    } else {
+        bookmarksContainer.style.display = 'none';
+    }
+
+
+    angular.module('SE',
+        [
+            'angular.filter',
+            'ngCookies'
+        ]
+    ).constant('PROJECT_NAME', projectName)
+        .constant('PLAYER_SKIN', playerSkin)
+        .constant('ASSET_ROOT', dataServer + '/projects/' + projectName + '/project-assets/');
+
+
+    function getURLParameter ( name, url ) {
+
+		if ( !url ){
+			url = location.href;
+		}
+
+		name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+
+		var regexS = "[\\?&]"+name+"=([^&#]*)",
+		    regex = new RegExp( regexS ),
+		    results = regex.exec( url );
+
+		return results === null ? null : results[1];
+	}
+
+}( window.require, window.vpro, window.dataServer ));

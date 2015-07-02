@@ -34,7 +34,7 @@ module.exports = function (grunt) {
 							connect.static(require('path').resolve('stub')),
 							connect.static(require('path').resolve('grunt/work')),
 							connect.static(require('path').resolve('app'))
-						]
+						];
 					}
 				}
 			},
@@ -46,7 +46,7 @@ module.exports = function (grunt) {
 					middleware: function(connect) {
 						return [
 							connect.static(require('path').resolve('grunt/build'))
-						]
+						];
 					}
 				}
 			}
@@ -113,8 +113,7 @@ module.exports = function (grunt) {
 				options: {
 					constants: {
 						'JS_SERVER' : packageConfig.config.production.jsServer,
-						'DATA_SERVER' : packageConfig.config.production.dataServer,
-						'ASSET_ROOT' : packageConfig.config.production.assetRoot
+						'DATA_SERVER' : packageConfig.config.production.dataServer
 					}
 				}
 			},
@@ -123,8 +122,7 @@ module.exports = function (grunt) {
 				options: {
 					constants: {
 						'JS_SERVER' : packageConfig.config.dev.jsServer,
-						'DATA_SERVER' : packageConfig.config.dev.dataServer,
-						'ASSET_ROOT' : packageConfig.config.dev.assetRoot
+						'DATA_SERVER' : packageConfig.config.dev.dataServer
 					}
 				}
 			}
@@ -198,7 +196,7 @@ module.exports = function (grunt) {
 				options: {
 					data: {
 						jsserver : '<%= pkg.config.dev.jsServer %>',
-						apiServer :  '<%= pkg.config.dev.apiServer %>'
+						dataServer :  '<%= pkg.config.dev.dataServer %>'
 					}
 				},
 				files: {
@@ -222,7 +220,7 @@ module.exports = function (grunt) {
 				options: {
 					data: {
 						jsserver : '<%= pkg.config.production.jsServer %>',
-						apiServer :  '<%= pkg.config.production.apiServer %>'
+						dataServer :  '<%= pkg.config.production.dataServer %>'
 					}
 				},
 				files: {

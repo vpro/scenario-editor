@@ -21,8 +21,25 @@
 	<div class="container-fluid">
 
         <div class="row">
-
             <div class="col col-md-12">
+                <ul id="project-bookmarks">
+                    <li>
+                        <a href="/?project=srebrenica">Srebrenica</a>
+                    </li>
+                    <li>
+                        <a href="/?project=test">Test</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col col-md-2">
+                <a href="/">Home</a>
+            </div>
+
+            <div class="col col-md-10">
 
                 <form ng-if="scenarios" class="form-horizontal form-inline">
                     <div class="form-group col-sm-12">
@@ -422,6 +439,10 @@
 	<script src="scripts/vendor/angularjs/angular-cookies.min.js"></script>
     <script src="scripts/vendor/angular-filter.min.js"></script>
 	<!-- endbuild -->
+
+    <script>
+        window.dataServer = '<%- dataServer %>';
+    </script>
 
 	<!-- build:js js/editor.js -->
 	<script src="scripts/editor/app.js"></script>

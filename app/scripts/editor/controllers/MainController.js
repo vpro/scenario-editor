@@ -1,46 +1,48 @@
 
 angular.module('SE').controller('MainController', [
     '$document',
-	'$scope',
-	'ScenarioService',
+    '$scope',
+    'ScenarioService',
     'ActorService',
     '$cookieStore',
-	'DATA_SERVER',
+    'DATA_SERVER',
     'ASSET_ROOT',
+    'PROJECT_NAME',
 
-	function ( $document, $scope, ScenarioService, ActorService, $cookieStore, DATA_SERVER, ASSET_ROOT ) {
+    function ( $document, $scope, ScenarioService, ActorService, $cookieStore, DATA_SERVER, ASSET_ROOT, PROJECT_NAME ) {
 
-		'use strict';
+        'use strict';
 
-		function MainController () {
+        function MainController () {
 
             $scope.actorTypes = [];
             $scope.playerVisible = $cookieStore.get( 'playerVisible' ) || true;
             $scope.audioActorsVisible = $cookieStore.get( 'audioActorsVisible' ) || true;
             $scope.compactView = $cookieStore.get( 'compactView' ) || false;
             $scope.playerFullScreen = $cookieStore.get( 'playerFullScreen' ) || false;
-		}
+        }
 
-		MainController.prototype = {
+        MainController.prototype = {
 
             init: function () {
 
-				ScenarioService.getScenariosForProject().then(function ( data ) {
+                this.projectName = PROJECT_NAME;
 
-					$scope.scenarios = data;
-				});
+                ScenarioService.getScenariosForProject( this.projectName ).then(function ( data ) {
+                    $scope.scenarios = data;
+                });
 
                 $scope.actorTypes = ActorService.getActors();
 
                 this.bindHandlers();
-				this.bindScopeHandlers();
-			},
+                this.bindScopeHandlers();
+            },
 
             activateScenario : function ( scenario ) {
 
                 if ( scenario !== '' ) {
 
-                    ScenarioService.getScenarioForProject( scenario ).then(function ( data ) {
+                    ScenarioService.getScenarioForProject( scenario, this.projectName ).then(function ( data ) {
 
                         $scope.activeScenario = scenario;
 
@@ -82,8 +84,8 @@ angular.module('SE').controller('MainController', [
 
             },
 
-			bindScopeHandlers: function(){
-				$scope.$on( 'player-animations', function( e, animations ){
+            bindScopeHandlers: function(){
+                $scope.$on( 'player-animations', function( e, animations ){
 
                     $scope.animationNames = animations.map(function( animation ){
                         return animation.name;
@@ -92,7 +94,7 @@ angular.module('SE').controller('MainController', [
                     $scope.$apply();
 
                 }.bind( this ));
-			},
+            },
 
             closeAssetSelector: function(){
                 $( 'body' ).removeClass( 'modal-open' );
@@ -140,7 +142,7 @@ angular.module('SE').controller('MainController', [
 
             },
 
-			onDrag: function ( actor, x, y ) {
+            onDrag: function ( actor, x, y ) {
 
                 if( ( actor.start + actor.duration ) >= $scope.script.duration ) {
                     actor.start = Math.round( x * $scope.script.duration ) - actor.duration;
@@ -148,17 +150,17 @@ angular.module('SE').controller('MainController', [
                     actor.start = Math.round( x * $scope.script.duration );
                 }
 
-				if ( actor.start < 0 ) {
-					actor.start = 0;
-				}
+                if ( actor.start < 0 ) {
+                    actor.start = 0;
+                }
 
-				$scope.$apply();
-			},
+                $scope.$apply();
+            },
 
-			onDrop: function () {
+            onDrop: function () {
 
-				$scope.$apply();
-			},
+                $scope.$apply();
+            },
 
             openAssetSelector: function( caller, actor ){
 
@@ -168,7 +170,7 @@ angular.module('SE').controller('MainController', [
                 $( 'body' ).addClass( 'modal-open' );
                 $( '#asset-selector').addClass( 'open' );
 
-                ScenarioService.getAssetsForProject().then(
+                ScenarioService.getAssetsForProject( this.projectName ).then(
                     function( data ){
 
                         var assetData = data.map(function( el, i, arr ){
@@ -218,24 +220,24 @@ angular.module('SE').controller('MainController', [
 
             },
 
-			previewScenario : function () {
+            previewScenario : function () {
 
-				$scope.$emit( 'scenario:update', $scope.script );
-			},
+                $scope.$emit( 'scenario:update', $scope.script );
+            },
 
-			saveScenario : function () {
+            saveScenario : function () {
 
-				ScenarioService.saveScenarioForProject( $scope.activeScenario, $scope.script ).then(function () {
+                ScenarioService.saveScenarioForProject( $scope.activeScenario, $scope.script, this.projectName ).then(function () {
 
-					alert('The scenario has been saved and will be previewed.');
+                    alert('The scenario has been saved and will be previewed.');
 
-					this.previewScenario();
+                    this.previewScenario();
 
 
-				}.bind( this ), function () {
-					alert('Sorry, there was an error during saving.');
-				});
-			},
+                }.bind( this ), function () {
+                    alert('Sorry, there was an error during saving.');
+                });
+            },
 
             selectAsset: function( assetPath, assetType ){
 
@@ -288,8 +290,8 @@ angular.module('SE').controller('MainController', [
                 });
             }
 
-		};
+        };
 
-		return new MainController();
-	}
+        return new MainController();
+    }
 ]);

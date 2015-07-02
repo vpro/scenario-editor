@@ -5,13 +5,11 @@
     "config": {
         "dev": {
             "jsServer": "http://localhost:8080",
-            "dataServer": "http://localhost:8010",
-            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
+            "dataServer": "http://localhost:8082"
         },
         "production": {
             "jsServer": "http://js-test.vpro.nl",
-            "dataServer": "http://files.vpro.nl/scenario-editor",
-            "assetRoot": "http://files.vpro.nl/scenario-editor/projects/srebrenica/project-assets/"
+            "dataServer": "http://files.vpro.nl/scenario-editor"
         }
     },
     "devDependencies": {

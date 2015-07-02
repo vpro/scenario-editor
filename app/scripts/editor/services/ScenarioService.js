@@ -18,7 +18,7 @@ angular.module( 'SE' ).factory( 'ScenarioService', [
                 $http.get( DATA_SERVER +'/api/get.php', {
 
                     params : {
-                        project : projectName || 'srebrenica',
+                        project : projectName,
                         resource: 'assets'
                     }
 
@@ -44,7 +44,7 @@ angular.module( 'SE' ).factory( 'ScenarioService', [
                 $http.get( DATA_SERVER +'/api/get.php', {
 
                     params : {
-                        project : projectName || 'srebrenica',
+                        project : projectName,
                         resource: 'scenarios'
                     }
 
@@ -70,7 +70,7 @@ angular.module( 'SE' ).factory( 'ScenarioService', [
                 $http.get( DATA_SERVER +'/api/get.php', {
 
                     params : {
-                        project : projectName || 'srebrenica',
+                        project : projectName,
                         resource: 'scenarios',
                         id: scenarioId || 'chapter-01'
                     }
@@ -109,7 +109,7 @@ angular.module( 'SE' ).factory( 'ScenarioService', [
                         },
 
                         params : {
-                            project : projectName || 'srebrenica',
+                            project : projectName,
                             resource: 'scenarios',
                             id: scenarioId || 'chapter-01'
                         }

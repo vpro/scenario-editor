@@ -6,10 +6,11 @@ angular.module( 'SE' ).directive( 'sePlayer',
 
         return {
             restrict: 'E',
-            controller: ['$scope', '$window', 'ASSET_ROOT', function ( $scope, $window, ASSET_ROOT ) {
+            controller: ['$scope', '$window', 'ASSET_ROOT', 'PLAYER_SKIN', function ( $scope, $window, ASSET_ROOT, PLAYER_SKIN ) {
 
                 function ScenarioPlayer () {
 
+                    this.playerSkin = PLAYER_SKIN || '';
                     this.playerReady = false;
                     this.bindScopeEvents();
                 }
@@ -58,7 +59,7 @@ angular.module( 'SE' ).directive( 'sePlayer',
                         this.player = new ScenarioPlayerApp( {
                             rootNode: 'se-player.scenario-player',
                             assetRoot: ASSET_ROOT,
-                            skin: 'srebrenica'
+                            skin: this.playerSkin
                         } );
 
 
