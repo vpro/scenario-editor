@@ -18,47 +18,57 @@
 
 <body ng-class="{'player-fullscreen': playerFullScreen === true }">
 
+    <div class="navbar navbar-static-top navbar-inverse">
+        <div class="container">
+
+            <div class="navbar-header">
+                <a class="navbar-brand">Scenario player editor</a>
+            </div>
+
+            <ul class="nav navbar-nav">
+
+                <li>
+                    <a href="/">Home</a>
+                </li>
+
+                <li ng-if="!scenarios" class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Projects <span class="caret"></span></a>
+                    <ul id="project-bookmarks" class="dropdown-menu">
+                        <li>
+                            <a href="/?project=srebrenica">Srebrenica</a>
+                        </li>
+                        <li>
+                            <a href="/?project=test">Test</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <form ng-if="scenarios" class="navbar-form navbar-left">
+                        <div class="form-group">
+                            <!-- Op de een of andere manier komt ng-model niet op de scope, dus ik geef hem hier
+                                maar door aan de activateScenario method welke vervolgens het scenario inlaadt
+                                en de naam van het scenario als scope.activeScenario set.
+
+                                TODO: fix this as described in http://stackoverflow.com/a/22768720
+                             -->
+
+                            <select id="scenario-selector" class="form-control" ng-model="selectedScenario" ng-change="mainCtrl.activateScenario( selectedScenario )">
+                                <option value="">Select script</option>
+                                <option ng-repeat="scenario in scenarios" value="{{scenario}}" ng-selected="scenario == selectedScenario">{{scenario}}</option>
+                            </select>
+                        </div>
+                    </form>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
 	<div class="container-fluid">
 
-        <div class="row">
-            <div class="col col-md-12">
-                <ul id="project-bookmarks">
-                    <li>
-                        <a href="/?project=srebrenica">Srebrenica</a>
-                    </li>
-                    <li>
-                        <a href="/?project=test">Test</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="row">
-
-            <div class="col col-md-2">
-                <a href="/">Home</a>
-            </div>
-
-            <div class="col col-md-10">
-
-                <form ng-if="scenarios" class="form-horizontal form-inline">
-                    <div class="form-group col-sm-12">
-                        <!-- Op de een of andere manier komt ng-model niet op de scope, dus ik geef hem hier
-                            maar door aan de activateScenario method welke vervolgens het scenario inlaadt
-                            en de naam van het scenario als scope.activeScenario set.
-
-                            TODO: fix this as described in http://stackoverflow.com/a/22768720
-                         -->
-                        <label for="scenario-selector" class="col-sm-4 h6 control-label"><nobr>Select a scenario</nobr></label>
-                        <select id="scenario-selector" class="col-sm-8 form-control" ng-model="selectedScenario" ng-change="mainCtrl.activateScenario( selectedScenario )">
-                            <option value="">Select...</option>
-                            <option ng-repeat="scenario in scenarios" value="{{scenario}}" ng-selected="scenario == selectedScenario">{{scenario}}</option>
-                        </select>
-                    </div>
-                </form>
-            </div>
-        </div>
-        
         <!-- Maar even ter test de scenario selector hierboven ingezet voordat onderstaande zichtbaar is, kies eerst een scenario :) -->
         <div class="scenario-editor" ng-class="{'hidden': ! activeScenario }">
         
