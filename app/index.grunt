@@ -309,6 +309,9 @@
                                                 <option value="nu bekijken" ng-selected="actor.trigger.label == undefined">nu bekijken</option>
                                                 <option value="nu beluisteren">nu beluisteren</option>
                                                 <option value="nu lezen">nu lezen</option>
+                                                <option value="watch now">watch now</option>
+                                                <option value="listen now">listen now</option>
+                                                <option value="read now">read lezen</option>
                                             </select>
                                         </div>
 
