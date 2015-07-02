@@ -196,7 +196,8 @@ module.exports = function (grunt) {
 				options: {
 					data: {
 						jsserver : '<%= pkg.config.dev.jsServer %>',
-						dataServer :  '<%= pkg.config.dev.dataServer %>'
+						dataServer :  '<%= pkg.config.dev.dataServer %>',
+						editorRoot : '<%= pkg.config.dev.editorRoot %>'
 					}
 				},
 				files: {
@@ -220,7 +221,8 @@ module.exports = function (grunt) {
 				options: {
 					data: {
 						jsserver : '<%= pkg.config.production.jsServer %>',
-						dataServer :  '<%= pkg.config.production.dataServer %>'
+						dataServer :  '<%= pkg.config.production.dataServer %>',
+						editorRoot : '<%= pkg.config.production.editorRoot %>'
 					}
 				},
 				files: {

@@ -28,17 +28,17 @@
             <ul class="nav navbar-nav">
 
                 <li>
-                    <a href="/">Home</a>
+                    <a href="<%- editorRoot %>/">Home</a>
                 </li>
 
                 <li ng-if="!scenarios" class="dropdown active">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Projects <span class="caret"></span></a>
                     <ul id="project-bookmarks" class="dropdown-menu">
                         <li>
-                            <a href="/?project=srebrenica">Srebrenica</a>
+                            <a href="<%- editorRoot %>/?project=srebrenica">Srebrenica</a>
                         </li>
                         <li>
-                            <a href="/?project=test">Test</a>
+                            <a href="<%- editorRoot %>/?project=test">Test</a>
                         </li>
                     </ul>
                 </li>
