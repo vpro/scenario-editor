@@ -9,7 +9,7 @@
             "editorRoot":  "http://localhost:8081"
         },
         "production": {
-            "jsServer": "http://js-test.vpro.nl",
+            "jsServer": "http://js.vpro.nl",
             "dataServer": "http://files.vpro.nl/scenario-editor",
             "editorRoot": "http://files.vpro.nl/scenario-editor/admin"
         }
