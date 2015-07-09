@@ -38,6 +38,9 @@
                             <a href="<%- editorRoot %>/?project=srebrenica">Srebrenica</a>
                         </li>
                         <li>
+                            <a href="<%- editorRoot %>/?project=srebrenica-en">Srebrenica Engels</a>
+                        </li>
+                        <li>
                             <a href="<%- editorRoot %>/?project=test">Test</a>
                         </li>
                         <li>
