@@ -1,10 +1,9 @@
 'use strict';
 
-var modRewrite = require('connect-modrewrite');
-
 module.exports = function (grunt) {
 
 	var packageConfig = grunt.file.readJSON('package.json') || {};
+    var phpExpressServer = require('./php-express-server.js');
 
 	grunt.initConfig({
 
@@ -57,10 +56,16 @@ module.exports = function (grunt) {
 				files: [
 					{
 						cwd:'app/styles',
-						src:['*.css'],
+                        src:['**/*.css'],
 						expand:true,
 						dest:'grunt/work/styles/'
-					}
+					},
+                    {
+                        cwd:'app',
+                        src:['*.php'],
+                        expand:true,
+                        dest:'grunt/work/'
+                    }
 				]
 			},
 			build: {
@@ -201,7 +206,7 @@ module.exports = function (grunt) {
 					}
 				},
 				files: {
-					'grunt/work/index.html': ['app/index.grunt']
+					'grunt/work/index.php': ['app/index.grunt']
 				}
 			},
 
@@ -226,7 +231,7 @@ module.exports = function (grunt) {
 					}
 				},
 				files: {
-					'grunt/build/index.html': ['app/index.grunt']
+					'grunt/build/index.php': ['app/index.grunt']
 				}
 			},
 
@@ -244,7 +249,7 @@ module.exports = function (grunt) {
 		},
 
 		useminPrepare: {
-			html: 'grunt/build/index.html',
+			html: 'grunt/build/index.php',
 			options: {
 				dest: 'grunt/build',
 				flow: {
@@ -327,7 +332,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('test:build', ['build', 'connect:build']);
 
 	grunt.registerTask('dev', ['clean:dev', 'sass:dev', 'ngconstant:dev', 'copy:dev', 'template:dev']);
-	grunt.registerTask('dev:watch', ['dev', 'connect:dev', 'watch']);
+	grunt.registerTask('dev:watch', ['dev', 'start-php-express', 'watch']);
 
 
 	grunt.registerTask('default', ['dev:watch']);
@@ -337,8 +342,19 @@ module.exports = function (grunt) {
 	grunt.registerTask('dataserver:dev', ['template:devServer','php']);
 
 
-		// dataserver:build creates a deployable version of the server/ folder
+    // dataserver:build creates a deployable version of the server/ folder
 	grunt.registerTask('dataserver:build', ['template:buildServer']);
 
+
+
+    grunt.registerTask( 'start-php-express', function(){
+
+        var done = this.async();
+
+        phpExpressServer.run( function(){
+            done();
+        } );
+
+    });
 
 };

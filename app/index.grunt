@@ -1,3 +1,8 @@
+<?php
+    // session_start();
+    // require 'approve.php';
+?>
+
 <!doctype html>
 <html ng-app="SE" ng-controller="MainController as mainCtrl" ng-init="mainCtrl.init()">
 <head>
@@ -16,6 +21,7 @@
 
 </head>
 
+
 <body ng-class="{'player-fullscreen': playerFullScreen === true }">
 
     <div class="navbar navbar-static-top navbar-inverse">
@@ -28,23 +34,23 @@
             <ul class="nav navbar-nav">
 
                 <li>
-                    <a href="<%- editorRoot %>/">Home</a>
+                    <a href="<%- editorRoot %>">Home</a>
                 </li>
 
                 <li ng-if="!scenarios" class="dropdown active">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Projects <span class="caret"></span></a>
                     <ul id="project-bookmarks" class="dropdown-menu">
                         <li>
-                            <a href="<%- editorRoot %>/?project=srebrenica">Srebrenica</a>
+                            <a href="<%- editorRoot %>?project=srebrenica">Srebrenica</a>
                         </li>
                         <li>
-                            <a href="<%- editorRoot %>/?project=srebrenica-en">Srebrenica Engels</a>
+                            <a href="<%- editorRoot %>?project=srebrenica-en">Srebrenica Engels</a>
                         </li>
                         <li>
-                            <a href="<%- editorRoot %>/?project=test">Test</a>
+                            <a href="<%- editorRoot %>?project=test">Test</a>
                         </li>
                         <li>
-                            <a href="<%- editorRoot %>/?project=zomergasten">Zomergasten 2015</a>
+                            <a href="<%- editorRoot %>?project=zomergasten">Zomergasten 2015</a>
                         </li>
                     </ul>
                 </li>
