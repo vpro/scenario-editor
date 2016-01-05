@@ -105,6 +105,12 @@ module.exports = function (grunt) {
 						src:['**/*.js'],
 						expand:true,
 						dest:'grunt/build/scripts'
+					},
+					{
+						cwd:'app',
+						src:['*.php'],
+						expand:true,
+						dest:'grunt/build/'
 					}
 				]
 			},
