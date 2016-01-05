@@ -1,8 +1,3 @@
-<?php
-    // session_start();
-    // require 'approve.php';
-?>
-
 <!doctype html>
 <html ng-app="SE" ng-controller="MainController as mainCtrl" ng-init="mainCtrl.init()">
 <head>

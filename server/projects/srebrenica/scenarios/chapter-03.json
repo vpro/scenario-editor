@@ -37,16 +37,16 @@
             "image": "",
             "trigger": {
                 "event": "click",
-                "active": false,
-                "type": "video",
-                "src": "video\/dutch_se_van_512kb.mp4"
+                "active": true,
+                "type": "iframe",
+                "src": "video\/dutch_se_van_512kb.mp4",
+                "iframesrc": "https:\/\/www.youtube.com\/embed\/PSYxT9GM0fQ"
             },
             "template": {
                 "caption": {
-                    "src": "",
+                    "src": "img\/still-soldier-binoculars.png",
                     "title": "Dutchbat",
-                    "subtitle": "Vertrek uit Srebrenica",
-                    "portrait": false
+                    "subtitle": "Vertrek uit Srebrenica"
                 }
             },
             "animationName": "captionTopLeft",

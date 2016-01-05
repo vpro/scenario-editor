@@ -1,7 +1,39 @@
 {
     "name": "Srebrenica chapter 02",
-    "duration": 283000,
+    "duration": 283010,
     "actors": [
+        {
+            "type": "caption",
+            "name": "Caption",
+            "title": "",
+            "start": 0,
+            "duration": 5000,
+            "image": "",
+            "trigger": {
+                "event": "click",
+                "active": true,
+                "type": "gallery",
+                "src": "",
+                "iframesrc": "",
+                "galleryroot": "dutchbat",
+                "galleryImages": [
+                    "gallery\/dutchbat\/still-aben-hede-tank-fire.png",
+                    "gallery\/dutchbat\/still-aben-hede-tank.png",
+                    "gallery\/dutchbat\/still-danish-leopard-3.png",
+                    "gallery\/dutchbat\/still-istina-document-stamp.png",
+                    "gallery\/dutchbat\/still-soldier-binoculars.png"
+                ]
+            },
+            "template": {
+                "caption": {
+                    "src": "img\/export-8060b.jpg",
+                    "title": "Dit is een test",
+                    "subtitle": "Voor een gallery"
+                }
+            },
+            "zindex": 8,
+            "animationName": "captionTopLeft"
+        },
         {
             "type": "video",
             "name": "Video",
@@ -20,7 +52,7 @@
             "type": "generic",
             "name": "Image Cover",
             "title": "",
-            "start": 262625,
+            "start": 0,
             "duration": 20000,
             "template": {
                 "background": {

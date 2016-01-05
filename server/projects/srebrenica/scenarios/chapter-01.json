@@ -1,15 +1,260 @@
 {
-    "name": "Srebrenica chapter 01",
-    "duration": 168000,
+    "name": "Bron montage",
+    "duration": 283000,
     "actors": [
+        {
+            "type": "caption",
+            "name": "Caption",
+            "title": "",
+            "start": 0,
+            "duration": 10000,
+            "image": "",
+            "trigger": {
+                "event": "click",
+                "active": true,
+                "type": "gallery",
+                "src": "",
+                "iframesrc": "https:\/\/www.documentcloud.org\/documents\/251242-un-resolution-819-sreb-safe-zone.html",
+                "galleryImages": [
+                    "gallery\/slideshow-joegoslavie-valt-uiteen\/joegoslavie-valt-uiteen-1.jpg",
+                    "gallery\/slideshow-joegoslavie-valt-uiteen\/joegoslavie-valt-uiteen-2.jpg",
+                    "gallery\/slideshow-joegoslavie-valt-uiteen\/joegoslavie-valt-uiteen-3.jpg",
+                    "gallery\/slideshow-joegoslavie-valt-uiteen\/joegoslavie-valt-uiteen-4.jpg",
+                    "gallery\/slideshow-joegoslavie-valt-uiteen\/joegoslavie-valt-uiteen-5.jpg",
+                    "gallery\/slideshow-joegoslavie-valt-uiteen\/joegoslavie-valt-uiteen-6.jpg",
+                    "gallery\/slideshow-joegoslavie-valt-uiteen\/joegoslavie-valt-uiteen-7.jpg"
+                ],
+                "galleryroot": "slideshow-joegoslavie-valt-uiteen"
+            },
+            "template": {
+                "caption": {
+                    "src": "",
+                    "title": "VN-resolutie 819",
+                    "subtitle": "De volledige tekst van de resolutie"
+                }
+            },
+            "zindex": 12,
+            "animationName": "captionBottomLeft",
+            "preload": {
+                "type": "image"
+            }
+        },
+        {
+            "type": "generic",
+            "name": "Image Cover",
+            "title": "",
+            "start": 201000,
+            "duration": 14000,
+            "template": {
+                "background": {
+                    "src": "img\/zoom15.jpg",
+                    "sizing": "cover"
+                }
+            },
+            "zindex": 11,
+            "animationName": "zoom-1.0-1.5-20s--fade1s",
+            "preload": {
+                "type": "image"
+            }
+        },
+        {
+            "type": "generic",
+            "name": "Image Cover",
+            "title": "",
+            "start": 156000,
+            "duration": 11000,
+            "template": {
+                "background": {
+                    "src": "img\/zoom11.jpg",
+                    "sizing": "cover"
+                }
+            },
+            "zindex": 10,
+            "animationName": "zoom-1.0-1.5-20s--fade1s",
+            "preload": {
+                "type": "image"
+            }
+        },
+        {
+            "type": "caption",
+            "name": "Caption",
+            "title": "",
+            "start": 145000,
+            "duration": 7000,
+            "image": "",
+            "trigger": {
+                "event": "click",
+                "active": false,
+                "type": "iframe",
+                "src": "",
+                "iframesrc": "http:\/\/files.vpro.nl\/scenario-editor\/projects\/srebrenica\/project-assets\/img\/to-do.png"
+            },
+            "template": {
+                "caption": {
+                    "src": "img\/color-yellow.jpg",
+                    "title": "Geweld tijdens de Bosnische oorlog",
+                    "subtitle": "Volgens schattingen komen bij het geweld van de Bosnische burgeroorlog minimaal 100.000 mensen om het leven."
+                }
+            },
+            "zindex": 9,
+            "animationName": "captionTopRight",
+            "preload": {
+                "type": "image"
+            }
+        },
+        {
+            "type": "generic",
+            "name": "Image Cover",
+            "title": "",
+            "start": 141000,
+            "duration": 8000,
+            "template": {
+                "background": {
+                    "src": "img\/serbia-invades-bosnia2.jpg",
+                    "sizing": "cover"
+                }
+            },
+            "zindex": 8,
+            "animationName": "zoom-1.0-1.5-20s--fade1s",
+            "preload": {
+                "type": "image"
+            }
+        },
+        {
+            "type": "generic",
+            "name": "Image Cover",
+            "title": "",
+            "start": 136000,
+            "duration": 8000,
+            "template": {
+                "background": {
+                    "src": "img\/serbia-invades-bosnia1.jpg",
+                    "sizing": "cover"
+                }
+            },
+            "zindex": 7,
+            "animationName": "zoom-1.0-1.5-20s--fade1s",
+            "preload": {
+                "type": "image"
+            }
+        },
+        {
+            "type": "generic",
+            "name": "Image Cover",
+            "title": "",
+            "start": 124000,
+            "duration": 7500,
+            "template": {
+                "background": {
+                    "src": "img\/landscape-un-headquarter-flag-slovenia.JPG",
+                    "sizing": "cover"
+                }
+            },
+            "zindex": 6,
+            "animationName": "zoom-1.0-1.5-20s--fade1s",
+            "preload": {
+                "type": "image"
+            }
+        },
+        {
+            "type": "generic",
+            "name": "Image Cover",
+            "title": "",
+            "start": 118000,
+            "duration": 8000,
+            "template": {
+                "background": {
+                    "src": "img\/landscape-un-headquarter.png",
+                    "sizing": "cover"
+                }
+            },
+            "zindex": 5,
+            "animationName": "zoom-1.0-1.5-20s--fade1s",
+            "preload": {
+                "type": "image"
+            }
+        },
+        {
+            "type": "caption",
+            "name": "Caption",
+            "title": "",
+            "start": 113250,
+            "duration": 10000,
+            "image": "",
+            "trigger": {
+                "event": "click",
+                "active": true,
+                "type": "iframe",
+                "src": "",
+                "iframesrc": "http:\/\/files.vpro.nl\/scenario-editor\/projects\/srebrenica\/project-assets\/img\/to-do.png",
+                "galleryroot": ""
+            },
+            "template": {
+                "caption": {
+                    "src": "",
+                    "title": "Etnische spanningen",
+                    "subtitle": "Waarom Bosni\u00c3\u0083\u00c2\u00abrs, Servi\u00c3\u0083\u00c2\u00abrs en Kroaten in conflict raakten"
+                }
+            },
+            "zindex": 4,
+            "animationName": "captionBottomLeft",
+            "preload": {
+                "type": "image"
+            }
+        },
+        {
+            "type": "caption",
+            "name": "Caption",
+            "title": "",
+            "start": 81000,
+            "duration": 10000,
+            "image": "",
+            "trigger": {
+                "event": "click",
+                "active": true,
+                "type": "iframe",
+                "src": "",
+                "iframesrc": "http:\/\/files.vpro.nl\/scenario-editor\/projects\/srebrenica\/project-assets\/img\/to-do.png"
+            },
+            "template": {
+                "caption": {
+                    "src": "img\/uiteenvallen-joegoslavie-6.jpg",
+                    "title": "Joegoslavi\u00c3\u0083\u00c2\u00ab valt uiteen",
+                    "subtitle": "Slideshow"
+                }
+            },
+            "zindex": 3,
+            "animationName": "captionBottomRight",
+            "preload": {
+                "type": "image"
+            }
+        },
+        {
+            "type": "generic",
+            "name": "Image Contain",
+            "title": "",
+            "start": 26000,
+            "duration": 10000,
+            "template": {
+                "background": {
+                    "src": "img\/tito-fade.png",
+                    "sizing": "contain"
+                }
+            },
+            "zindex": 2,
+            "animationName": "fade1s",
+            "preload": {
+                "type": "image"
+            }
+        },
         {
             "type": "video",
             "name": "Video",
             "title": "",
             "start": 0,
-            "duration": 168000,
+            "duration": 283000,
             "offset": 0,
-            "src": "video\/Srebr_deel4_v02.mp4",
+            "src": "video\/Srebr_deel1_v05.mp4",
             "cover": true,
             "preload": {
                 "type": "video"

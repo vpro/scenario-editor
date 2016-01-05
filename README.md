@@ -31,7 +31,7 @@ The server should be build with `grunt dataserver:build`. The resulting
 `/server` contents can now be uploaded to the production server.
  
 The editor can be build with `grunt build` and the resulting `/grunt/build`
-folder can be uploaded to the production server.
+folder can be uploaded to the production server. Before uploading set the password in app/login.php to the password as described in the VPRO wiki
 
 ### note on writing files on our production server
 Because PHP isn't allowed to write files on our production server the

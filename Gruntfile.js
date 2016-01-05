@@ -7,6 +7,18 @@ module.exports = function (grunt) {
 
 	grunt.initConfig({
 
+		file_append: {
+			default_options: {
+				files: [
+					{
+						prepend: "<?php session_start(); require 'approve.php'; ?>\n",
+						input: 'grunt/build/index.php',
+						output: 'grunt/build/index.php'
+					}
+				]
+			}
+		},
+
 		pkg: packageConfig,
 
 		clean: {
@@ -263,7 +275,7 @@ module.exports = function (grunt) {
 		},
 
 		usemin: {
-			html: ['grunt/build/{,*/}*.html'],
+			html: ['grunt/build/{,*/}*.php'],
 			css: ['grunt/build/styles/{,*/}*.css']
 		},
 
@@ -308,6 +320,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-ngmin');
 	grunt.loadNpmTasks('grunt-angular-templates');
 	grunt.loadNpmTasks('grunt-php');
+	grunt.loadNpmTasks('grunt-file-append');
 
 	grunt.registerTask('build', [
 		'clean:build',
@@ -325,7 +338,8 @@ module.exports = function (grunt) {
 		'ngtemplates',
 		'concat:templates',
 		'uglify',
-		'clean:scripts'
+		'clean:scripts',
+		'file_append'
 	]);
 
 		// for testing against the build settings
@@ -344,7 +358,6 @@ module.exports = function (grunt) {
 
     // dataserver:build creates a deployable version of the server/ folder
 	grunt.registerTask('dataserver:build', ['template:buildServer']);
-
 
 
     grunt.registerTask( 'start-php-express', function(){
