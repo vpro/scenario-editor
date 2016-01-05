@@ -47,6 +47,9 @@
                         <li>
                             <a href="<%- editorRoot %>?project=zomergasten">Zomergasten 2015</a>
                         </li>
+                        <li>
+                            <a href="<%- editorRoot %>?project=yangtze">Yangtze</a>
+                        </li>
                     </ul>
                 </li>
 
