@@ -60,11 +60,7 @@ angular.module('SE').controller('MainController', [
 
             addActor: function( actor ){
 
-                $scope.script.actors.push( angular.copy( actor ) );
-
-                $( 'html, body' ).animate({
-                    scrollTop: $(document).height()
-                }, 500);
+                $scope.script.actors.unshift( angular.copy( actor ) );
 
                 this.updateZindices();
 
