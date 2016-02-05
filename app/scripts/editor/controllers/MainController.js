@@ -158,9 +158,9 @@ angular.module('SE').controller('MainController', [
                 $scope.$apply();
             },
 
-            openAssetSelector: function( caller, actor ){
+            openAssetSelector: function( caller, actor, property ){
 
-                this.currentCaller = caller.target;
+                this.currentProperty = property;
                 this.currentActor = actor;
 
                 $( 'body' ).addClass( 'modal-open' );
@@ -244,12 +244,24 @@ angular.module('SE').controller('MainController', [
                     if( assetType === 'gallery' ){
                         this.currentActor.trigger.galleryImages = this.getGalleryAssets( assetPath );
                     } else if( this.currentActor.hasOwnProperty( 'trigger' ) && this.currentActor.trigger.galleryImages !== 'undefined') {
+                        // remove galleryImages if we already have a trigger that is NOT a gallery
                         this.currentActor.trigger.galleryImages = [];
                         this.currentActor.trigger.galleryroot = '';
                     }
 
-                    this.currentCaller.value = assetPath;
-                    angular.element($(this.currentCaller)).triggerHandler( 'input' );
+                    var schema = this.currentActor;
+                    var pList = this.currentProperty.split('.');
+                    var len = pList.length;
+
+                    for( var i = 0; i < len - 1; i++ ) {
+                        var elem = pList[i];
+                        if( !schema[elem] ){
+                            schema[elem] = {};
+                        }
+                        schema = schema[elem];
+                    }
+
+                    schema[pList[len-1]] = assetPath;
 
                 }
 

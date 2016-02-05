@@ -190,43 +190,62 @@
 
                                     <!--src is either a property on the root of actor-->
                                     <div ng-if="actor.src !== undefined">
+
                                         <label for="actor-src-{{$index}}">src</label>
+
                                         <input class="actor-edit-src"
                                                id="actor-src-{{$index}}"
-                                               ng-focus="mainCtrl.openAssetSelector( $event, actor )"
                                                ng-model="actor.src" />
+
+                                        <button class="actor-edit-src-browse"
+                                                ng-click="mainCtrl.openAssetSelector( $event, actor, 'src' )">browse</button>
+
                                         <button class="actor-edit-src-clear"
                                                 ng-click="actor.src = ''">clear</button>
                                     </div>
 
                                     <!--or a property of the actor's template-->
                                     <div ng-if="actor.template.background.src !== undefined">
+
                                         <label for="actor-background-src-{{$index}}">src</label>
+
                                         <input class="actor-edit-src"
                                                id="actor-background-src-{{$index}}"
-                                               ng-focus="mainCtrl.openAssetSelector( $event, actor )"
                                                ng-model="actor.template.background.src" />
+
+                                        <button class="actor-edit-src-browse"
+                                                ng-click="mainCtrl.openAssetSelector( $event, actor, 'template.background.src' )">browse</button>
+
                                         <button class="actor-edit-src-clear"
                                                 ng-click="actor.template.background.src = ''">clear</button>
+
                                     </div>
 
                                     <div ng-if="actor.template.caption.src !== undefined">
+
                                         <label for="actor-template-caption-src-{{$index}}">src</label>
+
                                         <input class="actor-edit-src"
                                                id="actor-template-caption-src-{{$index}}"
-                                               ng-focus="mainCtrl.openAssetSelector( $event, actor )"
                                                ng-model="actor.template.caption.src" />
+
+                                        <button class="actor-edit-src-browse"
+                                                ng-click="mainCtrl.openAssetSelector( $event, actor, 'template.caption.src' )">browse</button>
+
                                         <button class="actor-edit-src-clear"
                                                 ng-click="actor.template.caption.src = ''">clear</button>
                                     </div>
 
                                     <div>
+
                                         <label for="actor-animation-{{$index}}">ani</label>
+
                                         <select id="actor-animation-{{$index}}"
                                                 ng-model="actor.animationName"
                                                 ng-options="animationName as animationName for animationName in animationNames">
                                             <option value=""></option>
                                         </select>
+
                                     </div>
 
                                     <div ng-if="actor.type == 'caption'">
@@ -288,8 +307,10 @@
 
                                             <input id="actor-trigger-src-{{$index}}"
                                                    class="actor-edit-src"
-                                                   ng-model="actor.trigger.src"
-                                                   ng-focus="mainCtrl.openAssetSelector( $event, actor )" />
+                                                   ng-model="actor.trigger.src"/>
+
+                                            <button class="actor-edit-src-browse"
+                                                    ng-click="mainCtrl.openAssetSelector( $event, actor, 'trigger.src' )" >browse</button>
                                         </div>
 
                                         <div ng-if="actor.trigger.active && actor.trigger.type === 'iframe'" class="sub-option">
@@ -306,9 +327,11 @@
 
                                             <input id="actor-trigger-gallery-root-{{$index}}"
                                                    class="actor-edit-src"
-                                                   ng-model="actor.trigger.galleryroot"
-                                                   ng-focus="mainCtrl.openAssetSelector( $event, actor )">
-                                            </input>
+                                                   ng-model="actor.trigger.galleryroot" />
+
+                                            <button class="actor-edit-src-browse"
+                                                    ng-click="mainCtrl.openAssetSelector( $event, actor, 'trigger.galleryroot' )" >browse</button>
+
                                         </div>
 
                                         <div ng-if="actor.trigger.active" class="sub-option">
