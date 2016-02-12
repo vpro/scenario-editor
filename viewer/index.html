@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>VPRO scenario viewer</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+
+    <style>
+
+        /* http://meyerweb.com/eric/tools/css/reset/
+           v2.0 | 20110126
+           License: none (public domain)
+        */
+        a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+
+        html,
+        body,
+        .container-fluid {
+            height: 100%;
+        }
+
+        #nav {
+            padding: 20px 10px;
+            font-family: Verdana, Arial, sans-serif;
+        }
+
+        #nav li {
+            padding: 0 0 8px;
+            font-size: 13px;
+            list-style-type: disc;
+        }
+
+        #player {
+            height: 100vh;
+            padding: 20px;
+        }
+
+        #scenario-player-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background-color: #222;
+        }
+
+        .scenario-player {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-md-2">
+            <ul id="nav"></ul>
+        </div>
+
+        <div class="col-md-10">
+
+            <div id="player">
+
+                <div id="scenario-player-container">
+                    <div class="scenario-player"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="http://js.vpro.nl/embed/configuration.js?var=vpro"></script>
+<script src="http://js.vpro.nl/ext/require/2.1.17/require.min.js" data-main="js/impl.js"></script>
+
+</body>
+
+</html>
