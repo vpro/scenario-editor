@@ -288,7 +288,7 @@ module.exports = function (grunt) {
 		uglify: {
 			options: {
 				mangle:true,
-				compress:true
+				compress:{}
 			},
 			files: {
 				src:['grunt/build/js/editor.js'],
