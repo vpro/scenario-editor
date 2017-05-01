@@ -51,6 +51,9 @@
                             <a href="<%- editorRoot %>?project=standingrock">Standing Rock</a>
                         </li>
                         <li>
+                            <a href="<%- editorRoot %>?project=standingrock-en">Standing Rock Engels</a>
+                        </li>
+                        <li>
                             <a href="<%- editorRoot %>?project=yangtze">Yangtze</a>
                         </li>
                     </ul>
