@@ -305,6 +305,7 @@
                                                 <option value="video">video</option>
                                                 <option value="iframe">iframe</option>
                                                 <option value="gallery">gallery</option>
+                                                <option value="link">link</option>
                                             </select>
                                         </div>
 
@@ -338,6 +339,15 @@
                                             <button class="actor-edit-src-browse"
                                                     ng-click="mainCtrl.openAssetSelector( $event, actor, 'trigger.galleryroot' )" >browse</button>
 
+                                        </div>
+
+                                        <div ng-if="actor.trigger.active && actor.trigger.type === 'link'" class="sub-option">
+                                            <label for="actor-trigger-link-href-{{$index}}">link-href</label>
+
+                                            <input id="actor-trigger-link-href-{{$index}}"
+                                                   class="actor-edit-src"
+                                                   ng-model="actor.trigger.linkhref">
+                                            </input>
                                         </div>
 
                                         <div ng-if="actor.trigger.active" class="sub-option">

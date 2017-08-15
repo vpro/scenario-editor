@@ -4,7 +4,7 @@
     "version": "0.1.0",
     "config": {
         "dev": {
-            "jsServer": "http://localhost:8080",
+            "jsServer": "https://localhost:8444",
             "dataServer": "http://localhost:8082",
             "editorRoot":  "http://localhost:3000/index.php"
         },

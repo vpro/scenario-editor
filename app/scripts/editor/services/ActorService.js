@@ -94,7 +94,8 @@ angular.module( 'SE' ).factory( 'ActorService', [
                         src: '',
                         iframesrc: '',
                         galleryroot: '',
-                        galleryImages: []
+                        galleryImages: [],
+                        linkhref: ''
                     },
                     template: {
                         caption: {
