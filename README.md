@@ -16,6 +16,7 @@ You can now use `grunt dev:watch` for developing and viewing the editor on
 [http://localhost:8000](http://localhost:8000). This is also the default
 Grunt task.
 
+Note that files.vpro.nl is running PHP 5.3.29.
 
 ## build / deployment
 

@@ -1,14 +1,12 @@
 <?php
 
-$dirName = dirname(__FILE__) ."/";
-
-include_once( $dirName ."Util.php");
+include_once( dirname(__FILE__) ."/" ."Util.php");
 
 class ScenarioService {
 
     function getAssetsForProject () {
 
-        return $this->listDirectory( $dirName .'..'. BASEPATH_ASSETS );
+        return $this->listDirectory( dirname(__FILE__) ."/" .'..'. BASEPATH_ASSETS );
     }
 
     function getScenariosForProject () {
@@ -44,8 +42,7 @@ class ScenarioService {
     function getScenariosRootPath () {
 
         if ( ALLOW_RELATIVE_FILE_WRITES ) {
-
-            return $dirName .'..'. BASEPATH_SCENARIOS;
+            return dirname(__FILE__) .'/'.'..'. BASEPATH_SCENARIOS;
         } else {
             return BASEPATH_SCENARIOS_ABS;
         }
