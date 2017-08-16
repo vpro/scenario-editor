@@ -56,6 +56,9 @@
                         <li>
                             <a href="<%- editorRoot %>?project=yangtze">Yangtze</a>
                         </li>
+                        <li>
+                            <a href="<%- editorRoot %>?project=gliphoeve">Gliphoeve</a>
+                        </li>
                     </ul>
                 </li>
 
